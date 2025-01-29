@@ -1,20 +1,20 @@
 /* General styles */
 body {
     font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     padding: 0;
     margin: 0;
     margin-left: auto;
     margin-right: auto;
-    color: #000;
+    color: #696969;
 }
 
 h1 {
     font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
-    font-size: 2.5em;
-    font-weight: normal;
-    margin-top: 0;
-    color: #000;
+    font-size: 2.0em;
+    font-weight: bold;
+    margin-top: 30px;
+    color: #696969;
 }
 
 h2, h3 {
@@ -23,15 +23,17 @@ h2, h3 {
     margin: 0;
     padding-bottom: 5px;
     padding-top: 5px;
-    color: #000;
+    color: #696969;
 }
 
 h2 {
     font-size: 1.769em;
+    color: #696969;
 }
 
 h3 {
     font-size: 1.231em;
+    color: #696969;
 }
 
 h4 {
@@ -39,7 +41,7 @@ h4 {
     font-size: 1.077em;
     font-weight: normal;
     margin: 5px 0px 0px 0px;
-    color: #000;
+    color: #696969;
 }
 
 h5, h6 {
@@ -48,21 +50,21 @@ h5, h6 {
     font-weight: normal;
     line-height: 130%;
     margin: 0;
-    color: #000;
+    color: #696969;
 }
 
 a, a:link {
     text-decoration: none;
-    color: #1364c4;
+    color: #5235ef;
 }
 
     a:visited, a:active {
         text-decoration: none;
-        color: #03697a;
+        color: #5235ef;
     }
 
     a:hover {
-        text-decoration: none;
+        text-decoration: underline;
         color: #3390b1;
     }
 
@@ -193,6 +195,7 @@ pre {
     padding: 5px 10px;
     vertical-align: middle;
     height: 25px;
+    display: none;
 }
 
 .pageBody {
@@ -211,7 +214,17 @@ pre {
     padding: 10px;
 }
 
+
 .feedbackLink {
+  text-indent: -9999px;
+  line-height: 0; /* Collapse the original line */
+}
+
+.feedbackLink::after {
+  content: "Made with ❤️ by Nonica.io";
+  text-indent: 0;
+  display: block;
+  line-height: initial; /* New content takes up original line height */
 }
 
 .iconColumn {
@@ -284,12 +297,13 @@ div.caption {
 .collapsibleRegionTitle {
     font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif !important;
     font-style: normal !important;
-    font-size: 1.769em;
+    font-size: 1.2em;
     margin-top: 9px;
     margin-bottom: 19px;
     padding-top: 20px;
     padding-bottom: 5px;
     cursor: pointer;
+    color: #696969;
 }
 
 .collapsibleSection {
@@ -498,11 +512,12 @@ div.caption {
     }
 
     .codeSnippetContainerCode .keyword {
-        color: #0000ff;
-        font-weight: normal;
+        color: #9281ed;
+        font-weight: bold;
     }
 
 .copyCodeSnippet {
+        display: none;
 }
 
 /* Keyword and phrase styles */
@@ -513,8 +528,8 @@ span.code, span.command {
 }
 
 span.selflink {
-    font-family: Consolas, Courier, monospace;
-    color: #000066;
+    color: #1b2032;
+    font-style: italic;
 }
 
 span.ui {
