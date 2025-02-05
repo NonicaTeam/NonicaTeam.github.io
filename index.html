@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <a href="2025.htm" >Page 1</a>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fancy Index Page</title>
+  <link rel="stylesheet" href="styles/index.css">
+  <!-- Add this to the head of your HTML -->
+  <link rel="stylesheet" href="styles/docsearch.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <script src="scripts/branding.js" defer></script>
+    <div class="outer-container">
+        <div class="container">
+            <h2 class="subtitle">REVIT API DOCUMENTATION</h2>
+            <h1 class="title1">Rev API Docs</h1>
+            <div class="separator"></div>
+            
+            <div class="button-container">
+                <a href="2020.htm"><button class="leftbutton">2020</button></a>
+                <a href="2021.htm"><button class="standard-button">2021</button></a>
+                <a href="2022.htm"><button class="standard-button">2022</button></a>
+                <a href="2023.htm"><button class="standard-button">2023</button></a>
+                <a href="2024.htm"><button class="standard-button">2024</button></a>
+                <a href="2025.htm"><button class="rightbutton">2025</button></a>
+            </div>
+            <div id="algoliaBar">
+            </div>
+        </div>
+      </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+
+<script type="text/javascript">
+
+docsearch({
+
+appId: "WEH0G3EYGF",
+
+apiKey: "69d3c9c82f55d09311b4f77f215870a6",
+
+indexName: "nonicateamio",
+
+container: "#algoliaBar",
+
+debug: false 
+
+});
+
+</script>
 </body>
 </html>
+

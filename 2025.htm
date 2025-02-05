@@ -11,10 +11,12 @@
 <link rel="stylesheet" href="styles/ui.fancytree.min.css">
 <script src="scripts/jquery.fancytree-all-deps.min.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"/>
+<link rel="stylesheet" href="styles/docsearch.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
 <script src="hw_library.js" type="text/javascript"></script>
+
+
 <script type="text/javascript">
 
   
@@ -22,15 +24,20 @@
     return location.pathname.split("/").pop();
   }
 
-  function updateUrlWithRightFrame(rightURL) 
-  {
-    if(rightURL && !rightURL.includes("undefined"))
-    {
-        console.log(rightURL)
-        history.pushState(null, '', `?id=${rightURL}`);
-        findNodeByUrl(rightURL);
+function updateUrlWithRightFrame(rightURL) {
+  if (rightURL && !rightURL.includes("undefined")) {
+    // Get the current URL in the browser
+    const currentUrl = window.location.href;
+    // Create the new URL you want to push
+    const newUrl = `?id=${rightURL}`;
+    // Check if the new URL is the same as the current URL
+    if (currentUrl.includes(newUrl)) {
+      return; // Exit the function if the URL is the same
     }
+    history.replaceState(null, '', newUrl); // Update the browser history with the new URL
+    findNodeByUrl(rightURL); // Execute your function with the new URL
   }
+}
 
 
 function updateUrl() {

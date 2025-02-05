@@ -1,0 +1,184 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Montserrat', Tahoma, 'Courier New', Helvetica, 'Segoe UI', 'Lucida Grande', Verdana, Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.subtitle {
+  font-size: 1em;
+  font-weight: 100 !important;
+}
+
+.outer-container {
+  max-width: 600px; /* or whatever width suits your design */
+  width: 100%;
+  margin: 0 auto; /* centers the container regardless of extra margins on the body */
+  position: relative;
+  text-align: center;
+}
+
+/* Title Style */
+.title1 {
+  font-family: 'Montserrat', Tahoma, 'Courier New', Helvetica, 'Segoe UI', 'Lucida Grande', Verdana, Arial, sans-serif;
+  font-size: 3em;
+  color: #333;
+  margin-bottom: 5px;
+  opacity: 0;
+  animation: titleFadeIn 1s ease-in-out forwards;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.button-container {
+  padding: 5px 20px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Allows buttons to fit dynamically */
+  justify-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+body.DocSearch--active {
+  margin-right: 0 !important;
+}
+
+/* Button styling */
+.standard-button {
+  padding: 12px 20px;
+  border: none;
+  background: white;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.leftbutton {
+  padding: 12px 20px;
+  border: none;
+  background: white;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  border-top-left-radius: 5px; 
+  border-bottom-left-radius: 5px; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.rightbutton {
+  padding: 12px 20px;
+  border: none;
+  background: white;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  border-top-right-radius: 5px; 
+  border-bottom-right-radius: 5px; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.separator {
+  height: 1px;
+  background-color: #808080; /* You can change this to your preferred color */
+  width: 0%; /* Initially, the width is 0% */
+  transition: width 2s ease-out; /* Add transition effect to the width */
+}
+
+.separator.expanded {
+  width: 75%; /* Full width when the class "expanded" is added */
+}
+
+/* Optional: Animation effect for a smooth loading transition */
+@keyframes expandWidth {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 75%;
+  }
+}
+
+.separator {
+  animation: expandWidth 2s ease-out forwards; /* The separator will expand gradually */
+}
+
+
+/* Hover effect */
+.button-container button:hover {
+  background: #ded9fa;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes titleFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-0%, -30px); /* Explicitly set X to 0 */
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes buttonsFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes searchFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .title1 {
+    font-size: 2.5em;
+  }
+}
+
+@media (max-width: 400px) {
+  .button-container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns when width is small */
+  }
+  .title1 {
+    font-size: 2em;
+  }
+}
