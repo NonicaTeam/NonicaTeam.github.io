@@ -5,7 +5,7 @@ body {
     font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: #696969;
-    padding: 20px;
+    padding: 10px;
     overflow-x: hidden;
 }
 
@@ -54,6 +54,38 @@ h5, h6 {
     margin: 5px 0px 0px 0px;
     color: #696969;
 }
+
+     /* Webkit-based browsers (Chrome, Safari, Opera, Edge Chromium) */
+/* Webkit-based browsers (Chrome, Safari, Edge Chromium, Opera) */
+::-webkit-scrollbar {
+    width: 10px;  /* Adjust width */
+    height: 10px; /* Adjust height for horizontal scroll */
+  }
+  
+  /* Scrollbar Track (Background) */
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, #f1f1f1, #e0e0e0); /* Gradient effect */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+  }
+  
+  /* Scrollbar Thumb (The draggable part) */
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #696969, #696969); /* Gradient thumb */
+    border-radius: 10px; /* Rounded thumb */
+    border: 2px solid #f1f1f1; /* Adds spacing effect */
+  }
+  
+  /* Hover effect */
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #666, #444);
+  }
+  
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #696969 #f1f1f1; /* Thumb color | Track color */
+  }
 
 a, a:link, a:visited, a:active {
     text-decoration: none;
@@ -235,6 +267,7 @@ pre {
     margin-left: calc(-1 * (100vw - 100%)/2);
     margin-right: calc(-1 * (100vw - 100%)/2);
     overflow-x: hidden;
+    display: none;
 }
 
 .pageBody {
@@ -260,10 +293,11 @@ pre {
 }
 
 .feedbackLink::after {
-  content: "Made with ❤️ by Nonica.io";
+  content: "Made with ❤️ by Nonica.io\A\A\A[ Revit® is a registered trademark of Autodesk, Inc. This website is not affiliated with or endorsed by Autodesk, Inc. The code provided here is intended for educational and instructional purposes to help users interact with Autodesk Revit® via its API. The content shared here was indexed by Nonica.io and does not represent Autodesk’s official documentation or code. ]";
   text-indent: 0;
   display: block;
   line-height: initial; /* New content takes up original line height */
+  white-space: pre-line;
 }
 
 .iconColumn {
@@ -325,6 +359,7 @@ div.caption {
 }
 
 .summary {
+    display: none;
 }
 
 .has-text-weight-normal {
@@ -584,9 +619,6 @@ span.typeparameter {
     font-style: italic;
 }
 
-span.identifier {
-}
-
 span.keyword {
     font-weight: bold;
 }
@@ -647,21 +679,11 @@ span.mediaInline {
 }
 
 /* Glossary styles */
-div.glossaryDiv {
-}
-
-div.glossaryLetterBar {
-}
-
-hr.glossaryRule {
-}
-
 h3.glossaryGroupHeading {
     color: #808080;
 }
 
-div.glossaryGroup {
-}
+
 
 dl.glossaryGroupList {
     margin: 0;
@@ -690,17 +712,13 @@ span.bibliographyTitle {
     font-style: italic;
 }
 
-span.bibliographyPublisher {
-}
+
 
 sup.citation a:link a:visited a:active {
     text-decoration: none;
 }
 
 /* Placeholder for the Help 1 user data style class */
-.userDataStyle {
-}
-
 #IDAB_tab1 {
     pointer-events: none; /* Disables clicking on the div and its contents */
 }
@@ -721,8 +739,14 @@ sup.citation a:link a:visited a:active {
 }
 
 #search-container {
-    margin: 0 auto;    /* Centers block elements by auto left/right margins */
-    text-align: center; /* Centers inline/inline-block children */
-    width: fit-content; /* Shrinks the container to its content's width */
+    background-color: #808080;  /* Gray background */
+    display: flex;              /* Use flexbox */
+    justify-content: center;    /* Center horizontally */
+    align-items: center;        /* Center vertically (if needed) */
+    padding: 10.5px 0;          /* Add vertical padding */
+    margin-left: calc(-1 * (100vw - 100%)/2);
+    margin-right: calc(-1 * (100vw - 100%)/2);
+    overflow-x: hidden;
+    font-size: 15px;
 }
   

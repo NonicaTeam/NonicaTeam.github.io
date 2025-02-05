@@ -1,25 +1,4 @@
-﻿// hw_library.js v1.4 - Copyright Â© 2019, Rob Chandler, The Helpware Group
-// Please don't use this file without purchasing FAR 5. http://www.helpwaregroup.com/products/far
-// This effectively licenses you to use my code.
-// Changes
-// RWC: v1.1 2016-01-01 - Original version
-// RWC: v1.2 2016-10-15 - Fix for IE11 blank content screen
-// RWC: v1.3 2016-12-06 - Fixed odd crash in MS Edge -- sessionStorage changed to window.sessionStorage
-// RWC: v1.4 2019-07-23 - MS Edge 44.18362.1.0 release crashes on localStorage & sessionStorage calls - So now using try-catch 
- 
-//typeof someNonExxistant === "undefined" -- true
-//var x; undefined -- if (x) fails
-//var x=""; if (x) -- false
-//var x=0; if (x) -- false
-//var x=false; if (x) -- false
-//var xx = document.getElementById("nonExistentID"); -- == null
-
-// window.localStorage - stores data with no expiration date
-// window.sessionStorage - stores data for one session (data is lost when the browser tab is closed)
-// Note: Name/value pairs are always stored as strings. Remember to convert them to another format when needed!
-
-
-var _default_StorageKeyPrefix = "Helpware_";
+﻿var _default_StorageKeyPrefix = "Helpware_";
 //var _HTML5_Storage = (typeof window.sessionStorage !== "undefined");  // HTML5 localStorage available?
 
 // rwc v1.4 - Feature detect + local reference

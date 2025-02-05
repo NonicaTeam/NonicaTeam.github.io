@@ -1,124 +1,95 @@
-﻿
-var allTabSetIds = new Array();
+﻿var allTabSetIds = new Array();
 
 document.addEventListener("DOMContentLoaded", function() {
-    // === STEP 1: Insert the Search Bar at the very top ===
-
-    // Create the search container div and inject it as the first element in the body
-    const searchDiv = document.createElement('div');
-    searchDiv.id = 'search-container';
-    document.body.insertBefore(searchDiv, document.body.firstChild);
-
-    // Inject Algolia Search CSS
-    const cssLink = document.createElement('link');
-    cssLink.rel = 'stylesheet';
-    cssLink.href = 'https://cdn.jsdelivr.net/npm/@docsearch/css@3';
-    document.head.appendChild(cssLink);
-
-    // Load the DocSearch JavaScript library
-    const docsearchScript = document.createElement('script');
-    docsearchScript.src = 'https://cdn.jsdelivr.net/npm/@docsearch/js@3';
-    docsearchScript.async = true;
-    docsearchScript.onload = function() {
-        console.log('DocSearch library loaded!');
-        docsearch({
-            appId: "WEH0G3EYGF",
-            apiKey: "69d3c9c82f55d09311b4f77f215870a6",
-            indexName: "nonicateamio",
-            container: '#search-container',
-            debug: false
-        });
-    };
-    document.body.appendChild(docsearchScript);
 
     // === STEP 2: Generate the Year Links (PageHeader) ===
 
-    // Define the years to be shown in the top bar
-    const years = [2020, 2021, 2022, 2023, 2024, 2025];
+    // // Define the years to be shown in the top bar
+    // const years = [2020, 2021, 2022, 2023, 2024, 2025];
 
-    // Create the PageHeader div element dynamically
-    const pageHeader = document.createElement('div');
-    pageHeader.id = 'PageHeader';
-    pageHeader.classList.add('pageHeader');
+    // // Create the PageHeader div element dynamically
+    // const pageHeader = document.createElement('div');
+    // pageHeader.id = 'PageHeader';
+    // pageHeader.classList.add('pageHeader');
 
-    // Get the current page file name (assuming the file name is the same in each folder)
-    const currentFileName = window.location.pathname.split('/').pop();
+    // // Get the current page file name (assuming the file name is the same in each folder)
+    // const currentFileName = window.location.pathname.split('/').pop();
 
-    // (Functions checkFileExists and fetchPageBodyContent remain unchanged.)
-    const checkFileExists = async (url) => {
-        try {
-            const response = await fetch(url, { method: 'HEAD' });
-            return response.status === 200;
-        } catch (error) {
-            console.error('Error checking file:', error);
-            return false;
-        }
-    };
+    // // (Functions checkFileExists and fetchPageBodyContent remain unchanged.)
+    // const checkFileExists = async (url) => {
+    //     try {
+    //         const response = await fetch(url, { method: 'HEAD' });
+    //         return response.status === 200;
+    //     } catch (error) {
+    //         console.error('Error checking file:', error);
+    //         return false;
+    //     }
+    // };
 
-    const fetchPageBodyContent = async (url) => {
-        try {
-            const response = await fetch(url);
-            if (response.ok) {
-                const text = await response.text();
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = text;
-                const pageBodyContent = tempDiv.querySelector('.pageBody');
-                return pageBodyContent ? pageBodyContent.innerHTML : null;
-            }
-            return null;
-        } catch (error) {
-            console.error('Error fetching file content:', error);
-            return null;
-        }
-    };
+    // const fetchPageBodyContent = async (url) => {
+    //     try {
+    //         const response = await fetch(url);
+    //         if (response.ok) {
+    //             const text = await response.text();
+    //             const tempDiv = document.createElement('div');
+    //             tempDiv.innerHTML = text;
+    //             const pageBodyContent = tempDiv.querySelector('.pageBody');
+    //             return pageBodyContent ? pageBodyContent.innerHTML : null;
+    //         }
+    //         return null;
+    //     } catch (error) {
+    //         console.error('Error fetching file content:', error);
+    //         return null;
+    //     }
+    // };
 
-    const currentPath = window.location.pathname.split('/').slice(0, -1).join('/');
+    // const currentPath = window.location.pathname.split('/').slice(0, -1).join('/');
 
-    const yearLinksPromises = years.map(async (year) => {
-        const url = `/${year}/${currentFileName}`;
-        const fileExists = await checkFileExists(url);
-        let underlineColor = 'inherit';
-        let textColor = 'white';
+    // const yearLinksPromises = years.map(async (year) => {
+    //     const url = `/${year}/${currentFileName}`;
+    //     const fileExists = await checkFileExists(url);
+    //     let underlineColor = 'inherit';
+    //     let textColor = 'white';
 
-        if (currentPath === `/${year}`) {
-            underlineColor = '#5235ef';
-            textColor = '#5235ef';
-        } else if (fileExists) {
-            const filePageBodyContent = await fetchPageBodyContent(url);
-            const currentPageBodyContent = document.querySelector('.pageBody') ? document.querySelector('.pageBody').innerHTML : null;
-            if (filePageBodyContent && currentPageBodyContent && filePageBodyContent === currentPageBodyContent) {
-                underlineColor = '#5235ef';
-            } else {
-                underlineColor = 'orange';
-            }
-        } else {
-            underlineColor = '#631201';
-        }
+    //     if (currentPath === `/${year}`) {
+    //         underlineColor = '#5235ef';
+    //         textColor = '#5235ef';
+    //     } else if (fileExists) {
+    //         const filePageBodyContent = await fetchPageBodyContent(url);
+    //         const currentPageBodyContent = document.querySelector('.pageBody') ? document.querySelector('.pageBody').innerHTML : null;
+    //         if (filePageBodyContent && currentPageBodyContent && filePageBodyContent === currentPageBodyContent) {
+    //             underlineColor = '#5235ef';
+    //         } else {
+    //             underlineColor = 'orange';
+    //         }
+    //     } else {
+    //         underlineColor = '#631201';
+    //     }
 
-        const link = document.createElement('a');
-        link.href = url;
-        link.classList.add('yearlinkstyle');
-        link.textContent = year;
-        // Optionally, add your styles here:
-        link.style.textDecorationColor = underlineColor;
-        link.style.color = textColor;
+    //     const link = document.createElement('a');
+    //     link.href = url;
+    //     link.classList.add('yearlinkstyle');
+    //     link.textContent = year;
+    //     // Optionally, add your styles here:
+    //     link.style.textDecorationColor = underlineColor;
+    //     link.style.color = textColor;
 
-        return link;
-    });
+    //     return link;
+    // });
 
-    Promise.all(yearLinksPromises).then(yearLinks => {
-        yearLinks.forEach(link => {
-            pageHeader.appendChild(link);
-            pageHeader.appendChild(document.createTextNode(' '));
-        });
-        // Insert the PageHeader after the search bar, not at the very top of the body.
-        // Since searchDiv is the first element, insert PageHeader after it.
-        if (searchDiv.nextSibling) {
-            document.body.insertBefore(pageHeader, searchDiv.nextSibling);
-        } else {
-            document.body.appendChild(pageHeader);
-        }
-    });
+    // Promise.all(yearLinksPromises).then(yearLinks => {
+    //     yearLinks.forEach(link => {
+    //         pageHeader.appendChild(link);
+    //         pageHeader.appendChild(document.createTextNode(' '));
+    //     });
+    //     // Insert the PageHeader after the search bar, not at the very top of the body.
+    //     // Since searchDiv is the first element, insert PageHeader after it.
+    //     if (searchDiv.nextSibling) {
+    //         document.body.insertBefore(pageHeader, searchDiv.nextSibling);
+    //     } else {
+    //         document.body.appendChild(pageHeader);
+    //     }
+    // });
 });
 
 
@@ -141,446 +112,6 @@ else
         isHelp1 = true;
     else
         isHelp1 = false;
-}
-
-// Set the default language on the page
-function SetDefaultLanguage(defaultLanguage)
-{
-    if(typeof (defaultLanguage) === "undefined" || defaultLanguage === null || defaultLanguage === "")
-        defaultLanguage = "cs";
-
-    // In MS Help Viewer, the transform the topic is ran through can move the footer.  Move it back where it
-    // belongs if necessary.
-    try
-    {
-        var footer = document.getElementById("PageFooter")
-
-        if(footer)  
-        {
-            var footerParent = document.body;
-
-            if(footer.parentElement !== footerParent)
-            {
-                footer.parentElement.removeChild(footer);
-                footerParent.appendChild(footer);
-            }
-        }
-    }
-    catch(e)
-    {
-        // Ignore exceptions
-    }
-
-    // Add language-specific text spans on startup.  We can't tell for sure if there are any as some
-    // may be added after transformation by other components.
-    var lstSpans = document.querySelectorAll("span[data-languageSpecificText]");
-
-    if(lstSpans.length > 0)
-    {
-        for(i = 0; i < lstSpans.length; i++)
-        {
-            AddLanguageSpecificTextSet(lstSpans[i].getAttribute("id"), lstSpans[i].getAttribute("data-languageSpecificText"));
-        }
-    }
-
-    // Ensure language tab sets are registered on startup
-    var tabSets = document.querySelectorAll(".codeSnippetContainer");
-
-    if(tabSets.length > 0)
-    {
-        for(i = 0; i < tabSets.length; i++)
-        {
-            AddLanguageTabSet(tabSets[i].getAttribute("id"));
-        }
-    }
-
-    var language = GetCookie("CodeSnippetContainerLanguage", defaultLanguage);
-
-    // If LST exists on the page, set the LST to show the user selected programming language
-    UpdateLST(language);
-
-    // If code snippet groups exist, set the current language for them
-    if(allTabSetIds.length > 0)
-    {
-        var i = 0;
-
-        while(i < allTabSetIds.length)
-        {
-            var tabCount = 1;
-
-            // The tab count may vary so find the last one in this set
-            while(document.getElementById(allTabSetIds[i] + "_tab" + tabCount) !== null)
-                tabCount++;
-
-            tabCount--;
-
-            // If not grouped, skip it
-            if(tabCount > 1)
-                SetCurrentLanguage(allTabSetIds[i], language, tabCount);
-
-            i++;
-        }
-    }
-
-    InitializeToc();
-}
-
-// This is just a place holder.  The website script implements this function to initialize it's in-page TOC pane.
-// It's not present in Help 1 and Help Viewer output.
-function InitializeToc()
-{
-}
-
-// This function executes when setting the default language and changing the tab on code snippets.  The parameter
-// is the user chosen programming language.  This function iterates through the "allLSTSetIds" dictionary object
-// to update the node value of the LST span tag per the user's chosen programming language.
-function UpdateLST(language)
-{
-    for(var lstMember in allLSTSetIds)
-    {
-        var devLangSpan = document.getElementById(lstMember);
-
-        if(devLangSpan !== null)
-        {
-            // There may be a carriage return before the LST span in the content so the replace function below
-            // is used to trim the whitespace at the end of the previous node of the current LST node.
-            if(devLangSpan.previousSibling !== null && devLangSpan.previousSibling.nodeValue !== null)
-                devLangSpan.previousSibling.nodeValue = devLangSpan.previousSibling.nodeValue.replace(/[\r\n]+$/, "");
-
-            var langs = allLSTSetIds[lstMember].split("|");
-            var k = 0;
-            var keyValue;
-
-            while(k < langs.length)
-            {
-                keyValue = langs[k].split("=");
-
-                if(keyValue[0] === language)
-                {
-                    devLangSpan.innerHTML = keyValue[1];
-
-                    // Help 1 and MS Help Viewer workaround.  Add a space if the following text element starts
-                    // with a space to prevent things running together.
-                    if(devLangSpan.parentNode !== null && devLangSpan.parentNode.nextSibling !== null)
-                    {
-                        if(devLangSpan.parentNode.nextSibling.nodeValue !== null &&
-                            !devLangSpan.parentNode.nextSibling.nodeValue.substring(0, 1).match(/[.,);:!/?]/) &&
-                            (isHelp1 || devLangSpan.innerHTML === '&gt;' || devLangSpan.innerHTML === ')'))
-                        {
-                            devLangSpan.innerHTML = keyValue[1] + " ";
-                        }
-                    }
-                    break;
-                }
-
-                k++;
-            }
-
-            // If not found, default to the neutral language.  If there is no neutral language entry, clear the
-            // content to hide it.
-            if(k >= langs.length)
-            {
-                if(language !== "nu")
-                {
-                    k = 0;
-
-                    while(k < langs.length)
-                    {
-                        keyValue = langs[k].split("=");
-
-                        if(keyValue[0] === "nu")
-                        {
-                            devLangSpan.innerHTML = keyValue[1];
-
-                            // Help 1 and MS Help Viewer workaround.  Add a space if the following text element
-                            // starts with a space to prevent things running together.
-                            if(devLangSpan.parentNode !== null && devLangSpan.parentNode.nextSibling !== null)
-                            {
-                                if(devLangSpan.parentNode.nextSibling.nodeValue !== null &&
-                                    !devLangSpan.parentNode.nextSibling.nodeValue.substring(0, 1).match(/[.,);:!/?]/) &&
-                                    (isHelp1 || devLangSpan.innerHTML === '&gt;' || devLangSpan.innerHTML === ')'))
-                                {
-                                    devLangSpan.innerHTML = keyValue[1] + " ";
-                                }
-                            }
-                            break;
-                        }
-
-                        k++;
-                    }
-                }
-
-                if(k >= langs.length)
-                    devLangSpan.innerHTML = "";
-            }
-        }
-    }
-}
-
-// Get the specified cookie.  If not found, return the specified default value.
-function GetCookie(cookieName, defaultValue)
-{
-    if(isHelp1)
-    {
-        try
-        {
-            var globals = Help1Globals;
-
-            var value = globals.Load(cookieName);
-
-            if(value === null)
-                value = defaultValue;
-
-            return value;
-        }
-        catch(e)
-        {
-            return defaultValue;
-        }
-    }
-
-    var cookie = document.cookie.split("; ");
-
-    for(var i = 0; i < cookie.length; i++)
-    {
-        var crumb = cookie[i].split("=");
-
-        if(cookieName === crumb[0])
-            return unescape(crumb[1])
-    }
-
-    return defaultValue;
-}
-
-// Set the specified cookie to the specified value
-function SetCookie(name, value)
-{
-    if(isHelp1)
-    {
-        try
-        {
-            var globals = Help1Globals;
-
-            globals.Save(name, value);
-        }
-        catch(e)
-        {
-            // Ignore exceptions
-        }
-
-        return;
-    }
-
-    var today = new Date();
-
-    today.setTime(today.getTime());
-
-    // Set the expiration time to be 60 days from now (in milliseconds)
-    var expires_date = new Date(today.getTime() + (60 * 1000 * 60 * 60 * 24));
-
-    document.cookie = name + "=" + escape(value) + ";expires=" + expires_date.toGMTString() + ";path=/";
-}
-
-// Add a language-specific text ID and its parameters
-function AddLanguageSpecificTextSet(lstID, langParams)
-{
-    allLSTSetIds[lstID] = langParams;
-}
-
-var clipboardHandler = null;
-
-// Add a language tab set ID
-function AddLanguageTabSet(tabSetId)
-{
-    allTabSetIds.push(tabSetId);
-}
-
-// Switch the active tab for all of other code snippets
-function ChangeTab(tabSetId, language, snippetIdx, snippetCount)
-{
-    SetCookie("CodeSnippetContainerLanguage", language);
-
-    SetActiveTab(tabSetId, snippetIdx, snippetCount);
-
-    // If LST exists on the page, set the LST to show the user selected programming language
-    UpdateLST(language);
-
-    var i = 0;
-
-    while(i < allTabSetIds.length)
-    {
-        // We just care about other snippets
-        if(allTabSetIds[i] !== tabSetId)
-        {
-            // Other tab sets may not have the same number of tabs
-            var tabCount = 1;
-
-            while(document.getElementById(allTabSetIds[i] + "_tab" + tabCount) !== null)
-                tabCount++;
-
-            tabCount--;
-
-            // If not grouped, skip it
-            if(tabCount > 1)
-                SetCurrentLanguage(allTabSetIds[i], language, tabCount);
-        }
-
-        i++;
-    }
-}
-
-// Sets the current language in the specified tab set
-function SetCurrentLanguage(tabSetId, language, tabCount)
-{
-    var tabIndex = 1;
-
-    while(tabIndex <= tabCount)
-    {
-        var tabTemp = document.getElementById(tabSetId + "_tab" + tabIndex);
-
-        if(tabTemp !== null && tabTemp.innerHTML.indexOf("'" + language + "'") !== -1)
-            break;
-
-        tabIndex++;
-    }
-
-    if(tabIndex > tabCount)
-    {
-        // Select the first non-disabled tab
-        tabIndex = 1;
-
-        if(document.getElementById(tabSetId + "_tab1").className === "codeSnippetContainerTabPhantom")
-        {
-            tabIndex++;
-
-            while(tabIndex <= tabCount)
-            {
-                var tab = document.getElementById(tabSetId + "_tab" + tabIndex);
-
-                if(tab.className !== "codeSnippetContainerTabPhantom")
-                {
-                    tab.className = "codeSnippetContainerTabActive";
-                    document.getElementById(tabSetId + "_code_Div" + j).style.display = "block";
-                    break;
-                }
-
-                tabIndex++;
-            }
-        }
-    }
-
-    SetActiveTab(tabSetId, tabIndex, tabCount);
-}
-
-// Set the active tab within a tab set
-function SetActiveTab(tabSetId, tabIndex, tabCount)
-{
-    var i = 1;
-
-    while(i <= tabCount)
-    {
-        var tabTemp = document.getElementById(tabSetId + "_tab" + i);
-
-        if(tabTemp !== null)
-        {
-            if(tabTemp.className === "codeSnippetContainerTabActive")
-                tabTemp.className = "codeSnippetContainerTab";
-            else
-            {
-                if(tabTemp.className === "codeSnippetContainerTabPhantom")
-                    tabTemp.style.display = "none";
-            }
-
-            var codeTemp = document.getElementById(tabSetId + "_code_Div" + i);
-
-            if(codeTemp.style.display !== "none")
-                codeTemp.style.display = "none";
-        }
-
-        i++;
-    }
-
-    // Phantom tabs are shown or hidden as needed
-    if(document.getElementById(tabSetId + "_tab" + tabIndex).className !== "codeSnippetContainerTabPhantom")
-        document.getElementById(tabSetId + "_tab" + tabIndex).className = "codeSnippetContainerTabActive";
-    else
-        document.getElementById(tabSetId + "_tab" + tabIndex).style.display = "block";
-
-    document.getElementById(tabSetId + "_code_Div" + tabIndex).style.display = "block";
-}
-
-// Copy the code from the active tab of the given tab set to the clipboard
-function CopyToClipboard(tabSetId)
-{
-    var tabTemp, contentId;
-    var i = 1;
-
-    if(typeof (Clipboard) === "function")
-        return;
-
-    do
-    {
-        contentId = tabSetId + "_code_Div" + i;
-        tabTemp = document.getElementById(contentId);
-
-        if(tabTemp !== null && tabTemp.style.display !== "none")
-            break;
-
-        i++;
-
-    } while(tabTemp !== null);
-
-    if(tabTemp === null)
-        return;
-
-    if(window.clipboardData)
-    {
-        try
-        {
-            window.clipboardData.setData("Text", document.getElementById(contentId).innerText);
-        }
-        catch(e)
-        {
-            alert("Permission denied. Enable copying to the clipboard.");
-        }
-    }
-    else if(window.netscape)
-    {
-        try
-        {
-            netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
-
-            var clip = Components.classes["@mozilla.org/widget/clipboard;1"].createInstance(
-                Components.interfaces.nsIClipboard);
-
-            if(!clip)
-                return;
-
-            var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(
-                Components.interfaces.nsITransferable);
-
-            if(!trans)
-                return;
-
-            trans.addDataFlavor("text/unicode");
-
-            var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(
-                Components.interfaces.nsISupportsString);
-
-            var copytext = document.getElementById(contentId).textContent;
-
-            str.data = copytext;
-            trans.setTransferData("text/unicode", str, copytext.length * 2);
-
-            var clipid = Components.interfaces.nsIClipboard;
-
-            clip.setData(trans, null, clipid.kGlobalClipboard);
-        }
-        catch(e)
-        {
-            alert("Permission denied. Enter \"about:config\" in the address bar and double-click the \"signed.applets.codebase_principal_support\" setting to enable copying to the clipboard.");
-        }
-    }
 }
 
 // Expand or collapse a section

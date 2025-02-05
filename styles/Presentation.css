@@ -1425,7 +1425,13 @@ html, body {
 }
 
 #search-container {
-    margin: 0 auto;    /* Centers block elements by auto left/right margins */
-    text-align: center; /* Centers inline/inline-block children */
-    width: fit-content; /* Shrinks the container to its content's width */
+    background-color: #808080;  /* Gray background */
+    display: flex;              /* Use flexbox */
+    justify-content: center;    /* Center horizontally */
+    align-items: center;        /* Center vertically (if needed) */
+    padding: 10.5px 0;          /* Add vertical padding */
+    margin-left: calc(-1 * (100vw - 100%)/2);
+    margin-right: calc(-1 * (100vw - 100%)/2);
+    overflow-x: hidden;
+    font-size: 15px;
 }
