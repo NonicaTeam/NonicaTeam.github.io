@@ -172,3 +172,6 @@ var Help1Globals =
         userData.save("userDataSettings");
     }
 };
+
+// Set the default language on the page
+function SetDefaultLanguage(defaultLanguage) { }

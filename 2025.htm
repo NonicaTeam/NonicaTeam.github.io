@@ -1,443 +1,382 @@
+﻿<!DOCTYPE html>
+<!-- !DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN" -->
 <html>
 <head>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.fancytree/dist/skin-win8/ui.fancytree.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery.fancytree/dist/jquery.fancytree-all-deps.min.js"></script>
+  
+<!-- add extra header code to main frame here -->  
+<link rel="icon" href="icons/favicon.ico" type="image/x-icon" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11"/> 
+
+<script src="scripts/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="styles/ui.fancytree.min.css">
+<script src="scripts/jquery.fancytree-all-deps.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="hw_library.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+  
+  function GetThisFName() {
+    return location.pathname.split("/").pop();
+  }
+
+  function updateUrlWithRightFrame(rightURL) 
+  {
+    if(rightURL)
+    {
+        console.log(rightURL)
+        history.pushState(null, '', `?id=${rightURL}`);
+        findNodeByUrl(rightURL);
+    }
+  }
+
+
+function updateUrl() {
+    try {
+        var rightFrameUrl = rightFrame.contentWindow.location.pathname;
+        var cleanedUrl = rightFrameUrl.replace("/" + year + "/", '');
+        updateUrlWithRightFrame(cleanedUrl);
+    } catch (error) {
+    }
+}
+
+function RightFrameLoadEvent() {
+    var rightFrame = document.getElementById('rightFrame');
+    var iframeDocument = rightFrame.contentDocument || rightFrame.contentWindow.document;
+
+    rightFrame.onload = updateUrl; // Update URL when iframe loads
+
+    setTimeout(() => {
+        var iframeDocument = rightFrame.contentDocument || rightFrame.contentWindow.document;
+        if (iframeDocument) {
+            iframeDocument.addEventListener('DOMContentLoaded', updateUrl); 
+        }
+    }, 100);
+
+    if (iframeDocument) {
+        // Disconnect any previous observer before adding a new one
+        if (rightFrame.observer) {
+            rightFrame.observer.disconnect();
+        }
+
+        // Create a new MutationObserver
+        var observer = new MutationObserver(function (mutationsList) {
+            mutationsList.forEach(function (mutation) {                
+                // Update URL with current iframe URL
+                var rightFrameUrl = rightFrame.contentWindow.location.pathname;
+                var cleanedUrl = rightFrameUrl.replace("/" + year + "/", '');
+                updateUrlWithRightFrame(cleanedUrl);
+            });
+        });
+
+        var config = {
+            childList: true,
+            subtree: true,
+            characterData: true
+        };
+
+        // Attach observer to the new document
+        observer.observe(iframeDocument.body, config);
+
+        // Store the observer to disconnect later if needed
+        rightFrame.observer = observer;
+    } else {
+        console.error("Cannot access iframe document due to cross-origin policy.");
+    }
+}
+
+
+function findNodeByUrl(url) {
+    try {
+        var full_url = window.year + "/" + url;
+        var tree = $.ui.fancytree.getTree("#tree");
+
+        if (tree) {
+            setTimeout(() => {
+                var activeNode = tree.getActiveNode();
+                
+                // Check if the currently active node is already the desired node
+                if (activeNode && activeNode.data.href === full_url) {
+                    return; 
+                }
+
+                // Find the node only if it's not already selected
+                var node = tree.findFirst(n => n.data.href === full_url);
+                if (node) {
+                    node.makeVisible().done(() => {
+                        node.setActive({ noEvents: true });
+                        node.setFocus({ noEvents: true });
+                    });
+                }
+            }, 0); // Executes asynchronously without blocking UI
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+  //-->
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Revit API Documentation</title>
+
 </head>
 
- <body>
-  <p>
-   ﻿
-   <!DOCTYPE HTML>
-   <!-- !DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN" -->
-  </p>
-  <style type="text/css">
-   .docstyle
-  {
-    font-size: 80%;
-    font-family: arial,verdana,sans-serif;
-  }
-  </style>
-  <link defer="" href="tree.css" rel="stylesheet" type="text/css"/>
-  <script defer="" src="hw_library.js" type="text/javascript">
-  </script>
-  <script defer="" src="tree.js" type="text/javascript">
-  </script>
-  
-  <script type="text/javascript">
-   _DefaultPage_ = "firstpage2025.htm"; //defined in hw_library.js
+<body style="margin:0px;overflow:hidden;">
 
-
-  if (parent.location.href == self.location.href)
-    window.location.href = "2025start.htm";
-
-
-  function SyncDocUrl(showError) { 
-			var rightPage = GetRightPage();   
-			if (rightPage === "" && showError) 
-					alert("Operation failed!\n\nCross frame communication is blocked. Please check your browser security settings or try another browser."); 
-			return rightPage; 
-  } 
-	
-  function GetTopPage() {
-    // Attempt to get the top URL using RightFrameFound or storage fallback
-    var topURL = RightFrameFound() ? top.location.href : storage_GetItem("hw_topPath") || "";
-
-    // If topURL is not empty, process it to remove bookmarks
-    topURL = TrimBookmark(topURL);
-
-    // Extract the filename from the URL
-    var fileName = topURL.substring(topURL.lastIndexOf("/") + 1);
-
-    return fileName;
-}
-
-function ExpandFilename(fileName) {
-    if (!fileName) return "";  // Return empty if fileName is falsy
-
-    // If the fileName is already a full URL, return it directly
-    if (fileName.toLowerCase().startsWith("http://") || fileName.toLowerCase().startsWith("https://")) {
-        return fileName;
+  <!DOCTYPE html>
+  <html >
+  <head>
+    <meta charset="UTF-8">
+    <style>
+    /* Ensure the HTML and body take up the full viewport */
+    html, body {
+    height: 100%;
+    margin: 0;
     }
 
-    // Get the base URL from the current page (top or current location)
-    var topURL = RightFrameFound() ? top.location.href : location.href;
-
-    // Remove any bookmark part from the URL
-    var baseURL = topURL.split("#")[0];  // Trim off anything after "#" (bookmark)
-
-    // Get the base path (directory) from the URL
-    baseURL = baseURL.substring(0, baseURL.lastIndexOf("/") + 1);  // Extract the base path (URL up to last '/')
-
-    // Return the full path by combining the base URL with the given fileName
-    return baseURL + fileName;
-}
-
-
-function ShowUrlBox(rightURL) {
-    // Get the original right URL and the base URL for hh_goto.htm
-    var origUrl = rightURL;
-    var gotoUrl = ExpandFilename("hh_goto.htm");
-
-    // Extract the base path from the goto URL
-    var sBase = TrimURL(gotoUrl).substring(0, gotoUrl.lastIndexOf("/") + 1);  // Get base path
-
-    // Trim the URL and compare with the base URL to extract relative path
-    rightURL = TrimURL(rightURL);
-    sBase = TrimURL(sBase);
-    
-    if (rightURL.startsWith(sBase)) {
-        rightURL = rightURL.substring(sBase.length);  // Remove the base path from rightURL
-    } else {
-        rightURL = origUrl;  // If it's on another domain or directory, revert to original URL
+    /* Webkit-based browsers (Chrome, Safari, Edge Chromium, Opera) */
+    ::-webkit-scrollbar {
+    width: 10px;  /* Adjust width */
+    height: 10px; /* Adjust height for horizontal scroll */
     }
 
-    // Get the top page filename (parent's page)
-    var parentFName = GetTopPage();
-    if (parentFName) parentFName = "?" + parentFName;
-
-    // Construct the final URL using gotoUrl, parentFName, and rightURL
-    var finalUrl = gotoUrl + parentFName + "#" + rightURL;
-
-    // Show the full URL in a prompt and allow user to navigate to it
-    var userUrl = prompt("Absolute address. Click OK to load this URL in the browser", finalUrl);
-    if (userUrl) {
-        top.location.href = userUrl;  // Navigate to the URL in the top window
+    /* Scrollbar Track (Background) */
+    ::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, #f1f1f1, #e0e0e0); /* Gradient effect */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
     }
-}
-  
-  function GetFullLink() {
-    if (HideSearchResults())
-        DoTocSync(true);
+
+    /* Scrollbar Thumb (The draggable part) */
+    ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #696969, #696969); /* Gradient thumb */
+    border-radius: 10px; /* Rounded thumb */
+    border: 2px solid #f1f1f1; /* Adds spacing effect */
+    }
+
+    /* Hover effect */
+    ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #666, #444);
+    }
+
+    /* Firefox scrollbar */
+    * {
+    scrollbar-width: thin;
+    scrollbar-color: #696969 #f1f1f1; /* Thumb color | Track color */
+    }
         
-    if (!RightFrameFound())  // Can't see the right frame -- Use the current TOC selection
-    {
-      var el = findLinkNode();
-      if (el)
-        ShowUrlBox(el.getAttribute('href'));
-      else
-        alert("Please select a Table of Contents item."); 
-      return;
-    }
- 
-    var rightURL = SyncDocUrl(true);
-    if (rightURL != "")  {
-      ShowUrlBox(rightURL);
-    }
-  }
 
-  function DoTocNext(fwd) { 
-    if (HideSearchResults()) {
-        DoTocSync(true);
-        return;
-    }
-      
-    var aref = selectNext(fwd); 
-    if (aref != null && aref != undefined && aref != "") 
-       top.right.location.href = aref;
-  } 
-
-  function DoTocSync(showError) { 
-    HideSearchResults();  
-    var url = "" 
-
-    // 2013-11-01 -- Sync at startup AND could not get sync url? -- 
-    // We now pass in the right pane url via the left frame bookmark 
-    if (!showError) { 
-      url = ExpandFilename(window.location.hash.substring(1));
+    #topBan {
+        background-color: #808080;
+        color: #ffffff;
+        font-family: 'Montserrat', Tahoma, 'Courier New', Helvetica, 'Segoe UI', 'Lucida Grande', Verdana, Arial, sans-serif;
+        font-size: 10px;
+        font-weight: 100 !important;
+        padding-left: 20px;
+        display: flex; /* Enables flexbox for layout */
+        justify-content: space-between; /* Creates space between items (buttons & search bar) */
+        align-items: center; /* Vertically center elements */
+        padding: 10px 0;
+        position: relative;
+        flex-wrap: wrap; /* Allow the container to wrap */
+        padding-left: 20px;
     }
 
-    if (url === "")
-    {
-       url = SyncDocUrl(showError);
-       
+    /* Center the button container */
+    .button-container {
+        display: inline-flex;
+        gap: 5px;
+        padding: 5px;
+        border-radius: 0px;
+        padding-left: 20px;
+        position: absolute; /* Take it out of the normal flow */
+        left: 50%; /* Move it to the center of the parent */
+        transform: translateX(-50%); /* Corrects the positioning to truly center it */
     }
-      
-      
 
-    if (url !== "") 
-       syncTree(url); 
-    else if (treeSelected == null) // nothing selected
-       selectNext(true);  //select first node
-  } 
+    /* Style for the search bar */
+    #algoliaBar {
+        display: inline-block;
+        margin-left: auto; /* Pushes the search bar to the right */
+    }
+    #containerBar {
+        display: inline-block;
+        margin-left: auto; /* Pushes the search bar to the right */
+        padding-right: 20px;
+    }
 
 
-//=== Options =====================================
-      
-  var _Options_ = false;      
-  var opTimer;
-      
-  function CloseOptions() {
-      ShowOptions(false); 
-  }
-      
-  function OptionsBlurEvent() {
-      if (opTimer)  
-          clearInterval(opTimer);
-      opTimer = window.setTimeout(CloseOptions, 200);      
-  }
-      
-  function OptionsFocusEvent() {
-      clearInterval(opTimer);
-  }
-      
-  function ShowOptions(newState) {
-      var optionsDiv = document.getElementById("optionsDiv");
-      if (optionsDiv) {
-          var treeDiv = document.getElementById("tree");
-          var optionsBtn = document.getElementById("optionsBtn");
-          
-          _Options_ = !_Options_;
-          if (newState !== null && newState !== undefined) _Options_ = newState;  //use passed in value
-          
-          if (_Options_) {
-              optionsDiv.addEventListener("blur", OptionsBlurEvent, true); //with capture
-              optionsDiv.addEventListener("focus", OptionsFocusEvent, true);
+    /* Responsive behavior: Stack buttons on smaller screens */
+    @media (max-width: 600px) {
+        #topBan {
+            justify-content: center; /* Center everything when width is small */
+        }
 
-              //position below button
-              //optionsDiv.style.zIndex = 1;
-              optionsDiv.style.top = (optionsBtn.top + optionsBtn.clientHeight) + "px";
-              optionsDiv.style.right = 3 + "px";
-              //show options pane
-              optionsDiv.style.display = "block";
-              //get focus
-              window.focus();
-              searchBtn.focus();
-          }
-          else //hide options pane 
-              optionsDiv.style.display = "none";
+        .button-container {
+            position: static; /* Remove absolute positioning */
+            transform: none; /* Remove the centering transform */
+            justify-content: center; /* Center buttons horizontally */
+            width: 100%; /* Ensure it spans full width on smaller screens */
+        }
+
+        #algoliaBar {
+            margin-left: 0; /* Allow search bar to take full width if needed */
+            width: 100%; /* Make search bar take up full width */
+            margin-right: 20px;
+        }
+    }
+
+    #bannerDiv, #topSpacerDiv {
+    width: 100%;
+    height: 0px;
+    }
+
+    /* Flex layout for the main content */
+    #mainDiv {
+    display: flex;
+    height: calc(100% - 60px); /* Adjust if you have a visible header/banner */
+    width: 100%;
+    }
+
+    /* The tree div takes 20% of the width */
+    #tree {
+    width: 20%;
+    height: 100%;
+    background-color: white; /* optional, just to visualize it */
+    overflow-x: visible; 
+    overflow-y: auto; 
+    }
+
+
+    /* Button styling */
+    .standard-button {
+        padding: 12px 20px;
+        border: none;
+        background: white;
+        color: #696969;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 0px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .leftbutton {
+        padding: 12px 20px;
+        border: none;
+        background: white;
+        color: #696969;
+        font-size: 16px;
+        font-weight: bold;
+        border-top-left-radius: 5px; 
+        border-bottom-left-radius: 5px; 
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .rightbutton {
+        padding: 12px 20px;
+        border: none;
+        background: white;
+        color: #696969;
+        font-size: 16px;
+        font-weight: bold;
+        border-top-right-radius: 5px; 
+        border-bottom-right-radius: 5px; 
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+
+    /* Hover effect */
+    .button-container button:hover {
+        background: #ded9fa;
+        transform: scale(1.05);
+    }
+
+    /* Responsive: Stack on smaller screens */
+    @media (max-width: 700px) {
+        .button-container {
+            flex-wrap: wrap;
+            justify-content: center;
+            display:none;
+        }
+    }
+
+    /* The rightDiv takes the remaining space */
+    #rightDiv {
+    flex: 1;
+    height: 100%;
+    overflow: hidden; 
+    }
+
+    /* Make iframes fill their parent containers */
+    iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    overflow:auto;
       }
-      //Good place to save option settings
-      SaveSettings(true);
-  } 
-      
-  function GetSearchOptions() {
-      var cbx1 = document.getElementById("SOpt_TitlesOnly");
-      var cbx2 = document.getElementById("SOpt_WholeWords");
-      var cbx3 = document.getElementById("SOpt_AllWords");
-      var cbx4 = document.getElementById("SOpt_ResultsInTree");
 
-      var SearchOptions = new Object();
-      
-      //defaults
-      SearchOptions.TitlesOnly = false;
-      SearchOptions.WholeWords = false;
-      SearchOptions.AllWords = false;
-      SearchOptions.ResultsInTree = false;
-      
-      if (cbx1) SearchOptions.TitlesOnly = cbx1.checked;
-      if (cbx2) SearchOptions.WholeWords = cbx2.checked;
-      if (cbx3) SearchOptions.AllWords = cbx3.checked;
-      if (cbx4) SearchOptions.ResultsInTree = cbx4.checked;
-      
-      return SearchOptions;
-  }
+    </style>
+  </head>
+  <body>
+    <div id="topBan">
+       <h1 style="display: none;">Revit API Documentation Online</h1>
+       <h2>Rev API Docs</h2> 
 
- 
-//=== Resize =====================================
-      
-  var _TocMode_ = true;
-      
-  function doResize() {
-	var treeDiv = document.getElementById("tree");
-    var searchResultDiv = document.getElementById("searchResultDiv");
-    var searchcontainer = document.getElementById("searchcontainer");
-      
-    var WW = GetDocWidth(); 
-		var HH = GetDocHeight(); 
-      
-    _TocMode_ = true;  
-    if (searchResultDiv && searchcontainer) 
-        _TocMode_ = searchcontainer.length == 0; 
-      
-    var searchEntry = document.getElementById("searchEntry");
-    var optionsBtn = document.getElementById("optionsBtn");
-    if (searchEntry && optionsBtn) {
-        if (searchEntry.style.display != "none") {
-            if (optionsBtn.style.display == "none")
-                searchEntry.style.width = (WW - 20) + "px";
-            else
-                searchEntry.style.width = (WW - optionsBtn.clientWidth - 20) + "px";        
-        }
-    }
-      
-	var DivFooter = document.getElementById("DivFooter");
-      
-	treeDiv.style.width = WW + "px";
-    searchcontainer.style.width = WW + "px";
-
-    var xTop;  
-    if (_TocMode_) {
-        searchResultDiv.style.display = "none";
-        treeDiv.style.display = "block";
-        xTop = treeDiv.offsetTop;
-    }
-    else {
-        treeDiv.style.display = "none";
-        searchResultDiv.style.display = "block";
-        searchResultDiv = treeDiv.offsetTop;
-    }
-
-	if (DivFooter)
-	    xTop = xTop + DivFooter.offsetHeight;
-      
-    var h2 = HH - xTop;
-	if (h2 > 0) {
-        treeDiv.style.height = h2 + "px";
-        searchcontainer.style.height = h2 + "px";
-        searchcontainer.style.border = "5px solid #ccf2ff";
-    }
-  }
-      
-  function HideSearchResults() {  //return true if had to hide the search results pane
-    var searchResultDiv = document.getElementById("searchResultDiv");
-    var searchcontainer = document.getElementById("searchcontainer");
-      
-    var needShowToc = !_TocMode_;  
-    if (needShowToc && searchResultDiv && searchcontainer) {
-        searchcontainer.length = 0; 
-        doResize();  //sets _TocMode_ true
-    }
-    return(needShowToc);
-  }
-
-  function SetSearchHelpTip() {
-    var SearchHelpInfo = document.getElementById("SearchHelpInfo");
-    if (SearchHelpInfo)              
-    {
-        SearchHelpInfo.title = "Search prefixes: AND, OR, NOT\n"
-                 + "eg. 'book AND title OR flower NOT dog' will find docs that\n"
-                 + "contain both 'book' and 'title' or 'flower' but not 'dog'\n"
-                 + "- The default is 'OR' - Match any word\n"
-                 + "- Check 'Match All Words' to default to 'AND'\n"
-                 + "- Search shortcut = 'ctrl+Enter'\n"
-                 + "- Click for more help";
-    }
-  }
-
-      
-  function SaveSettings(saveState) {
-      if (saveState == true) {  //save state
-        storage_Save('SOpt_TitlesOnly');
-        storage_Save('SOpt_WholeWords');
-        storage_Save('SOpt_AllWords');
-        storage_Save('SOpt_ResultsInTree');
-      }
-      else if (saveState == false) { // retreive state
-        storage_Restore('SOpt_TitlesOnly');
-        storage_Restore('SOpt_WholeWords');
-        storage_Restore('SOpt_AllWords');
-        storage_Restore('SOpt_ResultsInTree');
-      } 
-      else if (!saveState) { // null = remove data
-        storage_Remove('SOpt_TitlesOnly');
-        storage_Remove('SOpt_WholeWords');
-        storage_Remove('SOpt_AllWords');
-        storage_Remove('SOpt_ResultsInTree');
-      }
-  }   
-      
-  function StartupCode() {
-      doResize();
-      DoTocSync(false);
-  }
-      
-  function OnLoad() {
-      window.onresize=doResize;  //was resizeTree()
-      SetSearchHelpTip();
-      SaveSettings(false);
-      
-      window.focus();
-      var searchEntry = document.getElementById("searchEntry");  
-      if (searchEntry) 
-        if (searchEntry.style.display != "none")
-          searchEntry.focus();
-      
-      StartupCode();
-  }
-
-  function KeyDownEvent(event) {
-    var code = GetEventKeyCode(event);   
-
-    if (event.ctrlKey && code==13) {   //ctrl-Enter
-      optionsBtn = document.getElementById("optionsBtn");
-      if (optionsBtn && optionsBtn.style.display != "none")
-          SearchBtnClick();
-      if (event.cancelBubble)
-        event.cancelBubble = true;
-      return(false);       
-    }
-      
-    if (_TocMode_ && !_Options_)
-    {
-        if (code==13) {  // Return
-          var node = findLinkNode();
-          if (node != null && node != undefined && node != "") 
-          {
-            aref = node.getAttribute('href');
-            if (aref != null && aref != undefined && aref != "") 
-              top.right.location = aref;
-          }
-        }
-        else if (code==40) { //down arrow
-            selectNext(true);
-            return(false);  //gobble key -- selection only will do the TOC scrolling
-        }
-        else if (code==38) { //up arrow
-            selectNext(false);
-            return(false);  //gobble key -- selection only will do the TOC scrolling
-        }
-    }
-
-    if (code==27 && _Options_) {
-        ShowOptions(false);
-        return(false);
-    }
-      
-    if (code==27 && !_TocMode_) {
-        HideSearchResults();
-        return(false);
-    }
-      
-    return(true); //do not gobble keypress 
-  }
-      
-  
-//== Filter =========================================================================      
-
-  function SetWaitCursor(waitState) {
-      var csr="auto";
-      if (waitState) csr="wait";
-      document.body.style.cursor = csr;
-      var treeDiv = document.getElementById("tree");
-      if (treeDiv) treeDiv.style.cursor = csr;
-      var searchcontainer = document.getElementById("searchcontainer");
-      if (searchcontainer) searchcontainer.style.cursor = csr;
-  }
-      
-  
-      
-  var timer = null;
-  var loadOnce = true;
-      
-      
-  function myTimer() {
-      if (typeof SearchFiles !== 'undefined')   //data is loaded Yet? Yes
-          RunSearch();  
-  }
-  </script>
-   <div id="tree" onselectstart="return false;" style="top: 35px; left: 0px;"></div>
-  </div>
+    <div class="button-container" >
+        <button class="leftbutton">2020</button>
+        <button class="standard-button">2021</button>
+        <button class="standard-button">2022</button>
+        <button class="standard-button">2023</button>
+        <button class="standard-button">2024</button>
+        <button class="rightbutton">2025</button>
+    </div>
+    <div id="containerBar">
+        <div id="algoliaBar"></div>
+    </div>
+    </div>
+    <div id="bannerDiv">
+    </div>
+    <div id="topSpacerDiv"></div>
+    
+    <!-- Main content area -->
+    <div id="mainDiv">
+      <div id="tree"></div>
+      <div id="rightDiv">
+        <iframe id="rightFrame" src="NotFound.htm" name="right" onLoad="RightFrameLoadEvent()"></iframe>
+      </div>
+    </div>
+  </body>
+  </html>
   <script>
+function loadHtmlIntoRightFrame(filePath) {
+
+  console.log("Loading file into iframe:", filePath);
+  var iframe = window.parent.document.getElementById("rightFrame");
+  if (iframe) {
+    iframe.src = filePath; // Set iframe source to load the page
+  } else {
+    console.error("The iframe with id 'rightFrame' was not found.");
+  }
+}
     $(function() {
         $("#tree").fancytree({
-            source: [
+          source: [
             {
-"title": "Namespaces",
-"href": "2025/fe142c1c-a0ef-b864-c06f-39e5f88dd689.htm",
-"folder": true,
-"expanded": true,
-"children": [
+  "title": "Namespaces",
+  "href": "2025/fe142c1c-a0ef-b864-c06f-39e5f88dd689.htm",
+  "folder": true,
+  "expanded": true,
+  "children": [
     {
         "title": "Autodesk.Revit.ApplicationServices",
         "href": "2025/91957e18-2935-006c-83ab-3b5b9dbb5928.htm",
@@ -152704,66 +152643,125 @@ function ShowUrlBox(rightURL) {
             }
         ]
     }
-]
-}
+  ]
+  }
             ],
             checkbox: false,  // Enable checkboxes if needed
             selectMode: 1,   // Single selection mode
             activate: function(event, data) {
-                var node = data.node;
-                if(node.data.href) {
-                    window.open(node.data.href, "_blank");
-                }
+              var node = data.node;
+              node.setExpanded(true);
+              if (node.data && node.data.href) {
+                loadHtmlIntoRightFrame(node.data.href);
+              }
+            },
+            load: function(event, data) {
+                updateUrlWithRightFrame(RightFile.replace('/', ''));
             }
         });
     });
-</script>
-  <script type="text/javascript">
-   function ResultList_KeyDownEvent(event) 
-    { 
-        var code = GetEventKeyCode(event);   
-        if (code==13 && !_TocMode_) { 
-          OpenResultListDoc(); 
-          return(false);
-        } 
-        return(true);
-    } 
+  </script>
+<script type="text/javascript">
 
-    function ConfigureSetup() 
+window.year = "2025";
+// Default files
+var LeftFile = year + "toc.htm";    
+let RightFile = "WhatsNew.htm";       
+
+function hasURLParameters() {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.toString().length > 0; // Returns true if there are parameters, false otherwise
+}
+
+function checkFileExists(filePath) {
+    try{
+        return fetch(filePath, { method: 'GET'})
+        .then(response => {
+            // Check if the response is OK (200-299)
+            return response.status >= 200 && response.status < 300;
+        })
+        .catch(() => {
+            // Catch any errors (e.g., network issue)
+            return false;
+        });
+    }
+    catch(error)
     {
-        // configured
-        var searchDiv = document.getElementById("searchDiv");
-        var searchEntry = document.getElementById("searchEntry");
-        var optionsBtn = document.getElementById("optionsBtn");
-        
-        if (searchDiv && searchEntry) {
-          if (!false)   // false = true or false
-          {
-              searchDiv.style.display = "none";
-              searchEntry.style.display = "none";
-          }
-          else //restore last text
-          {
-              storage_Restore('searchEntry');
-              if (searchEntry && searchEntry.value.trim() !== "")
-                  treeFilter(searchEntry.value.trim());
-          }
-        }
+        return false;
+    } 
+}
 
-        if (optionsBtn) {
-            if (!false)   // false = true or false
-                optionsBtn.style.display = "none";
+// Check query parameters
+function getURLFromPar()
+{
+    if(hasURLParameters())
+    {
+        var urlParams = new URLSearchParams(window.location.search);
+        var rightPageParam = urlParams.get("id");
+        if (rightPageParam) {
+            var filePath = year + "/" + rightPageParam + ".htm";
+            console.log("1")
+            // Check if the file exists
+            checkFileExists(filePath)
+                .then(exists => {
+                    if (exists) {
+                        console.log("2")
+                        return year + "/" + rightPageParam;
+                    } else {
+                        console.log("3")
+                        return "NotFound.htm"; // Or some default fallback
+                    }
+                })
+                .catch(err => {
+                    console.log("4")
+                    return "NotFound.htm"; // Handle error scenario
+                });
+        } else {
+            console.log("5")
+            // Default first page
+            return year + "/WhatsNew.htm";
         }
     }
-    
-    ConfigureSetup();
-  </script>
-  <div id="searchResultDiv" style="display:none;margin:0px;padding:0px;">
-   <select class="docstyle" id="searchcontainer" name="SearchResultList" onclick="javascript:OpenResultListDoc(event);return(true);" onkeydown="javascript:return(ResultList_KeyDownEvent(event));" size="50" style="width:200; height:200;">
-   </select>
-  </div>
-  <script type="text/javascript">
-   StartupCode();
-  </script>
- </body>
+    else
+    {
+        console.log("6")
+        return year + "/WhatsNew.htm";
+    }
+}
+
+rightFrame.src = getURLFromPar()
+
+// Check if HTML5 sessionStorage is available
+if (mySessionStorage) {
+    mySessionStorage.setItem("hw_topPath", GetThisFName());
+    mySessionStorage.setItem("hw_rightPath", "");           
+}
+
+updateUrlWithRightFrame(RightFile.replace('/', ''));
+
+topSpacerDiv.style.height = "5px";
+topSpacerDiv.style.backgroundColor = "#ffffff";
+
+</script>  
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+
+<script type="text/javascript">
+
+docsearch({
+
+appId: "WEH0G3EYGF",
+
+apiKey: "69d3c9c82f55d09311b4f77f215870a6",
+
+indexName: "nonicateamio",
+
+container: "#algoliaBar",
+
+debug: false 
+
+});
+
+</script>
+
+</body>
 </html>
