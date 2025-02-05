@@ -2,7 +2,15 @@
 <!-- !DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN" -->
 <html>
 <head>
-  
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7KGFKHX958"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7KGFKHX958');
+</script>
 <!-- add extra header code to main frame here -->  
 <link rel="icon" href="icons/favicon.ico" type="image/x-icon" />
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11"/> 
@@ -192,6 +200,7 @@ function findNodeByUrl(url) {
         position: relative;
         flex-wrap: wrap; /* Allow the container to wrap */
         padding-left: 20px;
+        height: 43px;
     }
 
     /* Center the button container */
@@ -204,6 +213,7 @@ function findNodeByUrl(url) {
         position: absolute; /* Take it out of the normal flow */
         left: 50%; /* Move it to the center of the parent */
         transform: translateX(-50%); /* Corrects the positioning to truly center it */
+        height: 36px;
     }
 
     /* Style for the search bar */
@@ -252,8 +262,8 @@ function findNodeByUrl(url) {
 
     /* The tree div takes 20% of the width */
     #tree {
-    width: 20%;
-    height: 100%;
+    width: 25%;
+    height: calc(100vh - 68px);
     background-color: white; /* optional, just to visualize it */
     overflow-x: visible; 
     overflow-y: auto; 
@@ -263,6 +273,8 @@ function findNodeByUrl(url) {
     /* Button styling */
     .standard-button {
         padding: 12px 20px;
+        display: flex;
+        align-items: center;
         border: none;
         background: white;
         color: #696969;
@@ -274,6 +286,8 @@ function findNodeByUrl(url) {
     }
 
     .leftbutton {
+        display: flex;
+        align-items: center;
         padding: 12px 20px;
         border: none;
         background: white;
@@ -288,6 +302,8 @@ function findNodeByUrl(url) {
 
     .rightbutton {
         padding: 12px 20px;
+        display: flex;
+        align-items: center;
         border: none;
         background: white;
         color: #696969;
@@ -309,8 +325,9 @@ function findNodeByUrl(url) {
     /* Responsive: Stack on smaller screens */
     @media (max-width: 700px) {
         .button-container {
-            flex-wrap: wrap;
-            justify-content: center;
+            display:none;
+        }
+        #tree{
             display:none;
         }
     }
@@ -325,7 +342,7 @@ function findNodeByUrl(url) {
     /* Make iframes fill their parent containers */
     iframe {
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 68px);
     border: none;
     padding: 0;
     margin: 0;
