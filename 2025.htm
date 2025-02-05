@@ -24,7 +24,7 @@
 
   function updateUrlWithRightFrame(rightURL) 
   {
-    if(rightURL)
+    if(rightURL && !rightURL.includes("undefined"))
     {
         console.log(rightURL)
         history.pushState(null, '', `?id=${rightURL}`);
