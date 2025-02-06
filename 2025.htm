@@ -16,10 +16,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11"/> 
 
 <script src="scripts/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="styles/ui.fancytree.min.css">
+<link rel="stylesheet" href="styles/frame.css">
 <script src="scripts/jquery.fancytree-all-deps.min.js"></script>
 
-<link rel="stylesheet" href="styles/docsearch.css"/>
+
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
 <script src="hw_library.js" type="text/javascript"></script>
@@ -49,15 +49,12 @@ function updateUrlWithRightFrame(rightURL) {
   }
   else
   {
-    console.log("a")
     if(rightURL.includes("WhatsNew.htm"))
     {
-        console.log("b")
         AssignLinksToButtons(rightURL)
     }
   }
 }
-
 
 function updateUrl() {
     try {
@@ -153,224 +150,16 @@ function findNodeByUrl(url) {
 </head>
 
 <body style="margin:0px;overflow:hidden;">
-
-  <!DOCTYPE html>
-  <html >
-  <head>
-    <meta charset="UTF-8">
-    <style>
-    /* Ensure the HTML and body take up the full viewport */
-    html, body {
-    height: 100%;
-    margin: 0;
-    }
-
-    /* Webkit-based browsers (Chrome, Safari, Edge Chromium, Opera) */
-    ::-webkit-scrollbar {
-    width: 10px;  /* Adjust width */
-    height: 10px; /* Adjust height for horizontal scroll */
-    }
-
-    /* Scrollbar Track (Background) */
-    ::-webkit-scrollbar-track {
-    background: linear-gradient(180deg, #f1f1f1, #e0e0e0); /* Gradient effect */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
-    }
-
-    /* Scrollbar Thumb (The draggable part) */
-    ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #696969, #696969); /* Gradient thumb */
-    border-radius: 10px; /* Rounded thumb */
-    border: 2px solid #f1f1f1; /* Adds spacing effect */
-    }
-
-    /* Hover effect */
-    ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #666, #444);
-    }
-
-    /* Firefox scrollbar */
-    * {
-    scrollbar-width: thin;
-    scrollbar-color: #696969 #f1f1f1; /* Thumb color | Track color */
-    }
-        
-    #topBan {
-        background-color: #808080;
-        color: #ffffff;
-        font-family: 'Montserrat', Tahoma, 'Courier New', Helvetica, 'Segoe UI', 'Lucida Grande', Verdana, Arial, sans-serif;
-        font-size: 10px;
-        font-weight: 100 !important;
-        padding-left: 20px;
-        display: flex; /* Enables flexbox for layout */
-        justify-content: space-between; /* Creates space between items (buttons & search bar) */
-        align-items: center; /* Vertically center elements */
-        padding: 10px 0;
-        position: relative;
-        flex-wrap: wrap; /* Allow the container to wrap */
-        padding-left: 20px;
-        height: 43px;
-    }
-
-    /* Center the button container */
-    .button-container {
-        display: inline-flex;
-        gap: 5px;
-        padding: 5px;
-        border-radius: 0px;
-        padding-left: 20px;
-        position: absolute; /* Take it out of the normal flow */
-        left: 50%; /* Move it to the center of the parent */
-        transform: translateX(-50%); /* Corrects the positioning to truly center it */
-        height: 36px;
-    }
-
-    /* Style for the search bar */
-    #algoliaBar {
-        display: inline-block;
-        margin-left: auto; /* Pushes the search bar to the right */
-    }
-    #containerBar {
-        display: inline-block;
-        margin-left: auto; /* Pushes the search bar to the right */
-        padding-right: 20px;
-    }
-
-    /* Responsive behavior: Stack buttons on smaller screens */
-    @media (max-width: 600px) {
-        #topBan {
-            justify-content: center; /* Center everything when width is small */
-        }
-
-        .button-container {
-            position: static; /* Remove absolute positioning */
-            transform: none; /* Remove the centering transform */
-            justify-content: center; /* Center buttons horizontally */
-            width: 100%; /* Ensure it spans full width on smaller screens */
-        }
-
-        #algoliaBar {
-            margin-left: 0; /* Allow search bar to take full width if needed */
-            width: 100%; /* Make search bar take up full width */
-            margin-right: 20px;
-        }
-    }
-
-    #bannerDiv, #topSpacerDiv {
-    width: 100%;
-    height: 0px;
-    }
-
-    /* Flex layout for the main content */
-    #mainDiv {
-    display: flex;
-    height: calc(100% - 60px); /* Adjust if you have a visible header/banner */
-    width: 100%;
-    }
-
-    /* The tree div takes 20% of the width */
-    #tree {
-    width: 25%;
-    height: calc(100vh - 68px);
-    background-color: white; /* optional, just to visualize it */
-    overflow-x: visible; 
-    overflow-y: auto; 
-    }
-
-
-    /* Button styling */
-    .standard-button {
-        padding: 12px 20px;
-        display: flex;
-        align-items: center;
-        border: none;
-        background: white;
-        color: #696969;
-        font-size: 16px;
-        font-weight: bold;
-        border-radius: 0px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .leftbutton {
-        display: flex;
-        align-items: center;
-        padding: 12px 20px;
-        border: none;
-        background: white;
-        color: #696969;
-        font-size: 16px;
-        font-weight: bold;
-        border-top-left-radius: 5px; 
-        border-bottom-left-radius: 5px; 
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .rightbutton {
-        padding: 12px 20px;
-        display: flex;
-        align-items: center;
-        border: none;
-        background: white;
-        color: #696969;
-        font-size: 16px;
-        font-weight: bold;
-        border-top-right-radius: 5px; 
-        border-bottom-right-radius: 5px; 
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    /* Hover effect */
-    .button-container button:hover {
-        background: #ded9fa;
-        transform: scale(1.05);
-        color: #696969;
-    }
-
-    /* Responsive: Stack on smaller screens */
-    @media (max-width: 700px) {
-        .button-container {
-            display:none;
-        }
-        #tree{
-            display:none;
-        }
-    }
-
-    /* The rightDiv takes the remaining space */
-    #rightDiv {
-    flex: 1;
-    height: 100%;
-    overflow: hidden; 
-    }
-
-    /* Make iframes fill their parent containers */
-    iframe {
-    width: 100%;
-    height: calc(100vh - 68px);
-    border: none;
-    padding: 0;
-    margin: 0;
-    overflow:auto;
-      }
-
-    </style>
-  </head>
-  <body>
     <div id="topBan">
        <h1 style="display: none;">Revit API Documentation Online</h1>
        <h2>Rev API Docs</h2> 
     <div class="button-container" >
-        <button class="leftbutton">2020</button>
+        <button class="standard-button">2020</button>
         <button class="standard-button">2021</button>
         <button class="standard-button">2022</button>
         <button class="standard-button">2023</button>
         <button class="standard-button">2024</button>
-        <button class="rightbutton">2025</button>
+        <button class="selected-button">2025</button>
     </div>
     <div id="containerBar">
         <div id="algoliaBar"></div>
@@ -387,7 +176,6 @@ function findNodeByUrl(url) {
         <iframe id="rightFrame" src="" name="right" onLoad="RightFrameLoadEvent()"></iframe>
       </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const fallbackUrl = 'WhatsNew.htm'; 
@@ -406,51 +194,43 @@ function findNodeByUrl(url) {
         });        
 
     </script>
-  </body>
-  </html>
   <script>
 
 
 function AssignLinksToButtons(cleanURL)
 {
-    const buttons = document.querySelectorAll('button');
-    // Loop through each button to assign a link based on its text content
+    const container = document.querySelector('.button-container');
+    const buttons = container.querySelectorAll('button');
     buttons.forEach(function(button) {
+        // Get the text of the button, which should be the year
+        const year = button.textContent;
+        if(year === window.year)
+        {
+            return
+        }
+        const finalurl = year + "/" + cleanURL;
         button.addEventListener('click', function() {
-            const root_loc = window.location.hostname;
-            // Get the text of the button, which should be the year
-            const year = button.textContent;
-            // Redirect based on the year
-            const finalName = "https://revapidocs.com/" + year + "/" + cleanURL;
-            window.location.href = finalName
-            if(finalName === rightFrame.src)
-            {
-                button.style.backgroundColor = "#ded9fa";
-                button.style.color = "#5235ef";
-            }
-            else
-            {
-            fetch(url, { method: 'HEAD' }) // Use HEAD to check existence without downloading content
-                .then(response => {
-                    if (response.ok) {
-                        // If URL exists, set white
-                        button.style.backgroundColor = "white";
-                        button.style.color = "#696969";
-                    } 
-                    else 
-                    {
-                        // If URL does not exist, set red
-                        button.style.backgroundColor = "#b78b8a";
-                        button.style.color = "#701815";
-                    }
-                })
-                .catch(() => {
-                    // Handle network errors, set red
-                    button.style.backgroundColor = "white";
-                    button.style.color = "#696969";
-                });
-            }
+            window.location.href = finalurl
         }); 
+        try {
+        fetch(finalurl, { method: 'HEAD' })
+            .then(response => {
+                if (response.ok) {
+                    // File exists, set white button
+                    button.className = "standard-button";
+                } else if (response.status === 404) {
+                    // File not found, set red button
+                    button.className = "invalid-button";
+                } else {
+                    // Handle other unexpected status codes
+                    button.className = "standard-button";
+                }
+            })
+            .catch(error => {
+                button.className = "invalid-button";
+            });
+    } catch (error) {}
+
     });
 }
 
@@ -458,8 +238,6 @@ function loadHtmlIntoRightFrame(filePath) {
   var iframe = window.parent.document.getElementById("rightFrame");
   if (iframe) {
     iframe.src = filePath; // Set iframe source to load the page
-  } else {
-    console.error("The iframe with id 'rightFrame' was not found.");
   }
 }
     $(function() {
@@ -152766,8 +152544,7 @@ function loadHtmlIntoRightFrame(filePath) {
     });
   </script>
 <script type="text/javascript">
-// Default files
-var LeftFile = year + "toc.htm";    
+// Default files 
 let RightFile = "WhatsNew.htm";       
 
 // Check if HTML5 sessionStorage is available
