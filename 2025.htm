@@ -27,13 +27,14 @@
 
 <script type="text/javascript">
 
+window.year = "2025";
   
-  function GetThisFName() {
-    return location.pathname.split("/").pop();
-  }
+function GetThisFName() {
+return location.pathname.split("/").pop();
+}
 
 function updateUrlWithRightFrame(rightURL) {
-  if (rightURL && !rightURL.includes("undefined")) {
+  if (rightURL && !rightURL.includes("WhatsNew.htm")) {
     // Get the current URL in the browser
     const currentUrl = window.location.href;
     // Create the new URL you want to push
@@ -42,6 +43,8 @@ function updateUrlWithRightFrame(rightURL) {
     if (currentUrl.includes(newUrl)) {
       return; // Exit the function if the URL is the same
     }
+    console.log("ValuePastetoUrl")
+    console.log(newUrl)
     history.replaceState(null, '', newUrl); // Update the browser history with the new URL
     findNodeByUrl(rightURL); // Execute your function with the new URL
   }
@@ -128,9 +131,7 @@ function findNodeByUrl(url) {
             }, 0); // Executes asynchronously without blocking UI
         }
 
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error) {  }
 }
 
   //-->
@@ -355,7 +356,6 @@ function findNodeByUrl(url) {
     <div id="topBan">
        <h1 style="display: none;">Revit API Documentation Online</h1>
        <h2>Rev API Docs</h2> 
-
     <div class="button-container" >
         <button class="leftbutton">2020</button>
         <button class="standard-button">2021</button>
@@ -376,9 +376,23 @@ function findNodeByUrl(url) {
     <div id="mainDiv">
       <div id="tree"></div>
       <div id="rightDiv">
-        <iframe id="rightFrame" src="NotFound.htm" name="right" onLoad="RightFrameLoadEvent()"></iframe>
+        <iframe id="rightFrame" src="" name="right" onLoad="RightFrameLoadEvent()"></iframe>
       </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const fallbackUrl = 'WhatsNew.htm'; 
+            // Parse the current URL's query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            // Get the 'id' parameter from the URL; if not found, use the fallback URL
+            const iframeSource = urlParams.get('id') || fallbackUrl;
+            console.log("URL: " + window.year + '/' + iframeSource)
+            // Set the src attribute of the iframe to the chosen source
+            document.getElementById('rightFrame').src = window.year + '/' + iframeSource;
+        });        
+
+    </script>
   </body>
   </html>
   <script>
@@ -152686,83 +152700,18 @@ function loadHtmlIntoRightFrame(filePath) {
     });
   </script>
 <script type="text/javascript">
-
-window.year = "2025";
 // Default files
 var LeftFile = year + "toc.htm";    
 let RightFile = "WhatsNew.htm";       
-
-function hasURLParameters() {
-    var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.toString().length > 0; // Returns true if there are parameters, false otherwise
-}
-
-function checkFileExists(filePath) {
-    try{
-        return fetch(filePath, { method: 'GET'})
-        .then(response => {
-            // Check if the response is OK (200-299)
-            return response.status >= 200 && response.status < 300;
-        })
-        .catch(() => {
-            // Catch any errors (e.g., network issue)
-            return false;
-        });
-    }
-    catch(error)
-    {
-        return false;
-    } 
-}
-
-// Check query parameters
-function getURLFromPar()
-{
-    if(hasURLParameters())
-    {
-        var urlParams = new URLSearchParams(window.location.search);
-        var rightPageParam = urlParams.get("id");
-        if (rightPageParam) {
-            var filePath = year + "/" + rightPageParam + ".htm";
-            console.log("1")
-            // Check if the file exists
-            checkFileExists(filePath)
-                .then(exists => {
-                    if (exists) {
-                        console.log("2")
-                        return year + "/" + rightPageParam;
-                    } else {
-                        console.log("3")
-                        return "NotFound.htm"; // Or some default fallback
-                    }
-                })
-                .catch(err => {
-                    console.log("4")
-                    return "NotFound.htm"; // Handle error scenario
-                });
-        } else {
-            console.log("5")
-            // Default first page
-            return year + "/WhatsNew.htm";
-        }
-    }
-    else
-    {
-        console.log("6")
-        return year + "/WhatsNew.htm";
-    }
-}
-
-rightFrame.src = getURLFromPar()
 
 // Check if HTML5 sessionStorage is available
 if (mySessionStorage) {
     mySessionStorage.setItem("hw_topPath", GetThisFName());
     mySessionStorage.setItem("hw_rightPath", "");           
 }
-
+console.log("c")
 updateUrlWithRightFrame(RightFile.replace('/', ''));
-
+console.log("d")
 topSpacerDiv.style.height = "5px";
 topSpacerDiv.style.backgroundColor = "#ffffff";
 
