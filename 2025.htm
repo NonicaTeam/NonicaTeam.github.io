@@ -190,12 +190,26 @@ function findNodeByUrl(url) {
             {
                 //Update TOC
                 findNodeByUrl(iframeSource)
+                AssignLinksToButtons(iframeSource)
             }
         });        
 
     </script>
-  <script>
+<script>
 
+
+async function checkUrlExists(url) {
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+        if (response.ok) {
+            return true; // URL exists
+        } else {
+            return false; // URL does not exist
+        }
+    } catch (error) {
+        return false; // In case of network failure or fetch error
+    }
+}
 
 function AssignLinksToButtons(cleanURL)
 {
@@ -206,33 +220,38 @@ function AssignLinksToButtons(cleanURL)
         const year = button.textContent;
         if(year === window.year)
         {
-            return
+            return;
         }
-        const finalurl = year + "/" + cleanURL;
+        let finalurl = year + "/" + cleanURL;
         button.addEventListener('click', function() {
             window.location.href = finalurl
         }); 
         try {
-        fetch(finalurl, { method: 'HEAD' })
-            .then(response => {
-                if (response.ok) {
-                    // File exists, set white button
-                    button.className = "standard-button";
-                } else if (response.status === 404) {
-                    // File not found, set red button
-                    button.className = "invalid-button";
-                } else {
-                    // Handle other unexpected status codes
-                    button.className = "standard-button";
-                }
-            })
-            .catch(error => {
-                button.className = "invalid-button";
-            });
-    } catch (error) {}
-
+            fetchData(finalurl, button)  
+        } catch (error) {}
     });
 }
+
+async function fetchData(finalurl, button) {
+    const fileExists = await checkFileExists(finalurl);
+    if (fileExists) {
+        // File exists, set white button
+        button.className = "standard-button";
+    } 
+    else
+    {
+        // File not found, set red button
+        button.className = "invalid-button";
+    }
+}
+const checkFileExists = async (url) => {
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+        return response.status === 200; // Return true if file exists
+    } catch (error) {
+        return false; // Return false if there is an error
+    }
+};
 
 function loadHtmlIntoRightFrame(filePath) {
   var iframe = window.parent.document.getElementById("rightFrame");
@@ -240,6 +259,8 @@ function loadHtmlIntoRightFrame(filePath) {
     iframe.src = filePath; // Set iframe source to load the page
   }
 }
+
+
     $(function() {
         $("#tree").fancytree({
           source: [
@@ -152559,6 +152580,7 @@ topSpacerDiv.style.height = "5px";
 topSpacerDiv.style.backgroundColor = "#ffffff";
 
 </script>  
+
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 
 <script type="text/javascript">
