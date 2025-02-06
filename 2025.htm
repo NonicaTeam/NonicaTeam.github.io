@@ -43,10 +43,18 @@ function updateUrlWithRightFrame(rightURL) {
     if (currentUrl.includes(newUrl)) {
       return; // Exit the function if the URL is the same
     }
-    console.log("ValuePastetoUrl")
-    console.log(newUrl)
     history.replaceState(null, '', newUrl); // Update the browser history with the new URL
+    AssignLinksToButtons(rightURL)
     findNodeByUrl(rightURL); // Execute your function with the new URL
+  }
+  else
+  {
+    console.log("a")
+    if(rightURL.includes("WhatsNew.htm"))
+    {
+        console.log("b")
+        AssignLinksToButtons(rightURL)
+    }
   }
 }
 
@@ -105,32 +113,34 @@ function RightFrameLoadEvent() {
     }
 }
 
-
 function findNodeByUrl(url) {
     try {
         var full_url = window.year + "/" + url;
         var tree = $.ui.fancytree.getTree("#tree");
-
         if (tree) {
             setTimeout(() => {
                 var activeNode = tree.getActiveNode();
-                
                 // Check if the currently active node is already the desired node
                 if (activeNode && activeNode.data.href === full_url) {
                     return; 
                 }
-
                 // Find the node only if it's not already selected
                 var node = tree.findFirst(n => n.data.href === full_url);
                 if (node) {
                     node.makeVisible().done(() => {
+                        let parent = node.parent;
+                        while (parent && !parent.isTopLevel()) {
+                            if (!parent.expanded) {
+                            parent.setExpanded(true);
+                            }
+                            parent = parent.parent;
+                        }
                         node.setActive({ noEvents: true });
                         node.setFocus({ noEvents: true });
                     });
                 }
-            }, 0); // Executes asynchronously without blocking UI
+            }, 0); 
         }
-
     } catch (error) {  }
 }
 
@@ -186,7 +196,6 @@ function findNodeByUrl(url) {
     scrollbar-color: #696969 #f1f1f1; /* Thumb color | Track color */
     }
         
-
     #topBan {
         background-color: #808080;
         color: #ffffff;
@@ -227,7 +236,6 @@ function findNodeByUrl(url) {
         margin-left: auto; /* Pushes the search bar to the right */
         padding-right: 20px;
     }
-
 
     /* Responsive behavior: Stack buttons on smaller screens */
     @media (max-width: 600px) {
@@ -316,11 +324,11 @@ function findNodeByUrl(url) {
         transition: all 0.3s ease;
     }
 
-
     /* Hover effect */
     .button-container button:hover {
         background: #ded9fa;
         transform: scale(1.05);
+        color: #696969;
     }
 
     /* Responsive: Stack on smaller screens */
@@ -387,18 +395,66 @@ function findNodeByUrl(url) {
             const urlParams = new URLSearchParams(window.location.search);
             // Get the 'id' parameter from the URL; if not found, use the fallback URL
             const iframeSource = urlParams.get('id') || fallbackUrl;
-            console.log("URL: " + window.year + '/' + iframeSource)
+            const finalpath = window.year + '/' + iframeSource
             // Set the src attribute of the iframe to the chosen source
-            document.getElementById('rightFrame').src = window.year + '/' + iframeSource;
+            document.getElementById('rightFrame').src = finalpath;
+            if(!finalpath.includes(fallbackUrl))
+            {
+                //Update TOC
+                findNodeByUrl(iframeSource)
+            }
         });        
 
     </script>
   </body>
   </html>
   <script>
-function loadHtmlIntoRightFrame(filePath) {
 
-  console.log("Loading file into iframe:", filePath);
+
+function AssignLinksToButtons(cleanURL)
+{
+    const buttons = document.querySelectorAll('button');
+    // Loop through each button to assign a link based on its text content
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const root_loc = window.location.hostname;
+            // Get the text of the button, which should be the year
+            const year = button.textContent;
+            // Redirect based on the year
+            const finalName = "https://revapidocs.com/" + year + "/" + cleanURL;
+            window.location.href = finalName
+            if(finalName === rightFrame.src)
+            {
+                button.style.backgroundColor = "#ded9fa";
+                button.style.color = "#5235ef";
+            }
+            else
+            {
+            fetch(url, { method: 'HEAD' }) // Use HEAD to check existence without downloading content
+                .then(response => {
+                    if (response.ok) {
+                        // If URL exists, set white
+                        button.style.backgroundColor = "white";
+                        button.style.color = "#696969";
+                    } 
+                    else 
+                    {
+                        // If URL does not exist, set red
+                        button.style.backgroundColor = "#b78b8a";
+                        button.style.color = "#701815";
+                    }
+                })
+                .catch(() => {
+                    // Handle network errors, set red
+                    button.style.backgroundColor = "white";
+                    button.style.color = "#696969";
+                });
+            }
+        }); 
+    });
+}
+
+function loadHtmlIntoRightFrame(filePath) {
   var iframe = window.parent.document.getElementById("rightFrame");
   if (iframe) {
     iframe.src = filePath; // Set iframe source to load the page
@@ -152695,7 +152751,17 @@ function loadHtmlIntoRightFrame(filePath) {
             },
             load: function(event, data) {
                 updateUrlWithRightFrame(RightFile.replace('/', ''));
+            },
+            init: function(event, data) {
+            //FancyTree is fully initialized here.
+            var urlParams = new URLSearchParams(window.location.search);
+            var nodeKey = urlParams.get('id');
+            if (nodeKey) {
+                // Call the function to find the node using the extracted values
+                findNodeByUrl(nodeKey);
+                AssignLinksToButtons(nodeKey)
             }
+        }
         });
     });
   </script>
@@ -152709,9 +152775,9 @@ if (mySessionStorage) {
     mySessionStorage.setItem("hw_topPath", GetThisFName());
     mySessionStorage.setItem("hw_rightPath", "");           
 }
-console.log("c")
-updateUrlWithRightFrame(RightFile.replace('/', ''));
-console.log("d")
+
+// updateUrlWithRightFrame(RightFile.replace('/', ''));
+
 topSpacerDiv.style.height = "5px";
 topSpacerDiv.style.backgroundColor = "#ffffff";
 

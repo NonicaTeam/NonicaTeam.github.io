@@ -51,6 +51,7 @@ body, html {
   justify-items: center;
   width: 100%;
   gap: 10px;
+  margin-bottom: -10px;
 }
 
 body.DocSearch--active {
@@ -68,6 +69,7 @@ body.DocSearch--active {
   border-radius: 0px;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-bottom: 10px;
 }
 
 .leftbutton {
@@ -81,6 +83,7 @@ body.DocSearch--active {
   border-bottom-left-radius: 10px; 
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-bottom: 10px;
 }
 
 .rightbutton {
@@ -94,6 +97,7 @@ body.DocSearch--active {
   border-bottom-right-radius: 10px; 
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-bottom: 10px;
 }
 
 .separator {
