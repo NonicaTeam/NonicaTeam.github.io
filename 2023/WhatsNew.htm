@@ -1,9 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="../scripts/script_manifold.js"></script>
+<link rel="shortcut icon" href="../icons/favicon.ico" /><link rel="stylesheet" type="text/css" href="../styles/Presentation.css" />
 <title>What's New</title>
 
-<style>
+<!-- <style>
 
 h1,h2,h3, h4
 {
@@ -22,12 +24,12 @@ p, tr, td, span, div, li
 font-family:sans-serif;
 font-size:10pt;
 }
-</style>
+</style> -->
 
 </head>
 
 <body>
-    <h1 style="color:#000" ;>Major changes and renovations to the Revit API</h1>
+    <h1>Major changes and renovations to the Revit API</h1>
     <h1 id="RevitAPIChanges2023-APIChanges">API changes</h1>
     <h2>New version of CEFSharp</h2>
     <p>Revit and Autodesk add-ins use the CEFsharp library internally for several features. Some third-party add-ins do so as well.  Occasionally, when different versions of the library are used, it leads to instability issues for Revit. In order to avoid version conflicts, we are clarifying what CEFsharp version is being used, and loading it prior to all add-in initializations. </p>
