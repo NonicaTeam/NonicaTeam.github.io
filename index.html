@@ -18,6 +18,7 @@
   <!-- Add this to the head of your HTML -->
   <link rel="stylesheet" href="styles/docsearchlarge.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://WEH0G3EYGF-dsn.algolia.net" crossorigin />
 </head>
 <body>
     <div class="outer-container">
@@ -53,7 +54,15 @@ docsearch({
 
     container: "#algoliaBar",
 
-    debug: false 
+    debug: false,
+    
+    transformItems(items) {
+        return items.map((item) => ({
+        ...item,
+        content: item._highlightResult.year.value,
+        }));
+    },
+    maxResultsPerGroup: 10,
 
 });
 

@@ -17,7 +17,7 @@
 <script src="scripts/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="styles/frame.css">
 <script src="scripts/jquery.fancytree-all-deps.min.js"></script>
-
+<link rel="preconnect" href="https://WEH0G3EYGF-dsn.algolia.net" crossorigin />
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
@@ -71,10 +71,14 @@ function RightFrameLoadEvent() {
     rightFrame.onload = updateUrl; // Update URL when iframe loads
 
     setTimeout(() => {
-        var iframeDocument = rightFrame.contentDocument || rightFrame.contentWindow.document;
-        if (iframeDocument) {
-            iframeDocument.addEventListener('DOMContentLoaded', updateUrl); 
+        try
+        {
+            var iframeDocument = rightFrame.contentDocument || rightFrame.contentWindow.document;
+            if (iframeDocument) {
+                iframeDocument.addEventListener('DOMContentLoaded', updateUrl); 
+            }
         }
+        catch(error){}
     }, 100);
 
     if (iframeDocument) {
@@ -158895,8 +158899,15 @@ docsearch({
 
     container: "#algoliaBar",
 
-    debug: false 
+    debug: false,
 
+    transformItems(items) {
+        return items.map((item) => ({
+        ...item,
+        content: item._highlightResult.year.value,
+        }));
+    },
+    maxResultsPerGroup: 10,
 });
 
 </script>
