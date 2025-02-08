@@ -614,6 +614,10 @@ span.input {
     font-weight: bold;
 }
 
+span.identifier {
+    color: black;
+}
+
 span.term {
     font-style: italic;
 }
