@@ -162551,7 +162551,7 @@ docsearch({
 
     container: "#algoliaBar",
 
-    debug: false 
+    debug: false,
 
     transformItems(items) {
         return items.map((item) => ({
@@ -162559,7 +162559,7 @@ docsearch({
         content: item._highlightResult.year.value,
         }));
     },
-    maxResultsPerGroup: 10,
+    maxResultsPerGroup: 20,
 });
 
 </script>
