@@ -266,19 +266,20 @@ div#header table#toptable td
 {
 	padding-left: 15px; 
 	width: 2000px;  /* Sets the full width of the table cell */
-	text-align: center;
-	border-bottom: 1px solid #dbdbdb;
-    margin: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 8px;
-    padding-left: 8px;
+text-align: center;
 }
 
 div#header table#topTable {  
     table-layout: fixed;  /* Ensures all cells are evenly sized and respect the table's width */
     display: none;
 }
+
+
+
+
+
+
+
 
 /* Applies to second row in the upper table of the non-scrolling header region. */
 div#header table tr#headerTableRow1 td
@@ -1149,32 +1150,14 @@ DIV.clsTooltip {border: 1px solid black; padding: 2px; position: absolute; top: 
 }
 
 .feedbackcss::after {
-  font-size: 12px;
-  content: "\AMade with ❤️ by Nonica.io\A\A\A[ Revit® is a registered trademark of Autodesk, Inc. This website is not affiliated with or endorsed by Autodesk, Inc.]";
+  content: "Made with ❤️ by Nonica.io";
   text-indent: 0;
   display: block;
   line-height: initial; /* New content takes up original line height */
   text-align:center;
   padding: 10px;
-  white-space: pre-line;
 }
 
-
-  .feedbackcss {
-	text-indent: -9999px;
-	line-height: 0; /* Collapse the original line */
-  }
-  
-  .feedbackcss::after {
-	font-size: 12px;
-	content: "\AMade with ❤️ by Nonica.io\A\A\A[ Revit® is a registered trademark of Autodesk, Inc. This website is not affiliated with or endorsed by Autodesk, Inc.]";
-	text-indent: 0;
-	display: block;
-	line-height: initial; /* New content takes up original line height */
-	text-align:center;
-	padding: 10px;
-	white-space: pre-line;
-  }
 
 div#feedbackarea table
 {

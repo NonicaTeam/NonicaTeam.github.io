@@ -284,14 +284,13 @@ pre {
     text-align: center;
 }
 
-
 .feedbackLink {
   text-indent: -9999px;
   line-height: 0; /* Collapse the original line */
 }
 
 .feedbackLink::after {
-  content: "Made with ❤️ by Nonica.io\A\A\A[ Revit® is a registered trademark of Autodesk, Inc. This website is not affiliated with or endorsed by Autodesk, Inc. The code provided here is intended for educational and instructional purposes to help users interact with Autodesk Revit® via its API. The content shared here was indexed by Nonica.io and does not represent Autodesk’s official documentation or code. ]";
+  content: "Made with ❤️ by Nonica.io\A\A\A[ Revit® is a registered trademark of Autodesk, Inc. This website is not affiliated with or endorsed by Autodesk, Inc.]";
   text-indent: 0;
   display: block;
   line-height: initial; /* New content takes up original line height */
@@ -561,7 +560,6 @@ div.caption {
         font-family: Consolas, Courier, monospace !important;
         font-style: normal;
         font-weight: normal;
-        -ms-word-wrap: normal;
     }
 
     .codeSnippetContainerCode .keyword {
