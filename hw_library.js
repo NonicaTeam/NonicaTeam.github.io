@@ -192,12 +192,6 @@ function GetDocWidth()
 		else if (document.body) // other Explorers 
 				x = document.body.clientWidth;
 
-		// This block fixes a bug in IE11 in which sometimes the main content pane is blank when it is an even number of pixels wide.
-		// The following "if" block checks that the returned width is not greater than the width of mainDiv,
-		// and if the returned width is greater, it is set to the width of mainDiv.
-		// The getBoundingClientRect function can return the actual width of the element, keeping the real number
-		// A support matrix for the function: http://caniuse.com/#feat=getboundingclientrect
-
 		if (document.body.getBoundingClientRect) {    
 			var bodyDivWidth = document.body.getBoundingClientRect().width;
 			if (bodyDivWidth && x > bodyDivWidth)
@@ -218,12 +212,3 @@ function GetDocHeight()
 				y = document.body.clientHeight; 
 		return(y); 
 } 
-
-
-
-
-
-
-
-
-

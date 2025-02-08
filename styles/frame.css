@@ -4,6 +4,8 @@ html, body {
     margin: 0;
     }
 
+    
+
     /* Webkit-based browsers (Chrome, Safari, Edge Chromium, Opera) */
     ::-webkit-scrollbar {
     width: 10px;  /* Adjust width */
@@ -183,8 +185,9 @@ html, body {
     #rightDiv {
     flex: 1;
     height: 100%;
-    overflow: hidden; 
+    overflow: hidden;
     }
+    
         /* The tree div takes 20% of the width */
     #tree {
     width: 25%;
