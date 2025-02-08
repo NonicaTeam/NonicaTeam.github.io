@@ -23,16 +23,17 @@ h2, h3 {
     padding-bottom: 5px;
     padding-top: 5px;
     color: #696969;
+    font-size: 18px;
 }
 
 h2 {
-    font-size: 1.769em;
+    font-size: 18px;
     color: #696969;
 }
 
 h3 {
     font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
-    font-size: 1.077em;
+    font-size: 12px;
     font-weight: normal;
     margin: 5px 0px 0px 0px;
     color: #696969;
@@ -40,7 +41,7 @@ h3 {
 
 h4 {
     font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
-    font-size: 1.077em;
+    font-size: 12px;
     font-weight: normal;
     margin: 5px 0px 0px 0px;
     color: #696969;
@@ -48,7 +49,7 @@ h4 {
 
 h5, h6 {
     font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
-    font-size: 1.077em;
+    font-size: 12px;
     font-weight: normal;
     margin: 5px 0px 0px 0px;
     color: #696969;
@@ -97,7 +98,7 @@ a, a:link, a:visited, a:active {
     color: #ffffff;          /* White text color */
     background-color: #808080; /* Gray background for the year links */
     padding: 10px 15px;       /* Add padding around the year links */
-    font-size: 1.1em;
+    font-size: 12px;
     font-weight: bold;
     margin: 0 10px;           /* Space between year links */
     display: inline-block;    /* Display them inline */
@@ -367,7 +368,7 @@ div.preliminary {
 
 div.caption {
     font-weight: bold;
-    font-size: 1em; /*12pt*/
+    font-size: 12px; /*12pt*/
     color: #003399;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -651,7 +652,7 @@ span.comment {
 
 span.introStyle {
     color: #a9a9a9;
-    line-height: 2em;
+    line-height: 12px;
 }
 
 span.noLink {
