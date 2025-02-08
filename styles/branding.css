@@ -5,6 +5,7 @@ body {
     color: #696969;
     padding: 10px;
     overflow-x: hidden;
+    text-align: justify;
 }
 
 h1 {
@@ -177,6 +178,10 @@ table {
     margin-bottom: 15px;
     font-size: 15px;
     width: 100%;
+    border: 0px;
+    word-break: break-all; /* Breaks words at any character */
+    overflow-wrap: anywhere; /* Ensures words break where needed */
+    white-space: normal; /* Allows normal wrapping */
 }
 
 td, th {
@@ -186,6 +191,10 @@ td, th {
     padding-bottom: 10px;
     padding-right: 8px;
     padding-left: 8px;
+    max-width: 100%;
+    word-break: break-all; /* Breaks words at any character */
+    overflow-wrap: anywhere; /* Ensures words break where needed */
+    white-space: normal; /* Allows normal wrapping */
 }
 
 th {
@@ -194,12 +203,20 @@ th {
     text-align: left;
     padding-top: 5px;
     padding-bottom: 5px;
+    max-width: 100%;
+    word-break: break-all; /* Breaks words at any character */
+    overflow-wrap: anywhere; /* Ensures words break where needed */
+    white-space: normal; /* Allows normal wrapping */
 }
 
 td {
     color: #696969;
     vertical-align: top;
     font-size: 14px;
+    max-width: 100%;
+    word-break: break-all; /* Breaks words at any character */
+    overflow-wrap: anywhere; /* Ensures words break where needed */
+    white-space: normal; /* Allows normal wrapping */
 }
 
 table p:last-child {

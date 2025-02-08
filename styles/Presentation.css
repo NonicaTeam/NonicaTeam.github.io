@@ -49,6 +49,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
+	text-align: justify;
 }
 
 /* Webkit-based browsers (Chrome, Safari, Edge Chromium, Opera) */
@@ -1371,12 +1372,18 @@ table.members td {
 table th {
     padding: 5px; /* Adjust padding for header cells */
     background-color: #ededed;
+	word-break: break-all; /* Breaks words at any character */
+    overflow-wrap: anywhere; /* Ensures words break where needed */
+    white-space: normal; /* Allows normal wrapping */
 }
 
 /* Padding for data cells in all tables */
 table td {
     padding: 5px; /* Adjust padding for data cells */
     background-color: #ededed;
+	word-break: break-all; /* Breaks words at any character */
+    overflow-wrap: anywhere; /* Ensures words break where needed */
+    white-space: normal; /* Allows normal wrapping */
 }
 
 
@@ -1386,6 +1393,10 @@ table.members th.iconColumn {
 
 table.members th.valueColumn {
 	width: 10%;
+}
+
+table.members th.nameColumn {
+	width: 30%;
 }
 
 table.members th.descriptionColumn {
