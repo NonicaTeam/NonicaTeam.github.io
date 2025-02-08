@@ -152599,10 +152599,20 @@ docsearch({
     debug: false,
 
     transformItems(items) {
-        return items.map((item) => ({
-        ...item,
-        content: item._highlightResult.year.value,
-        }));
+        return items.map((item) => {
+        const yearContent = item._highlightResult.year.value;
+        let treeBreakdown = item._highlightResult.tree_breakdown.value;
+        // Replace "Autodesk.Revit" in treeBreakdown
+        treeBreakdown = treeBreakdown.replace(/Autodesk\.Revit\./g, "").trim();
+        // Append treeBreakdown only if it's not empty after replacement
+        const newContent = treeBreakdown !== "" 
+            ? `${yearContent} | ${treeBreakdown}` 
+            : yearContent;
+        return {
+            ...item,
+            content: newContent,
+        };
+        });
     },
     maxResultsPerGroup: 20,
 })
