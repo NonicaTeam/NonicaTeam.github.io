@@ -4,8 +4,6 @@ html, body {
     margin: 0;
     }
 
-    
-
     /* Webkit-based browsers (Chrome, Safari, Edge Chromium, Opera) */
     ::-webkit-scrollbar {
     width: 10px;  /* Adjust width */
@@ -181,10 +179,8 @@ html, body {
         }
     }
 
-    /* The rightDiv takes the remaining space */
     #rightDiv {
     flex: 1;
-    height: calc(100vh - 58px);
     overflow: hidden;
     }
     
@@ -200,11 +196,11 @@ html, body {
     /* Make iframes fill their parent containers */
     iframe {
     width: 100%;
-    height: calc(100vh - 58px);
     border: none;
     padding: 0;
     margin: 0;
     overflow:auto;
+    height: 100%;
     }
 
 

@@ -1,0 +1,19 @@
+/* Ensure consistent font size across all elements */
+html, body, table, th, td, h1, h2, h3, h4, h5, h6, p, span, div {
+    font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+    color: #696969 !important;
+    line-height: 1.4 !important; /* Ensures readability */
+    text-size-adjust: 100% !important;
+    -webkit-text-size-adjust: 100% !important;
+    -moz-text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+}
+
+/* Prevent browsers from overriding text size */
+* {
+    max-height: 1000000px; /* Prevents text scaling issues on some mobile browsers */
+}
+#IDAB_tab2, #IDAB_tab3, #IDAB_tab4, #PageHeader {
+	display:none;
+}

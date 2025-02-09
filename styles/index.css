@@ -177,11 +177,17 @@ body.DocSearch--active {
   .title1 {
     font-size: 2.5em;
   }
+  .button-container{
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
 
 @media (max-width: 400px) {
   .button-container {
     grid-template-columns: repeat(2, 1fr); /* Two columns when width is small */
+    padding-left: 10%;
+    padding-right: 10%;
   }
   .title1 {
     font-size: 2em;

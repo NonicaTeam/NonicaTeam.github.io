@@ -1,7 +1,24 @@
 /* General styles */
+/* Ensure consistent font size across all elements */
+html, body, table, th, td, h1, h2, h3, h4, h5, h6, p, span, div {
+    font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+    color: #696969 !important;
+    line-height: 1.4 !important; /* Ensures readability */
+    text-size-adjust: 100% !important;
+    -webkit-text-size-adjust: 100% !important;
+    -moz-text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+}
+
+/* Prevent browsers from overriding text size */
+* {
+    max-height: 1000000px; /* Prevents text scaling issues on some mobile browsers */
+}
+
 body {
     font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 12px !important;
     color: #696969;
     padding: 10px;
     overflow-x: hidden;
@@ -10,7 +27,7 @@ body {
 
 h1 {
     font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
-    font-size: 28px;
+    font-size: 28px !important;
     font-weight: bold;
     margin-top: 30px;
     color: #696969;
@@ -23,17 +40,17 @@ h2, h3 {
     padding-bottom: 5px;
     padding-top: 5px;
     color: #696969;
-    font-size: 18px;
+    font-size: 18px !important;
 }
 
 h2 {
-    font-size: 18px;
+    font-size: 18px !important;
     color: #696969;
 }
 
 h3 {
     font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 12px !important;
     font-weight: normal;
     margin: 5px 0px 0px 0px;
     color: #696969;
@@ -41,7 +58,7 @@ h3 {
 
 h4 {
     font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 12px !important;
     font-weight: normal;
     margin: 5px 0px 0px 0px;
     color: #696969;
@@ -49,7 +66,7 @@ h4 {
 
 h5, h6 {
     font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 12px !important;
     font-weight: normal;
     margin: 5px 0px 0px 0px;
     color: #696969;
@@ -98,7 +115,7 @@ a, a:link, a:visited, a:active {
     color: #ffffff;          /* White text color */
     background-color: #808080; /* Gray background for the year links */
     padding: 10px 15px;       /* Add padding around the year links */
-    font-size: 12px;
+    font-size: 12px !important;
     font-weight: bold;
     margin: 0 10px;           /* Space between year links */
     display: inline-block;    /* Display them inline */
@@ -129,30 +146,30 @@ a, a:link {
     color: #5235ef;
 }
 
-    a:visited, a:active {
-        text-decoration: none;
-        color: #5235ef;
-    }
+a:visited, a:active {
+    text-decoration: none;
+    color: #5235ef;
+}
 
-    a:hover {
-        text-decoration: underline;
-        color: #3390b1;
-    }
+a:hover {
+    text-decoration: underline;
+    color: #3390b1;
+}
 
-    a.button, a.button:active, a.button:hover {
-        float: right;
-        background-color: #0080c0;
-        color: white;
-        padding: 6px 12px;
-        font-size: 14px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        margin-left: 6px;
-    }
+a.button, a.button:active, a.button:hover {
+    float: right;
+    background-color: #0080c0;
+    color: white;
+    padding: 6px 12px;
+    font-size: 14px !important;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-left: 6px;
+}
 
-        a.button:link, a.button:visited {
-            color: white;
-        }
+a.button:link, a.button:visited {
+    color: white;
+}
 
 img {
     border: 0;
@@ -163,6 +180,7 @@ p {
     margin-bottom: 0;
     padding-bottom: 15px;
     line-height: 18px;
+    font-size: 12px !important;
 }
 
 q {
@@ -173,64 +191,6 @@ blockquote {
     margin-top: 0px;
 }
 
-table {
-    border-collapse: collapse;
-    padding: 0;
-    margin-bottom: 15px;
-    font-size: 15px;
-    width: 100%;
-    border: 0px;
-    word-break: break-all; /* Breaks words at any character */
-    overflow-wrap: anywhere; /* Ensures words break where needed */
-    white-space: normal; /* Allows normal wrapping */
-}
-
-td, th {
-    border-bottom: 1px solid #dbdbdb;
-    margin: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 8px;
-    padding-left: 8px;
-    max-width: 100%;
-    word-break: break-all; /* Breaks words at any character */
-    overflow-wrap: anywhere; /* Ensures words break where needed */
-    white-space: normal; /* Allows normal wrapping */
-}
-
-th {
-    background-color: #ededed;
-    color: #636363;
-    text-align: left;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    max-width: 100%;
-    word-break: break-all; /* Breaks words at any character */
-    overflow-wrap: anywhere; /* Ensures words break where needed */
-    white-space: normal; /* Allows normal wrapping */
-}
-
-td {
-    color: #696969;
-    vertical-align: top;
-    font-size: 14px;
-    max-width: 100%;
-    word-break: break-all; /* Breaks words at any character */
-    overflow-wrap: anywhere; /* Ensures words break where needed */
-    white-space: normal; /* Allows normal wrapping */
-}
-
-table p:last-child {
-    padding-bottom: 0;
-}
-
-table.members td {
-    min-width: 72px;
-}
-
-table.members img {
-    padding-right: 5px;
-}
 
 div.alert img {
     padding-right: 5px;
@@ -241,13 +201,13 @@ ol {
     margin-bottom: 10px;
 }
 
-    ol ol {
-        list-style-type: lower-alpha;
-    }
+ol ol {
+    list-style-type: lower-alpha;
+}
 
-        ol ol ol {
-            list-style-type: lower-roman;
-        }
+ol ol ol {
+    list-style-type: lower-roman;
+}
 
 ul {
     margin-top: 0px;
@@ -277,16 +237,11 @@ pre {
 }
 
 .pageHeader {
-    background-color: #808080;  /* Gray background */
-    text-align: center;         /* Center the text */
-    padding: 0px 0;            /* Add padding to space it out a bit */
-    margin-left: calc(-1 * (100vw - 100%)/2);
-    margin-right: calc(-1 * (100vw - 100%)/2);
-    overflow-x: hidden;
     display: none;
 }
 
 .pageBody {
+    font-size: 12px !important;
     padding: 0px 0px 0px 0px;
     border: 0px;
 }
@@ -297,18 +252,20 @@ pre {
 }
 
 .pageFooter {
+    font-size: 12px !important;
     clear: both;
     padding: 10px;
     text-align: center;
 }
 
 .feedbackLink {
+  font-size: 12px !important;
   text-indent: -9999px;
   line-height: 0; /* Collapse the original line */
 }
 
 .feedbackLink::after {
-  font-size: 12px;
+  font-size: 12px !important;
   content: "Made with ❤️ by Nonica.io\A\A\A[ Revit® is a registered trademark of Autodesk, Inc. This website is not affiliated with or endorsed by Autodesk, Inc.]";
   text-indent: 0;
   display: block;
@@ -320,36 +277,6 @@ pre {
     width: 60px;
 }
 
-table.titleTable td {
-    padding-top: 0px;
-    border-width: 0px;
-}
-
-.titleTable {
-    top: -5;
-    background: white; /* Prevent content from overlapping */
-    z-index: 1000; /* Ensure it stays on top */
-    border-collapse: collapse; /* Keeps table styling consistent */
-    width: 100%; /* Ensures it spans the full width */
-}
-
-td.titleColumn {
-    margin-top: 0px;
-    padding-left: 0px;
-    vertical-align: middle;
-}
-
-td.logoColumn {
-    padding-left: 0px;
-    padding-right: 10px;
-    vertical-align: middle;
-    width: 1px;
-}
-
-td.logoColumnAbove {
-    padding: 0px 10px 0px 0px;
-    vertical-align: middle;
-}
 
 .missing {
     color: #dc143c;
@@ -362,13 +289,13 @@ td.logoColumnAbove {
 }
 
 div.preliminary {
-    margin-bottom: .5em;
+    margin-bottom: 5px;
     color: #333333;
 }
 
 div.caption {
     font-weight: bold;
-    font-size: 12px; /*12pt*/
+    font-size: 12px !important; /*12pt*/
     color: #003399;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -395,7 +322,7 @@ div.caption {
 .collapsibleRegionTitle {
     font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif !important;
     font-style: normal !important;
-    font-size: 18px;
+    font-size: 15px !important;
     margin-top: 9px;
     margin-bottom: 19px;
     padding-top: 20px;
@@ -406,6 +333,7 @@ div.caption {
 
 .collapsibleSection {
     padding: 0 0 0 20px;
+    font-size: 12px !important;
 }
 
 /* Syntax and code snippet styles */
@@ -428,7 +356,7 @@ div.caption {
     height: 22px;
     color: #ffffff;
     font-family: "Segoe UI", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif !important;
-    font-size: 12px;
+    font-size: 12px !important;
     font-style: normal !important;
     vertical-align: baseline;
     float: left;
@@ -441,7 +369,7 @@ div.caption {
     height: 22px;
     color: #696969;
     font-family: "Segoe UI", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif !important;
-    font-size: 12px;
+    font-size: 12px !important;
     font-style: normal !important;
     vertical-align: baseline;
     float: left;
@@ -454,7 +382,7 @@ div.caption {
     height: 22px;
      color: #696969;
     font-family: "Segoe UI", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif !important;
-    font-size: 12px;
+    font-size: 12px !important;
     font-style: normal !important;
     vertical-align: baseline;
     float: left;
@@ -468,7 +396,7 @@ div.caption {
     height: 20px;
      color: #696969;
     font-family: "Segoe UI", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif !important;
-    font-size: 12px;
+    font-size: 12px !important;
     font-weight: bold;
     font-style: normal !important;
     vertical-align: baseline;
@@ -497,7 +425,7 @@ div.caption {
     text-decoration: none;
     position: relative;
     cursor: default;
-    font-size: 15px;
+    font-size: 15px !important;
 }
 
     .codeSnippetContainerTabActive a:link {
@@ -549,7 +477,7 @@ div.caption {
         text-decoration: none;
         padding-right: 8px;
         font-family: "Segoe UI", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif !important;
-        font-size: 10px;
+        font-size: 10px !important;
         font-style: normal !important;
         text-decoration: none;
         margin-right: 10px;
@@ -595,6 +523,7 @@ span.code, span.command {
     font-family: Consolas, Courier, monospace;
     color: #000066;
     background-color: #f4f4f4;
+    font-size: 12px !important;
 }
 
 span.selflink {
@@ -663,46 +592,11 @@ span.noLink {
     font-weight: bold;
 }
 
-/* Media  styles */
-div.mediaNear {
-    text-align: left;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-div.mediaFar {
-    text-align: right;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-div.mediaCenter {
-    text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-span.captionLead {
-    font-weight: bold;
-    margin-right: .5em;
-}
-
-span.media img {
-    vertical-align: top;
-}
-
-span.mediaInline {
-    padding-left: .25em;
-    padding-right: .25em;
-    vertical-align: top;
-}
 
 /* Glossary styles */
 h3.glossaryGroupHeading {
     color: #808080;
 }
-
-
 
 dl.glossaryGroupList {
     margin: 0;
@@ -710,12 +604,12 @@ dl.glossaryGroupList {
 }
 
 dt.glossaryEntry {
-    margin-left: 2em;
+    margin-left: 5px;
 }
 
 dd.glossaryEntry {
-    margin-left: 2em;
-    margin-bottom: 2em;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
 
 div.relatedEntry {
@@ -737,23 +631,26 @@ sup.citation a:link a:visited a:active {
     text-decoration: none;
 }
 
-/* Placeholder for the Help 1 user data style class */
 #IDAB_tab1 {
     pointer-events: none; /* Disables clicking on the div and its contents */
 }
+
+/* Placeholder for the Help 1 user data style class */
+
 
 #IDAB_tab1 a {
     pointer-events: none; /* Disables clicking on the anchor (link) inside the div */
     cursor: default; /* Changes cursor to default to indicate it's not clickable */
 }
 
-#IDAB_tab2 {
+#IDAB_tab2, #IDAB_tab3, #IDAB_tab4 {
     display: none; /* Hides the element and removes it from the layout */
 }
-#IDAB_tab3 {
+#IDACC_tab2, #IDACC_tab3, #IDACC_tab4 {
     display: none; /* Hides the element and removes it from the layout */
 }
-#IDAB_tab4 {
+
+#IDABC_tab2, #IDABC_tab3, #IDABC_tab4, #IDADC_tab2 {
     display: none; /* Hides the element and removes it from the layout */
 }
 
@@ -766,6 +663,107 @@ sup.citation a:link a:visited a:active {
     margin-left: calc(-1 * (100vw - 100%)/2);
     margin-right: calc(-1 * (100vw - 100%)/2);
     overflow-x: hidden;
-    font-size: 15px;
+    font-size: 15px !important;
 }
   
+#IDBDASection, #IDBSection, #enumMemberList {
+    font-size: 12px !important; /* Disables clicking on the div and its contents */
+}
+
+table {
+    border-collapse: collapse;
+    padding: 0;
+    margin-bottom: 15px;
+    font-size: 12px !important;
+    width: 100%;
+    border: 0px;
+    word-break: break-all; /* Breaks words at any character */
+    overflow-wrap: anywhere; /* Ensures words break where needed */
+    white-space: normal; /* Allows normal wrapping */
+}
+
+th {
+    background-color: #ededed;
+    color: #636363;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    max-width: 100%;
+    word-break: break-all; /* Breaks words at any character */
+    overflow-wrap: anywhere; /* Ensures words break where needed */
+    white-space: normal; /* Allows normal wrapping */
+    font-size: 12px !important;
+    border-bottom: 1px solid #dbdbdb;
+    margin: 10px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+td {
+    color: #696969;
+    vertical-align: top;
+    font-size: 12px !important;
+    max-width: 100%;
+    word-break: break-all; /* Breaks words at any character */
+    overflow-wrap: anywhere; /* Ensures words break where needed */
+    white-space: normal; /* Allows normal wrapping */
+    font-size: 12px !important;
+    border-bottom: 1px solid #dbdbdb;
+    margin: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+table p:last-child {
+    padding-bottom: 0;
+    font-size: 12px !important;
+}
+
+table.members td, table.members tr, table.members th {
+    min-width: 85px;
+    font-size: 12px !important;
+}
+
+table.members img {
+    padding-right: 5px;
+    font-size: 12px !important;
+}
+
+
+table.titleTable td {
+    padding-top: 0px;
+    border-width: 0px;
+}
+
+.titleTable {
+    top: -5;
+    background: white; /* Prevent content from overlapping */
+    z-index: 1000; /* Ensure it stays on top */
+    border-collapse: collapse; /* Keeps table styling consistent */
+    width: 100%; /* Ensures it spans the full width */
+    font-size: 12px !important;
+}
+
+td.titleColumn {
+    margin-top: 0px;
+    padding-left: 0px;
+    vertical-align: middle;
+}
+
+td.logoColumn {
+    padding-left: 0px;
+    padding-right: 10px;
+    vertical-align: middle;
+    width: 1px;
+}
+
+td.logoColumnAbove {
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle;
+}
+
+* {
+    font-size: 12px !important; /* 1rem = 16px */
+}

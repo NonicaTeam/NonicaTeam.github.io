@@ -1,4 +1,21 @@
-﻿/* Defines the userData cache persistence mechanism. */
+﻿/* Ensure consistent font size across all elements */
+html, body, table, th, td, h1, h2, h3, h4, h5, h6, p, span, div {
+    font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+    color: #696969 !important;
+    line-height: 1.4 !important; /* Ensures readability */
+    text-size-adjust: 100% !important;
+    -webkit-text-size-adjust: 100% !important;
+    -moz-text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+}
+
+/* Prevent browsers from overriding text size */
+* {
+    max-height: 1000000px; /* Prevents text scaling issues on some mobile browsers */
+}
+
+/* Defines the userData cache persistence mechanism. */
 .userDataStyle
 {
 	behavior: url(#default#userData);
@@ -25,21 +42,10 @@ img#toggleAllImage
 	vertical-align: middle;
 }
 
-/* Supports XLinks */
-MSHelp\:link
-{
- 	text-decoration: underline;
-	color: #0000ff; 
-	hoverColor: #3366ff;
-}
-
 
 /***********************************************************
  *             CONTENT PRESENTATION STYLES
  ***********************************************************/
-*{
-    
-}
 
 /* Body styles */
 body {
@@ -184,11 +190,8 @@ span.selflink {
     font-style: italic;
 }
 
-span.nolink {
-	font-weight: bold; 
-color: #9281ed;
-        font-weight: bold;
-   
+span.noLink {
+    font-weight: bold;
 }
 
 /***********************************************************
@@ -1341,17 +1344,6 @@ sup.citation a:link a:visited a:active
   text-decoration: none;
 }
 
-/* autoOutline styles */
-li.outlineSectionEntry
-{
-}
-
-div.outlineSectionEntrySummary
-{
-}
-
-.summary {
-}
 
 /* table styles */
 
@@ -1360,7 +1352,7 @@ table p:last-child {
 }
 
 table.members td {
-    min-width: 72px;
+    min-width: 20%;
 }
 
 .pageBody {
@@ -1387,15 +1379,15 @@ table td {
 
 
 table.members th.iconColumn {
-    width: 60px;
+    width: 10%;
 }
 
 table.members th.valueColumn {
-	width: 10%;
+	width: 15%;
 }
 
 table.members th.nameColumn {
-	width: 30%;
+	width: 35%;
 }
 
 table.members th.descriptionColumn {
