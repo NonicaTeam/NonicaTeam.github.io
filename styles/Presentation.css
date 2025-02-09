@@ -2,7 +2,6 @@
 html, body, table, th, td, h1, h2, h3, h4, h5, h6, p, span, div {
     font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif !important;
     font-size: 12px !important;
-    color: #696969 !important;
     line-height: 1.4 !important; /* Ensures readability */
     text-size-adjust: 100% !important;
     -webkit-text-size-adjust: 100% !important;
@@ -24,7 +23,6 @@ html, body, table, th, td, h1, h2, h3, h4, h5, h6, p, span, div {
 /* Used to save the scroll bar position when navigating away from a page. */
 div.saveHistory
 {
-
 	behavior: url(#default#savehistory);
 }
 
@@ -434,9 +432,7 @@ div.code table td
    non-scrolling header region. */
 span#runningHeaderText
 {
-	color: #8C8C8C;
-	font-size: 90%;
-        display: none;
+    display: none;
 }
 
 /* Applies to the topic title in the second row of the upper table in the
@@ -444,7 +440,7 @@ span#runningHeaderText
 span#nsrTitle
 {
     font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
-    font-size: 28px;
+    font-size: 28px !important;
     font-weight: bold;
     margin-top: 30px;
     color: #696969;
@@ -462,59 +458,6 @@ span#nsrTitle
   line-height: 0; /* Collapse the original line */
 }
 
-.div#footer::after {
-  content: "Made with ❤️ by Nonica.io";
-  text-indent: 0;
-  display: block;
-  line-height: initial; /* New content takes up original line height */
-}
-.html>body div#footer {
-  text-indent: -9999px;
-  line-height: 0; /* Collapse the original line */
-}
-
-.html>body div#footer::after {
-  content: "Made with ❤️ by Nonica.io";
-  text-indent: 0;
-  display: block;
-  line-height: initial; /* New content takes up original line height */
-}
-
-
-
-/* Unable to find this style in the transforms. The default footer SSC adds a plain horizontal rule.
-   TODO: Determine whether this style is required by the doc spec. */
-/*
-hr#footerHR
-{
-	border-bottom-color: #EEEEFF;
-	border-bottom-style: solid;
-	border-bottom-width: 1;
-	border-top-color: C8CDDE;
-	border-top-style: solid;
-	border-top-width: 1;
-	height: 3;
-	color: #D4DFFF;
-}
-*/
-
-/********************************************************************************************************************
-	Collapsible Section Structure
-
-	<h1 class="heading">							// Format of the collapsible section text
-		<span onclick="ExpandCollapse(xxxToggle)">	// Defines the onclick procedure for the expand/collapse section
-			<img id="xxxToggle">					// Expand/collapse image
-			</img>
-		</span>
-	</h1>
-
-	<div id="xxxSection" class="section">			// The body of the collapsible section; hidden by default
-	</div>
-
-
-	The ExpandCollapse() function is responsible for toggling the expand/collapse image, and for
-	displaying/hiding the body of the collapsible section.
-********************************************************************************************************************/
 
 /* Applies to the body of a collapsible section */
 div.seeAlsoNoToggleSection
@@ -559,38 +502,11 @@ div.seeSection
 /*------------------------------ Begin Heading Styles -------------------------------*/
 /* As far as I can tell, only <h1> tags use this class.
    TODO: Decide whether to roll these attributes into the h1.heading style */
-.heading
-{
-    font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif !important;
-    font-style: normal !important;
-    font-size: 18px;
-    margin-top: 9px;
-    margin-bottom: 19px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    text-align: left;
-    cursor: pointer;
-    color: #696969;
-}
-
-/* All <h1> headings. */
-h1.heading
-{
-    font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif !important;
-    font-style: normal !important;
-    font-size: 18px;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    cursor: pointer;
-    color: #696969;
-}
 
 /* Applies to table titles and subsection titles. */
 .subHeading
 {
-	font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+
     font-size: 12px;
     font-weight: normal;
     margin: 5px 0px 0px 0px;
@@ -598,7 +514,7 @@ h1.heading
 }
 .procedureSubHeading
 {
-	font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+
     font-size: 12px;
     font-weight: normal;
     margin: 5px 0px 0px 0px;
@@ -608,7 +524,7 @@ h1.heading
 /* Formats the titles of author-generated tables. */
 h3.subHeading
 {
-    font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+
     font-size: 12px;
     font-weight: normal;
     margin: 5px 0px 0px 0px;
@@ -617,7 +533,7 @@ h3.subHeading
 
 h3.procedureSubHeading
 {
-    font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+
     font-size: 12px;
     font-weight: normal;
     margin: 5px 0px 0px 0px;
@@ -627,7 +543,7 @@ h3.procedureSubHeading
 /* Formats the titles of all subsections. */
 h4.subHeading
 {
-    font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+
     font-size: 12px;
     font-weight: normal;
     margin: 5px 0px 0px 0px;
@@ -1022,20 +938,20 @@ span.label
 {
 	font-weight: bold;
 }
+
 q
 {
 	font-style: italic;
 }
+
 span.foreignPhrase, span.phrase {
 	font-style: italic;
 }
+
 span.placeholder {
 	font-style: italic;
 }
-span.keyword
-{
-/*	font-weight: bold;*/
-}
+
 span.typeparameter
 {
 	font-style:italic;
@@ -1089,14 +1005,14 @@ div.code span.identifier
 div.code span.keyword 
 {
 	color: #9281ed;
-        font-weight: bold;
+    font-weight: bold;
 }
 
 div.code span.parameter 
 {
 	font-style: italic;
-        color: #696969;
-	/*color: purple;*/
+    color: #696969;
+
 }
 
 div.code span.literal 
@@ -1221,16 +1137,10 @@ input#submitFeedback
 {
     font-size:100%; 
     text-align:center;
-    /*background-color:#D4DFFF; */
 }
  
 span#feedbackarea 
 {
-/*	
-	background-color: #D4DFFF;
-	color: #003399;
-   	border-color:#C8CDDE;
-*/
 	width:100%;
 }
 div#feedbackarea
@@ -1321,9 +1231,6 @@ div.bibliographStyle
   padding-top:5px; 
 }
 
-span.bibliographyNumber
-{
-}
 
 span.bibliographyAuthor
 {
@@ -1335,9 +1242,6 @@ span.bibliographyTitle
   font-style: italic;
 }
 
-span.bibliographyPublisher
-{
-}
 
 sup.citation a:link a:visited a:active
 {
@@ -1390,9 +1294,6 @@ table.members th.nameColumn {
 	width: 35%;
 }
 
-table.members th.descriptionColumn {
-/*	No fixed width, use whatever is left over */
-}
 
 #footer p {
     display: none; /* Completely removes the original text */
@@ -1472,3 +1373,50 @@ html, body {
     overflow-x: hidden;
     font-size: 15px;
 }
+.heading img {
+    width: 16px; /* Adjust icon size */
+    height: 16px;
+}
+
+
+/* Ensure the <h1> element uses the specified font size */
+h1.heading {
+    font-size: 16px !important;
+    margin: 0;
+    margin-top: 9px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+}
+
+/* Force all child elements to inherit the h1 font-size */
+h1.heading * {
+    font-size: inherit !important;
+}
+
+/* .heading
+{
+    font-style: normal !important;
+    font-size: 20px !important;
+    margin-top: 9px;
+    margin-bottom: 19px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    cursor: pointer;
+    color: #696969;
+} */
+
+/* All <h1> headings. */
+/* h1.heading
+{
+    font-style: normal !important;
+    font-size: 15px !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    cursor: pointer;
+    color: #696969;
+} */

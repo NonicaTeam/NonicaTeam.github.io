@@ -3,7 +3,6 @@
 html, body, table, th, td, h1, h2, h3, h4, h5, h6, p, span, div {
     font-family: 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif !important;
     font-size: 12px !important;
-    color: #696969 !important;
     line-height: 1.4 !important; /* Ensures readability */
     text-size-adjust: 100% !important;
     -webkit-text-size-adjust: 100% !important;
@@ -247,7 +246,7 @@ pre {
 }
 
 .topicContent {
-    padding: 10px 10px 15px 10px;
+    padding: 15px 15px 15px 10px;
     overflow: visible;
 }
 
@@ -274,7 +273,7 @@ pre {
 }
 
 .iconColumn {
-    width: 60px;
+    width: 10%;
 }
 
 
@@ -320,9 +319,8 @@ div.caption {
 }
 
 .collapsibleRegionTitle {
-    font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif !important;
-    font-style: normal !important;
-    font-size: 15px !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
     margin-top: 9px;
     margin-bottom: 19px;
     padding-top: 20px;
@@ -340,6 +338,8 @@ div.caption {
 .codeSnippetContainer {
     min-width: 260px;
     margin-top: 10px;
+    pointer-events: none;
+     cursor: not-allowed;
 }
 
 .codeSnippetContainerTabs {
@@ -348,6 +348,8 @@ div.caption {
     position: relative;
     z-index: 1;
      color: #696969;
+     
+
 }
 
 .codeSnippetContainerTab {
@@ -722,7 +724,6 @@ table p:last-child {
 }
 
 table.members td, table.members tr, table.members th {
-    min-width: 85px;
     font-size: 12px !important;
 }
 
