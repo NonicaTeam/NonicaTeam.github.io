@@ -272,9 +272,7 @@ pre {
   white-space: pre-line;
 }
 
-.iconColumn {
-    width: 10%;
-}
+
 
 
 .missing {
@@ -716,6 +714,7 @@ td {
     padding-bottom: 10px;
     padding-right: 8px;
     padding-left: 8px;
+    max-width:500px;
 }
 
 table p:last-child {
@@ -767,4 +766,7 @@ td.logoColumnAbove {
 
 * {
     font-size: 12px !important; /* 1rem = 16px */
+}
+.iconColumn *{
+    width: 10%;
 }

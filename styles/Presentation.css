@@ -743,26 +743,7 @@ div.code pre
 	font-size: 125%
 }
 
-/* The sourceCodeList class doesn't appear in the transforms.
-   TODO: Find out whether this style is needed for the doc spec. */
-/*
-.sourceCodeList
-{
-	font-family: Verdana;
-	font-size: 90%;	
-}
-*/
 
-/* The viewCode class doesn't appear in the transforms.
-   TODO: Find out whether this style is needed for the doc spec. */
-/*
-pre.viewCode
-{
-
-	overflow: auto;
- color: #696969;
-}
-*/
 
 /* Dropdown areas */
 
@@ -1198,10 +1179,6 @@ h3.glossaryGroupHeading
   margin: 5px 0 5px 0;
 }
 
-div.glossaryGroup
-{
-}
-
 dl.glossaryGroupList
 {
   margin: 0;
@@ -1255,9 +1232,9 @@ table p:last-child {
     padding-bottom: 0;
 }
 
-table.members td {
+/* table.members td {
     min-width: 20%;
-}
+} */
 
 .pageBody {
     padding: 0px 20px 0px 0px;
@@ -1282,16 +1259,20 @@ table td {
 }
 
 
-table.members th.iconColumn {
-    width: 10%;
+th.iconColumn {
+    min-width: 5% !important;
 }
 
-table.members th.valueColumn {
-	width: 15%;
+th.valueColumn {
+	width: 25% !important;
 }
 
-table.members th.nameColumn {
-	width: 35%;
+th.nameColumn {
+    width: 25% !important;
+}
+
+th.descriptionColumn {
+    width: 70% !important;
 }
 
 
