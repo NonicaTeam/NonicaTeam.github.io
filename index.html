@@ -55,25 +55,30 @@ docsearch({
     container: "#algoliaBar",
 
     debug: false,
-    
     transformItems(items) {
         return items.map((item) => {
-        const yearContent = item._highlightResult.year.value;
-        let treeBreakdown = item._highlightResult.tree_breakdown.value;
-        // Replace "Autodesk.Revit" in treeBreakdown
-        treeBreakdown = treeBreakdown.replace(/Autodesk\.Revit\./g, "").trim();
-        // Append treeBreakdown only if it's not empty after replacement
-        const newContent = treeBreakdown !== "" 
-            ? `${yearContent} | ${treeBreakdown}` 
-            : yearContent;
-        return {
-            ...item,
-            content: newContent,
-        };
+            const yearContent = item._highlightResult.year.value;
+
+            if (!item._highlightResult || !item._highlightResult.tree_breakdown) {
+                return { ...item, content: yearContent }; // Return empty content if missing properties
+            }
+
+            let treeBreakdown = item._highlightResult.tree_breakdown.value;
+
+            treeBreakdown = treeBreakdown.replace(/Autodesk\.Revit\./g, "").trim();
+
+            const newContent = treeBreakdown !== "" 
+                ? `${yearContent} | ${treeBreakdown}` 
+                : yearContent;
+
+            return {
+                ...item,
+                content: newContent,
+            };
         });
     },
     maxResultsPerGroup: 20,
-
+    initialQuery: "2025 ",
 });
 
 </script>
