@@ -158849,7 +158849,10 @@ function loadHtmlIntoRightFrame(filePath) {
             checkbox: false,  // Enable checkboxes if needed
             selectMode: 1,   // Single selection mode
             activate: function(event, data) {
-                if(firstLoading === false){
+                var urlParams = new URLSearchParams(window.location.search);
+                var nodeKey = urlParams.get('id');
+                if(firstLoading === false || nodeKey === null || nodeKey === "WhatsNew.htm")
+                {
                     var node = data.node;
                     node.setExpanded(true);
                     if (node.data && node.data.href) {

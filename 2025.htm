@@ -152546,7 +152546,10 @@ function loadHtmlIntoRightFrame(filePath) {
             checkbox: false,  // Enable checkboxes if needed
             selectMode: 1,   // Single selection mode
             activate: function(event, data) {
-                if(firstLoading === false){
+                var urlParams = new URLSearchParams(window.location.search);
+                var nodeKey = urlParams.get('id');
+                if(firstLoading === false || nodeKey === null || nodeKey === "WhatsNew.htm")
+                {
                     var node = data.node;
                     node.setExpanded(true);
                     if (node.data && node.data.href) {
@@ -152559,14 +152562,14 @@ function loadHtmlIntoRightFrame(filePath) {
                 updateUrlWithRightFrame(RightFile.replace('/', ''));
             },
             init: function(event, data) {
-            //FancyTree is fully initialized here.
-            var urlParams = new URLSearchParams(window.location.search);
-            var nodeKey = urlParams.get('id');
-            if (nodeKey) {
-                // Call the function to find the node using the extracted values
-                findNodeByUrl(nodeKey);
-                AssignLinksToButtons(nodeKey)
-            }
+                //FancyTree is fully initialized here.
+                var urlParams = new URLSearchParams(window.location.search);
+                var nodeKey = urlParams.get('id');
+                if (nodeKey) {
+                    // Call the function to find the node using the extracted values
+                    findNodeByUrl(nodeKey);
+                    AssignLinksToButtons(nodeKey)
+                }
         }
         });
     });
