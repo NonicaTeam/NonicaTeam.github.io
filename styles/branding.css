@@ -333,8 +333,8 @@ div.caption {
 .codeSnippetContainer {
     min-width: 260px;
     margin-top: 10px;
-    pointer-events: none;
-     cursor: not-allowed;
+    /* pointer-events: none; */
+    /* cursor: not-allowed; */
 }
 
 .codeSnippetContainerTabs {
@@ -343,8 +343,6 @@ div.caption {
     position: relative;
     z-index: 1;
      color: #696969;
-     
-
 }
 
 .codeSnippetContainerTab {
@@ -490,6 +488,7 @@ div.caption {
     margin: 0px;
     padding: 12px;
     width: auto;
+    overflow-x: auto !important;
 }
 
     .codeSnippetContainerCode div {
@@ -635,20 +634,23 @@ sup.citation a:link a:visited a:active {
 /* Placeholder for the Help 1 user data style class */
 
 
-#IDAB_tab1 a {
+#IDAB_tab1, #IDADC_tab1 a {
     pointer-events: none; /* Disables clicking on the anchor (link) inside the div */
     cursor: default; /* Changes cursor to default to indicate it's not clickable */
 }
 
 #IDAB_tab2, #IDAB_tab3, #IDAB_tab4 {
     display: none; /* Hides the element and removes it from the layout */
+    pointer-events: none;
 }
 #IDACC_tab2, #IDACC_tab3, #IDACC_tab4 {
     display: none; /* Hides the element and removes it from the layout */
+    pointer-events: none;
 }
 
 #IDABC_tab2, #IDABC_tab3, #IDABC_tab4, #IDADC_tab2 {
     display: none; /* Hides the element and removes it from the layout */
+    pointer-events: none;
 }
 
 #search-container {
