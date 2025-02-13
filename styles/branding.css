@@ -621,8 +621,6 @@ span.bibliographyTitle {
     font-style: italic;
 }
 
-
-
 sup.citation a:link a:visited a:active {
     text-decoration: none;
 }
@@ -676,8 +674,8 @@ table {
     font-size: 12px !important;
     width: 100%;
     border: 0px;
-    word-break: break-all; /* Breaks words at any character */
-    overflow-wrap: anywhere; /* Ensures words break where needed */
+    /*word-break: break-all; /* Breaks words at any character */
+    /*overflow-wrap: anywhere;  Ensures words break where needed */
     white-space: normal; /* Allows normal wrapping */
 }
 
@@ -688,8 +686,8 @@ th {
     padding-top: 5px;
     padding-bottom: 5px;
     max-width: 100%;
-    word-break: break-all; /* Breaks words at any character */
-    overflow-wrap: anywhere; /* Ensures words break where needed */
+    /*word-break: break-all; /* Breaks words at any character */
+    /*overflow-wrap: anywhere; /* Ensures words break where needed */
     white-space: normal; /* Allows normal wrapping */
     font-size: 12px !important;
     border-bottom: 1px solid #dbdbdb;
@@ -703,8 +701,8 @@ td {
     vertical-align: top;
     font-size: 12px !important;
     max-width: 100%;
-    word-break: break-all; /* Breaks words at any character */
-    overflow-wrap: anywhere; /* Ensures words break where needed */
+    /*word-break: break-all; /* Breaks words at any character */
+    /*overflow-wrap: anywhere; /* Ensures words break where needed */
     white-space: normal; /* Allows normal wrapping */
     font-size: 12px !important;
     border-bottom: 1px solid #dbdbdb;
@@ -723,6 +721,7 @@ table p:last-child {
 
 table.members td, table.members tr, table.members th {
     font-size: 12px !important;
+    min-width: 100px;
 }
 
 table.members img {
@@ -767,5 +766,9 @@ td.logoColumnAbove {
     font-size: 12px !important; /* 1rem = 16px */
 }
 .iconColumn *{
-    width: 10%;
+    width: 5%;
+}
+th.iconColumn {
+    width: 20px !important;
+    max-width: 20px !important;
 }
