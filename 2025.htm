@@ -120,11 +120,9 @@ function findNodeByUrl(url) {
             Promise.resolve().then(() => {
                 var activeNode = tree.getActiveNode();
                 // Check if the currently active node is already the desired node
-                console.log("1")
                 if (activeNode && activeNode.data.href === full_url) {
                     return; 
                 }
-                console.log("2")
                 // Find the node only if it's not already selected
                 var node = tree.findFirst(n => n.data.href === full_url);
                 if (node) {
@@ -132,12 +130,13 @@ function findNodeByUrl(url) {
                         let parent = node.parent;
                         while (parent && !parent.isTopLevel()) {
                             if (!parent.expanded) {
-                            parent.setExpanded(true);
+                            parent.setExpanded(true, { noEvents: true });
                             }
                             parent = parent.parent;
                         }
                         node.setActive({ noEvents: true });
                         node.setFocus({ noEvents: true });
+                        node.setExpanded(true, { noEvents: true });
                     });
                 }
             }); 
@@ -256,6 +255,8 @@ const checkFileExists = async (url) => {
         return false; // Return false if there is an error
     }
 };
+
+var firstLoading = true;
 
 function loadHtmlIntoRightFrame(filePath) {
   var iframe = window.parent.document.getElementById("rightFrame");
@@ -152545,11 +152546,14 @@ function loadHtmlIntoRightFrame(filePath) {
             checkbox: false,  // Enable checkboxes if needed
             selectMode: 1,   // Single selection mode
             activate: function(event, data) {
-              var node = data.node;
-              node.setExpanded(true);
-              if (node.data && node.data.href) {
-                loadHtmlIntoRightFrame(node.data.href);
-              }
+                if(firstLoading === false){
+                    var node = data.node;
+                    node.setExpanded(true);
+                    if (node.data && node.data.href) {
+                            loadHtmlIntoRightFrame(node.data.href);
+                    }
+                }
+                firstLoading = false
             },
             load: function(event, data) {
                 updateUrlWithRightFrame(RightFile.replace('/', ''));
