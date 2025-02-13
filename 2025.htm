@@ -221,6 +221,7 @@ function AssignLinksToButtons(cleanURL)
     buttons.forEach(function(button) {
         // Get the text of the button, which should be the year
         const year = button.textContent;
+        let finalurl = year + "/" + cleanURL;
         //Set wrapper
         var linkWrap = button.closest('a');
         if (linkWrap) {
@@ -231,7 +232,6 @@ function AssignLinksToButtons(cleanURL)
             return;
         }
         //Set button redirection
-        let finalurl = year + "/" + cleanURL;
         button.addEventListener('click', function() {
             window.location.href = finalurl
         });

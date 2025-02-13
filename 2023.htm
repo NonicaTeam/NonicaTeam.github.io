@@ -156,12 +156,12 @@ function findNodeByUrl(url) {
        <h1 style="display: none;">Revit API 2023 Documentation Online</h1>
        <h2>Rev API Docs</h2> 
     <div class="button-container" >
-        <button class="standard-button" >2020</button>
-        <button class="standard-button" >2021</button>
-        <button class="standard-button" >2022</button>
-        <button class="selected-button" >2023</button>
-        <button class="standard-button" >2024</button>
-        <button class="standard-button" >2025</button>
+        <a style="color: white;text-decoration: none;"><button class="standard-button">2020</button></a>
+        <a style="color: white;text-decoration: none;"><button class="standard-button">2021</button></a>
+        <a style="color: white;text-decoration: none;"><button class="standard-button">2022</button></a>
+        <a style="color: white;text-decoration: none;"><button class="standard-button">2023</button></a>
+        <a style="color: white;text-decoration: none;"><button class="standard-button">2024</button></a>
+        <a style="color: white;text-decoration: none;"><button class="selected-button">2025</button></a>
     </div>
     <div id="containerBar">
         <div id="algoliaBar"></div>
@@ -218,16 +218,23 @@ function AssignLinksToButtons(cleanURL)
     const container = document.querySelector('.button-container');
     const buttons = container.querySelectorAll('button');
     buttons.forEach(function(button) {
-        // Get the text of the button, which should be the year
-        const year = button.textContent;
+         // Get the text of the button, which should be the year
+         const year = button.textContent;
+        let finalurl = year + "/" + cleanURL;
+        //Set wrapper
+        var linkWrap = button.closest('a');
+        if (linkWrap) {
+            linkWrap.setAttribute('href', finalurl);
+        }
         if(year === window.year)
         {
             return;
         }
-        let finalurl = year + "/" + cleanURL;
+        //Set button redirection
         button.addEventListener('click', function() {
             window.location.href = finalurl
-        }); 
+        });
+        //Check if that year file exists
         try {
             fetchData(finalurl, button)  
         } catch (error) {}
