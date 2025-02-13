@@ -120,9 +120,11 @@ function findNodeByUrl(url) {
             Promise.resolve().then(() => {
                 var activeNode = tree.getActiveNode();
                 // Check if the currently active node is already the desired node
+                console.log("1")
                 if (activeNode && activeNode.data.href === full_url) {
                     return; 
                 }
+                console.log("2")
                 // Find the node only if it's not already selected
                 var node = tree.findFirst(n => n.data.href === full_url);
                 if (node) {
@@ -152574,8 +152576,6 @@ if (mySessionStorage) {
     mySessionStorage.setItem("hw_topPath", GetThisFName());
     mySessionStorage.setItem("hw_rightPath", "");           
 }
-
-// updateUrlWithRightFrame(RightFile.replace('/', ''));
 
 topSpacerDiv.style.height = "5px";
 topSpacerDiv.style.backgroundColor = "#ffffff";
