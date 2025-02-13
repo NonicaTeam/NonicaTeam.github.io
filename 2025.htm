@@ -117,7 +117,7 @@ function findNodeByUrl(url) {
         var full_url = window.year + "/" + url;
         var tree = $.ui.fancytree.getTree("#tree");
         if (tree) {
-            setTimeout(() => {
+            Promise.resolve().then(() => {
                 var activeNode = tree.getActiveNode();
                 // Check if the currently active node is already the desired node
                 if (activeNode && activeNode.data.href === full_url) {
@@ -138,7 +138,7 @@ function findNodeByUrl(url) {
                         node.setFocus({ noEvents: true });
                     });
                 }
-            }, 0); 
+            }); 
         }
     } catch (error) {  }
 }
