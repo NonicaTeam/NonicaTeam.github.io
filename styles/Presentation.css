@@ -169,11 +169,12 @@ div#header a, div#mainSectionMHS a {
     text-decoration: underline;
 }    
 
-code
+.code
 {
     font-family: Consolas, "Courier New", Courier, monospace;
 	font-size: 105%;
 	color:	#696969;
+	text-align: left !important;
 }
 
 span.parameter {
