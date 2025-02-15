@@ -3,10 +3,12 @@ html, body {
     height: 100%;
     margin: 0;
     }
+
     a {
-        text-decoration: none; /* Remove underline */
-        color: white; /* Default link color */
+        text-decoration: none !important; /* Remove underline */
+        color: white !important; /* Default link color */
     }
+    
     /* Webkit-based browsers (Chrome, Safari, Edge Chromium, Opera) */
     ::-webkit-scrollbar {
     width: 10px;  /* Adjust width */
