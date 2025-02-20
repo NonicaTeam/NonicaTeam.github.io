@@ -4,7 +4,3 @@ Allow: /*.js$
 Allow: /*.css$
 Allow: /scripts/
 Allow: /styles/
-
-# Disallow access to sensitive or admin directories
-Disallow: /admin/
-Disallow: /private/
