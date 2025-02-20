@@ -1,4 +1,10 @@
 User-agent: *
-Allow: /.js
-Allow: /.css
-Allow: /api/
+# Allow access to JavaScript and CSS files for proper rendering
+Allow: /*.js$
+Allow: /*.css$
+Allow: /scripts/
+Allow: /styles/
+
+# Disallow access to sensitive or admin directories
+Disallow: /admin/
+Disallow: /private/
