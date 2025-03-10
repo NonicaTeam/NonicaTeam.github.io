@@ -24,7 +24,7 @@ var sectionStatesInitialized = false;
 
   document.addEventListener("DOMContentLoaded", function () {
     // Select the correct element
-    const feedbackElement = document.getElementById("PageFooter");
+    const feedbackElement = document.getElementById("fb");
 
     if (feedbackElement) {
         feedbackElement.style.display = "block"; // Ensure it's visible
