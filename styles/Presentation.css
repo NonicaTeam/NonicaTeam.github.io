@@ -1056,19 +1056,22 @@ DIV.clsTooltip {border: 1px solid black; padding: 2px; position: absolute; top: 
 display: none;
 user-select: none;
 }
-  
-.feedbackcss::after {
+
+.feedbackContent {
 	font-size: 12px;
 	color: #696969;
-	content: "\AMade with ❤️ by Nonica.io\A\A\A[ Revit® is a registered trademark of Autodesk, Inc. This website is not affiliated with or endorsed by Autodesk, Inc.]";
-	text-indent: 0;
+    text-indent: 0;
 	display: block;
 	line-height: initial; /* New content takes up original line height */
 	text-align:center;
 	padding: 10px;
 	white-space: pre-line;
-  }
+}
 
+.inline-links {
+    display: inline-block; /* Ensures links stay on the same line */
+    white-space: nowrap;   /* Prevents wrapping to a new line */
+}
 
 div#feedbackarea table
 {
