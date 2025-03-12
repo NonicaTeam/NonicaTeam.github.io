@@ -72,4 +72,33 @@ function SectionExpandCollapse_CheckKey(togglePrefix, eventArgs)
         SectionExpandCollapse(togglePrefix);
 }
 // Set the default language on the page
-function SetDefaultLanguage(defaultLanguage) { }
+function SetDefaultLanguage(defaultLanguage) 
+{ 
+  // Select all spans with the "data-languagespecifictext" attribute
+  const spans = document.querySelectorAll('span[data-languagespecifictext]');
+
+  spans.forEach(span => {
+    // Get the attribute value, e.g., "cpp=::|nu=."
+    const attrValue = span.getAttribute('data-languagespecifictext');
+
+    // Split the string into language-specific parts
+    const parts = attrValue.split('|');
+    let mapping = {};
+
+    // Create a mapping of language keys to their corresponding values
+    parts.forEach(part => {
+      const [lang, text] = part.split('=');
+      if (lang && text !== undefined) {
+        mapping[lang.trim()] = text.trim();
+      }
+    });
+
+    // If the mapping for the requested language exists, update the span text
+    if (mapping[defaultLanguage]) {
+      span.textContent = mapping[defaultLanguage];
+    }
+    else{
+      span.textContent = mapping["nu"];
+    }
+  });
+}

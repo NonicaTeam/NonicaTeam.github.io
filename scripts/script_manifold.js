@@ -23,7 +23,8 @@ var sectionStatesInitialized = false;
   })();
 
   document.addEventListener("DOMContentLoaded", function () {
-    // Select the correct element
+    updateLanguageTextCSorNU();
+	// Select the correct element
     const feedbackElement = document.getElementById("fb");
 
     if (feedbackElement) {
@@ -1245,5 +1246,25 @@ registerEventHandler(window, 'load', getInstanceDelegate(this, "LoadPage"));
 	  var rExpSingleQuotes = /\'\'"/gi;
 	  var title = document.getElementsByTagName("TITLE")[0].innerText.replace(rExp, "''");
 	  location.href = "mailto:" + alias + "?subject=" + subject + title + "&body=Topic%20ID:%20" + id + "%0d%0aURL:%20" + url + "%0d%0a%0d%0aComments:%20";
+  }
+  
+  function updateLanguageTextCSorNU() {
+	// Get all elements with class "languageSpecificText"
+	const containers = document.querySelectorAll('.languageSpecificText');
+  
+	containers.forEach(container => {
+	  // Find the child spans with classes "cs" and "nu"
+	  const csSpan = container.querySelector('.cs');
+	  const nuSpan = container.querySelector('.nu');
+  
+	  // Check if csSpan exists and has non-empty text content
+	  if (csSpan && csSpan.textContent.trim() !== '') {
+		// Replace container content with cs text
+		container.textContent = csSpan.textContent;
+	  } else if (nuSpan) {
+		// Otherwise, replace with nu text
+		container.textContent = nuSpan.textContent;
+	  }
+	});
   }
   

@@ -32,6 +32,14 @@ h1 {
     color: #696969;
 }
 
+.typeparameter, span[data-languagespecifictext] {
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    color: inherit !important;
+    display: inline-block !important;
+}
+
 h2, h3 {
     font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
     font-weight: normal;

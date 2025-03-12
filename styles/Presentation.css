@@ -447,6 +447,15 @@ span#nsrTitle
     margin-top: 30px;
     color: #696969;
 }
+
+.typeparameter, .cs, .nu, .languageSpecificText
+{
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    color: inherit !important;
+}
+
 /*------------------------------ End Non-scrolling Header Region Styles -------------------------------*/
 
 
@@ -1144,10 +1153,6 @@ h1.glossaryTitle
   font-size: 140%;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-div.glossaryDiv
-{
 }
 
 h2.glossaryDivHeading
