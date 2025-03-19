@@ -310,10 +310,6 @@ div.caption {
     padding-bottom: 5px;
 }
 
-.summary {
-    display: none;
-}
-
 .has-text-weight-normal {
     font-weight: 400 !important;
 }
