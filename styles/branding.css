@@ -657,7 +657,17 @@ sup.citation a:link a:visited a:active {
     pointer-events: none;
 }
 
-#IDABC_tab2, #IDABC_tab3, #IDABC_tab4, #IDADC_tab2 {
+#IDABC_tab2, #IDABC_tab3, #IDABC_tab4, #IDADC_tab2, #IDAIC_tab2, #IDAIC_tab3, #IDAIC_tab4 {
+    display: none; /* Hides the element and removes it from the layout */
+    pointer-events: none;
+}
+
+#IDAEC_tab2, #IDAEC_tab3, #IDAEC_tab4 {
+    display: none; /* Hides the element and removes it from the layout */
+    pointer-events: none;
+}
+
+#IDAJC_tab2, #IDAJC_tab3, #IDAJC_tab4 {
     display: none; /* Hides the element and removes it from the layout */
     pointer-events: none;
 }

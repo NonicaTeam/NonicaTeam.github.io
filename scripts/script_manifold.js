@@ -48,6 +48,27 @@ var sectionStatesInitialized = false;
         // Append the new div inside the span
         feedbackElement.prepend(footerDiv);
     }
+	//Find Remarks Section
+    const remarkEle = document.getElementById('remarksSection');
+    if (remarkEle ) {
+      //Find Summary Section
+      const summaryElement = document.querySelector('.summary');
+      if(summaryElement)
+      {
+		if(remarkEle.innerHTML.trim() != "")
+		{
+			remarkEle.insertAdjacentText('afterbegin', 'Remarks: ');
+			remarkEle.removeAttribute('class');
+			summaryElement.appendChild(remarkEle);
+		}
+		const heading = document.querySelector('h1:has(> span > img#remarksToggle)');
+		if(heading)
+		{
+			heading.remove();
+		}
+      }
+    }
+	//Collapse RegionTitle with Inheritance. It is done in LoadPage
 });
 
 // attach a handler to a particular event on an element
@@ -304,7 +325,16 @@ registerEventHandler(window, 'load', getInstanceDelegate(this, "LoadPage"));
 	  for (i = 0; i < imgElements.length; i++)
 	  {
 		  if ((sectionStates[imgElements[i].id] == "e"))
-			  ExpandSection(imgElements[i]);
+			{
+				if(imgElements[i].id != "familyToggle")
+				{
+					ExpandSection(imgElements[i]);
+				}
+				else
+				{
+					CollapseSection(imgElements[i]);
+				}
+			}  
 		  else
 			  CollapseSection(imgElements[i]);
 	  }

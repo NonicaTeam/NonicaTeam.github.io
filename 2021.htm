@@ -33,6 +33,15 @@ return location.pathname.split("/").pop();
 }
 
 function updateUrlWithRightFrame(rightURL) {
+    //Assign title
+    try {
+        var rightFrame = document.getElementById('rightFrame');
+        var iframeDocument = rightFrame.contentDocument || rightFrame.contentWindow.document;
+        // Update Parent title
+        if (iframeDocument) {
+            document.title = iframeDocument.title; // Update parent title
+        }
+    } catch (error) { }
   if (rightURL && !rightURL.includes("WhatsNew.htm")) {
     // Get the current URL in the browser
     const currentUrl = window.location.href;

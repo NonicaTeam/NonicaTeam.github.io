@@ -43,6 +43,40 @@
         // Append the new div inside the span
         feedbackElement.prepend(footerDiv);
     }
+    //Find Remarks Section
+    const regions = document.querySelectorAll('.collapsibleAreaRegion');
+    if(regions)
+    {
+      regions.forEach(region => {
+        if (region.textContent.includes("Remarks")) {
+          const nextElem = region.nextElementSibling;
+          if (nextElem && nextElem.classList.contains('collapsibleSection'))
+          {
+              try {
+                const summaryElement = document.querySelector('.summary');
+                if(summaryElement)
+                {
+                  nextElem.insertAdjacentText('afterbegin', 'Remarks: ');
+                  summaryElement.appendChild(nextElem);
+                  //Delete Remarks Toggle
+                  region.remove();
+                }
+              } catch (error) { }
+          }
+        }
+      });
+    }
+    //Collapse RegionTitle with Inheritance
+    const regionTitles = document.querySelectorAll('.collapsibleRegionTitle');
+    if(regionTitles){
+      regionTitles.forEach(region => {
+        if (region.textContent.includes("Inheritance Hierarchy")) {
+          //Delete Remarks Toggle
+          region.click();
+        }
+      }
+      );
+    }
 });
 
 // Expand or collapse a section
