@@ -39,7 +39,7 @@ function updateUrlWithRightFrame(rightURL) {
         var iframeDocument = rightFrame.contentDocument || rightFrame.contentWindow.document;
         // Update Parent title
         if (iframeDocument) {
-            document.title = iframeDocument.title; // Update parent title
+            document.title = iframeDocument.title + " - Revit Api Docs " + window.year + " Online."; // Update parent title
         }
     } catch (error) { }
   if (rightURL && !rightURL.includes("WhatsNew.htm")) {
