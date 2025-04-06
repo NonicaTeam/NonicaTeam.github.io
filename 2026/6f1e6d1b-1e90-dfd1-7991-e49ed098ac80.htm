@@ -1,0 +1,71 @@
+﻿<html><head><meta content="IE=edge" http-equiv="X-UA-Compatible"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><meta content="true" name="Microsoft.Help.SelfBranded"/><meta content="en-us" name="Language"/><meta content="en-us" name="Microsoft.Help.Locale"/><meta content="en-us" name="Microsoft.Help.TopicLocale"/><link href="../icons/favicon.ico" rel="shortcut icon"/><link href="../styles/branding.css" rel="stylesheet" type="text/css"/><link href="../styles/branding-en-US.css" rel="stylesheet" type="text/css"/><script src="../scripts/branding.js" type="text/javascript"></script><title>FabricationPart.AlignPartByInsertionPointAndCutInToStraight Method</title><meta content="AlignPartByInsertionPointAndCutInToStraight Method" name="Title"/><meta content="M:Autodesk.Revit.DB.FabricationPart.AlignPartByInsertionPointAndCutInToStraight(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.XYZ,System.Double,System.Double,System.Boolean)" name="Microsoft.Help.Id"/><meta content="Reference" name="Microsoft.Help.ContentType"/><meta content="FabricationPart.AlignPartByInsertionPointAndCutInToStraight method" name="System.Keywords"/><meta content="AlignPartByInsertionPointAndCutInToStraight method" name="System.Keywords"/><meta content="Autodesk.Revit.DB.FabricationPart.AlignPartByInsertionPointAndCutInToStraight" name="Microsoft.Help.F1"/><meta content="FabricationPart.AlignPartByInsertionPointAndCutInToStraight" name="Microsoft.Help.F1"/><meta content="AlignPartByInsertionPointAndCutInToStraight" name="Microsoft.Help.F1"/><meta content="Autodesk.Revit.DB" name="container"/><meta content="6f1e6d1b-1e90-dfd1-7991-e49ed098ac80" name="file"/><meta content="6f1e6d1b-1e90-dfd1-7991-e49ed098ac80" name="guid"/><meta content="Align the part by its insertion point to a point and rotation on a straight. This will automatically size and connect the part being cut into, if possible." name="Description"/><link href="../styles/branding-Help1.css" rel="stylesheet" type="text/css"/></head><body onload="SetDefaultLanguage('cs');"><input class="userDataStyle" id="userDataCache" type="hidden"/><div class="pageHeader" id="PageHeader">Revit 2026 API</div><div class="pageBody"><div class="topicContent" id="TopicContent"><table class="titleTable"><tr><td class="titleColumn"><h1>Fabrication<wbr/>Part<span data-languagespecifictext="cpp=::|nu=." id="LSTA657AFE0_0"></span>Align<wbr/>Part<wbr/>By<wbr/>Insertion<wbr/>Point<wbr/>And<wbr/>Cut<wbr/>In<wbr/>To<wbr/>Straight Method</h1></td></tr></table><div class="summary">
+   Align the part by its insertion point to a point and rotation on a straight. This will automatically size and connect the part being cut into, if possible.
+</div><br/><strong>Namespace:</strong> <a href="87546ba7-461b-c646-cbb1-2cb8f5bff8b2.htm">Autodesk.Revit.DB</a><br/><strong>Assembly:</strong> RevitAPI (in RevitAPI.dll) Version: 26.0.4.0 (26.0.4.0)<div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDB')" onkeypress="SectionExpandCollapse_CheckKey('IDB', event)" tabindex="0"><img class="collapseToggle" id="IDBToggle" src="../icons/SectionExpanded.png"/>Syntax</span></div><div class="collapsibleSection" id="IDBSection"><div class="codeSnippetContainer" id="IDAB"><div class="codeSnippetContainerTabs"><div class="codeSnippetContainerTab" id="IDAB_tab1"><a href="#" onclick="ChangeTab('IDAB','cs','1','4');return false;">C#</a></div><div class="codeSnippetContainerTab" id="IDAB_tab2"><a href="#" onclick="ChangeTab('IDAB','vb','2','4');return false;">VB</a></div><div class="codeSnippetContainerTab" id="IDAB_tab3"><a href="#" onclick="ChangeTab('IDAB','cpp','3','4');return false;">C++</a></div><div class="codeSnippetContainerTab" id="IDAB_tab4"><a href="#" onclick="ChangeTab('IDAB','fs','4','4');return false;">F#</a></div></div><div class="codeSnippetContainerCodeContainer"><div class="codeSnippetToolBar"><div class="codeSnippetToolBarText"><a class="copyCodeSnippet" href="#" id="IDAB_copyCode" onclick="CopyToClipboard('IDAB');return false;" title="Copy">Copy</a></div></div><div class="codeSnippetContainerCode" id="IDAB_code_Div1" style="display: block"><pre xml:space="preserve"><span class="keyword">public</span> <span class="keyword">static</span> <span class="identifier">bool</span> <span class="identifier">AlignPartByInsertionPointAndCutInToStraight</span>(
+	<span class="identifier">Document</span> <span class="parameter">document</span>,
+	<span class="identifier">ElementId</span> <span class="parameter">straightId</span>,
+	<span class="identifier">ElementId</span> <span class="parameter">partId</span>,
+	<span class="identifier">XYZ</span> <span class="parameter">position</span>,
+	<span class="identifier">double</span> <span class="parameter">rotation</span>,
+	<span class="identifier">double</span> <span class="parameter">slope</span>,
+	<span class="identifier">bool</span> <span class="parameter">flip</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div2" style="display: none"><pre xml:space="preserve"><span class="keyword">Public</span> <span class="keyword">Shared</span> <span class="keyword">Function</span> <span class="identifier">AlignPartByInsertionPointAndCutInToStraight</span> ( 
+	<span class="parameter">document</span> <span class="keyword">As</span> <span class="identifier">Document</span>,
+	<span class="parameter">straightId</span> <span class="keyword">As</span> <span class="identifier">ElementId</span>,
+	<span class="parameter">partId</span> <span class="keyword">As</span> <span class="identifier">ElementId</span>,
+	<span class="parameter">position</span> <span class="keyword">As</span> <span class="identifier">XYZ</span>,
+	<span class="parameter">rotation</span> <span class="keyword">As</span> <span class="identifier">Double</span>,
+	<span class="parameter">slope</span> <span class="keyword">As</span> <span class="identifier">Double</span>,
+	<span class="parameter">flip</span> <span class="keyword">As</span> <span class="identifier">Boolean</span>
+) <span class="keyword">As</span> <span class="identifier">Boolean</span></pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div3" style="display: none"><pre xml:space="preserve"><span class="keyword">public</span>:
+<span class="keyword">static</span> <span class="identifier">bool</span> <span class="identifier">AlignPartByInsertionPointAndCutInToStraight</span>(
+	<span class="identifier">Document</span>^ <span class="parameter">document</span>, 
+	<span class="identifier">ElementId</span>^ <span class="parameter">straightId</span>, 
+	<span class="identifier">ElementId</span>^ <span class="parameter">partId</span>, 
+	<span class="identifier">XYZ</span>^ <span class="parameter">position</span>, 
+	<span class="identifier">double</span> <span class="parameter">rotation</span>, 
+	<span class="identifier">double</span> <span class="parameter">slope</span>, 
+	<span class="identifier">bool</span> <span class="parameter">flip</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div4" style="display: none"><pre xml:space="preserve"><span class="keyword">static</span> <span class="keyword">member</span> <span class="identifier">AlignPartByInsertionPointAndCutInToStraight</span> : 
+        <span class="parameter">document</span> : <span class="identifier">Document</span> * 
+        <span class="parameter">straightId</span> : <span class="identifier">ElementId</span> * 
+        <span class="parameter">partId</span> : <span class="identifier">ElementId</span> * 
+        <span class="parameter">position</span> : <span class="identifier">XYZ</span> * 
+        <span class="parameter">rotation</span> : <span class="identifier">float</span> * 
+        <span class="parameter">slope</span> : <span class="identifier">float</span> * 
+        <span class="parameter">flip</span> : <span class="identifier">bool</span> <span class="keyword">-&gt;</span> <span class="identifier">bool</span> </pre></div></div></div><h4>Parameters</h4><dl><dt class="has-text-weight-normal"><span class="parameter">document</span>  <a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a></dt><dd>
+   The document.
+</dd><dt class="has-text-weight-normal"><span class="parameter">straightId</span>  <a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a></dt><dd>
+   The element identifier of the straight to be cut in to.
+</dd><dt class="has-text-weight-normal"><span class="parameter">partId</span>  <a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a></dt><dd>
+   The element identifier of the part to align and cut in with.
+</dd><dt class="has-text-weight-normal"><span class="parameter">position</span>  <a href="c2fd995c-95c0-58fb-f5de-f3246cbc5600.htm">XYZ</a></dt><dd>
+   The position to move the parts insertion point to.
+</dd><dt class="has-text-weight-normal"><span class="parameter">rotation</span>  <span class="noLink">Double</span></dt><dd>
+   The rotation in radians.
+</dd><dt class="has-text-weight-normal"><span class="parameter">slope</span>  <span class="noLink">Double</span></dt><dd>
+   The slope value to flex to match if possible in fractional units (eg.1/50). Positive values are up, negative are down. Slopes can only be applied
+   to fittings, whilst straights will inherit the slope from the piece it is connecting to.
+</dd><dt class="has-text-weight-normal"><span class="parameter">flip</span>  <span class="noLink">Boolean</span></dt><dd>
+   Flip the part to allow for flow direction.
+</dd></dl><h4>Return Value</h4><span class="noLink">Boolean</span><br/>
+   True if the alignment succeeds, false otherwise.
+</div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDJC')" onkeypress="SectionExpandCollapse_CheckKey('IDJC', event)" tabindex="0"><img class="collapseToggle" id="IDJCToggle" src="../icons/SectionExpanded.png"/>Exceptions</span></div><div class="collapsibleSection" id="IDJCSection"><table><tr><th>Exception</th><th>Condition</th></tr><tr><td><a href="2e6e4206-97a8-dd4b-df5d-4269f4bb6088.htm">ArgumentException</a></td><td>
+   The element is not a fabrication part.
+   -or-
+   Not all of the fabrication part's connectors are open.
+   -or-
+   The part is not a straight.
+   -or-
+   The fabrication parts do not have matching domain types.
+   -or-
+   The position is not on the straight.
+</td></tr><tr><td><a href="631e1424-60f4-929b-4e52-dda9dcd26316.htm">ArgumentNullException</a></td><td>
+   A non-optional argument was null
+</td></tr><tr><td><a href="9e715f03-3884-e539-4dd6-8d7545733adc.htm">InvalidOperationException</a></td><td>
+   Failed to align the part to the straight to cut in to.
+</td></tr></table></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('seeAlso')" onkeypress="SectionExpandCollapse_CheckKey('seeAlso', event)" tabindex="0"><img class="collapseToggle" id="seeAlsoToggle" src="../icons/SectionExpanded.png"/>See Also</span></div><div class="collapsibleSection" id="seeAlsoSection"><h4>Reference</h4><div><a href="c9b86162-c105-696a-a919-49a7a7938cc4.htm">FabricationPart Class</a></div><div><a href="87546ba7-461b-c646-cbb1-2cb8f5bff8b2.htm">Autodesk.Revit.DB Namespace</a></div></div></div></div><div class="pageFooter" id="PageFooter"><div class="feedbackLink">Send comments on this topic to
+        <a href="mailto:revitapifeedback%40autodesk.com?Subject=Revit%202026%20API" id="HT_MailLink">Autodesk</a></div>
+<script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        HT_mailLink.href += ": " + document.title + "\u0026body=" + encodeURIComponent("Your feedback is used to improve the documentation and the product. Your e-mail address will not be used for any other purpose and is disposed of after the issue you report is resolved. While working to resolve the issue that you report, you may be contacted via e-mail to get further details or clarification on the feedback you sent. After the issue you report has been addressed, you may receive an e-mail to let you know that your feedback has been addressed.");
+        </script></div></body></html>

@@ -1,0 +1,78 @@
+﻿<html><head><meta content="IE=edge" http-equiv="X-UA-Compatible"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><meta content="true" name="Microsoft.Help.SelfBranded"/><meta content="en-us" name="Language"/><meta content="en-us" name="Microsoft.Help.Locale"/><meta content="en-us" name="Microsoft.Help.TopicLocale"/><link href="../icons/favicon.ico" rel="shortcut icon"/><link href="../styles/branding.css" rel="stylesheet" type="text/css"/><link href="../styles/branding-en-US.css" rel="stylesheet" type="text/css"/><script src="../scripts/branding.js" type="text/javascript"></script><title>ElectricalSetting.AddWireType Method</title><meta content="AddWireType Method" name="Title"/><meta content="M:Autodesk.Revit.DB.Electrical.ElectricalSetting.AddWireType(System.String,Autodesk.Revit.DB.Electrical.WireMaterialType,Autodesk.Revit.DB.Electrical.TemperatureRatingType,Autodesk.Revit.DB.Electrical.InsulationType,Autodesk.Revit.DB.Electrical.WireSize,System.Double,System.Boolean,Autodesk.Revit.DB.Electrical.NeutralMode,Autodesk.Revit.DB.Electrical.WireConduitType)" name="Microsoft.Help.Id"/><meta content="Reference" name="Microsoft.Help.ContentType"/><meta content="ElectricalSetting.AddWireType method" name="System.Keywords"/><meta content="AddWireType method" name="System.Keywords"/><meta content="Autodesk.Revit.DB.Electrical.ElectricalSetting.AddWireType" name="Microsoft.Help.F1"/><meta content="ElectricalSetting.AddWireType" name="Microsoft.Help.F1"/><meta content="AddWireType" name="Microsoft.Help.F1"/><meta content="Autodesk.Revit.DB.Electrical" name="container"/><meta content="96fef9f1-166b-082d-1ec7-e844ac51297f" name="file"/><meta content="96fef9f1-166b-082d-1ec7-e844ac51297f" name="guid"/><meta content="Add a new wire type to project." name="Description"/><link href="../styles/branding-Help1.css" rel="stylesheet" type="text/css"/></head><body onload="SetDefaultLanguage('cs');"><input class="userDataStyle" id="userDataCache" type="hidden"/><div class="pageHeader" id="PageHeader">Revit 2026 API</div><div class="pageBody"><div class="topicContent" id="TopicContent"><table class="titleTable"><tr><td class="titleColumn"><h1>Electrical<wbr/>Setting<span data-languagespecifictext="cpp=::|nu=." id="LST310816CC_0"></span>Add<wbr/>Wire<wbr/>Type Method</h1></td></tr></table><p><strong>Note: This API is now obsolete.</strong></p><div class="summary">
+Add a new wire type to project.
+</div><br/><strong>Namespace:</strong> <a href="212a1314-7843-2c6c-3322-363127e4059f.htm">Autodesk.Revit.DB.Electrical</a><br/><strong>Assembly:</strong> RevitAPI (in RevitAPI.dll) Version: 26.0.4.0 (26.0.4.0)<div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDB')" onkeypress="SectionExpandCollapse_CheckKey('IDB', event)" tabindex="0"><img class="collapseToggle" id="IDBToggle" src="../icons/SectionExpanded.png"/>Syntax</span></div><div class="collapsibleSection" id="IDBSection"><div class="codeSnippetContainer" id="IDAB"><div class="codeSnippetContainerTabs"><div class="codeSnippetContainerTab" id="IDAB_tab1"><a href="#" onclick="ChangeTab('IDAB','cs','1','4');return false;">C#</a></div><div class="codeSnippetContainerTab" id="IDAB_tab2"><a href="#" onclick="ChangeTab('IDAB','vb','2','4');return false;">VB</a></div><div class="codeSnippetContainerTab" id="IDAB_tab3"><a href="#" onclick="ChangeTab('IDAB','cpp','3','4');return false;">C++</a></div><div class="codeSnippetContainerTab" id="IDAB_tab4"><a href="#" onclick="ChangeTab('IDAB','fs','4','4');return false;">F#</a></div></div><div class="codeSnippetContainerCodeContainer"><div class="codeSnippetToolBar"><div class="codeSnippetToolBarText"><a class="copyCodeSnippet" href="#" id="IDAB_copyCode" onclick="CopyToClipboard('IDAB');return false;" title="Copy">Copy</a></div></div><div class="codeSnippetContainerCode" id="IDAB_code_Div1" style="display: block"><pre xml:space="preserve">[<span class="identifier">ObsoleteAttribute</span>("
+                  AddWireType is deprecated in Revit 2026 and will be removed in a future version of Revit. Please use WireType.Duplicate() instead.
+                  WireMaterialType object can no longer set to the WireType, use property WireType.WireMaterial instead.
+                  TemperatureRatingType object can no longer set to the WireType, use property WireType.TemperatureRating instead.
+                  InsulationType object can no longer set to the WireType, use property WireType.Insulation instead.
+                  MaxSize object can no longer set to the WireType, use property WireType.MaxSize instead.
+               ")]
+<span class="keyword">public</span> <span class="identifier">WireType</span> <span class="identifier">AddWireType</span>(
+	<span class="identifier">string</span> <span class="parameter">name</span>,
+	<span class="identifier">WireMaterialType</span> <span class="parameter">materialType</span>,
+	<span class="identifier">TemperatureRatingType</span> <span class="parameter">temperatureRating</span>,
+	<span class="identifier">InsulationType</span> <span class="parameter">insulation</span>,
+	<span class="identifier">WireSize</span> <span class="parameter">maxSize</span>,
+	<span class="identifier">double</span> <span class="parameter">neutralMultiplier</span>,
+	<span class="identifier">bool</span> <span class="parameter">neutralRequired</span>,
+	<span class="identifier">NeutralMode</span> <span class="parameter">neutralMode</span>,
+	<span class="identifier">WireConduitType</span> <span class="parameter">conduit</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div2" style="display: none"><pre xml:space="preserve">&lt;<span class="identifier">ObsoleteAttribute</span>("
+                  AddWireType is deprecated in Revit 2026 and will be removed in a future version of Revit. Please use WireType.Duplicate() instead.
+                  WireMaterialType object can no longer set to the WireType, use property WireType.WireMaterial instead.
+                  TemperatureRatingType object can no longer set to the WireType, use property WireType.TemperatureRating instead.
+                  InsulationType object can no longer set to the WireType, use property WireType.Insulation instead.
+                  MaxSize object can no longer set to the WireType, use property WireType.MaxSize instead.
+               ")&gt;
+<span class="keyword">Public</span> <span class="keyword">Function</span> <span class="identifier">AddWireType</span> ( 
+	<span class="parameter">name</span> <span class="keyword">As</span> <span class="identifier">String</span>,
+	<span class="parameter">materialType</span> <span class="keyword">As</span> <span class="identifier">WireMaterialType</span>,
+	<span class="parameter">temperatureRating</span> <span class="keyword">As</span> <span class="identifier">TemperatureRatingType</span>,
+	<span class="parameter">insulation</span> <span class="keyword">As</span> <span class="identifier">InsulationType</span>,
+	<span class="parameter">maxSize</span> <span class="keyword">As</span> <span class="identifier">WireSize</span>,
+	<span class="parameter">neutralMultiplier</span> <span class="keyword">As</span> <span class="identifier">Double</span>,
+	<span class="parameter">neutralRequired</span> <span class="keyword">As</span> <span class="identifier">Boolean</span>,
+	<span class="parameter">neutralMode</span> <span class="keyword">As</span> <span class="identifier">NeutralMode</span>,
+	<span class="parameter">conduit</span> <span class="keyword">As</span> <span class="identifier">WireConduitType</span>
+) <span class="keyword">As</span> <span class="identifier">WireType</span></pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div3" style="display: none"><pre xml:space="preserve"><span class="keyword">public</span>:
+[<span class="identifier">ObsoleteAttribute</span>(L"
+                  AddWireType is deprecated in Revit 2026 and will be removed in a future version of Revit. Please use WireType.Duplicate() instead.
+                  WireMaterialType object can no longer set to the WireType, use property WireType.WireMaterial instead.
+                  TemperatureRatingType object can no longer set to the WireType, use property WireType.TemperatureRating instead.
+                  InsulationType object can no longer set to the WireType, use property WireType.Insulation instead.
+                  MaxSize object can no longer set to the WireType, use property WireType.MaxSize instead.
+               ")]
+<span class="identifier">WireType</span>^ <span class="identifier">AddWireType</span>(
+	<span class="identifier">String</span>^ <span class="parameter">name</span>, 
+	<span class="identifier">WireMaterialType</span>^ <span class="parameter">materialType</span>, 
+	<span class="identifier">TemperatureRatingType</span>^ <span class="parameter">temperatureRating</span>, 
+	<span class="identifier">InsulationType</span>^ <span class="parameter">insulation</span>, 
+	<span class="identifier">WireSize</span>^ <span class="parameter">maxSize</span>, 
+	<span class="identifier">double</span> <span class="parameter">neutralMultiplier</span>, 
+	<span class="identifier">bool</span> <span class="parameter">neutralRequired</span>, 
+	<span class="identifier">NeutralMode</span> <span class="parameter">neutralMode</span>, 
+	<span class="identifier">WireConduitType</span>^ <span class="parameter">conduit</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div4" style="display: none"><pre xml:space="preserve">[&lt;<span class="identifier">ObsoleteAttribute</span>("
+                  AddWireType is deprecated in Revit 2026 and will be removed in a future version of Revit. Please use WireType.Duplicate() instead.
+                  WireMaterialType object can no longer set to the WireType, use property WireType.WireMaterial instead.
+                  TemperatureRatingType object can no longer set to the WireType, use property WireType.TemperatureRating instead.
+                  InsulationType object can no longer set to the WireType, use property WireType.Insulation instead.
+                  MaxSize object can no longer set to the WireType, use property WireType.MaxSize instead.
+               ")&gt;]
+<span class="keyword">member</span> <span class="identifier">AddWireType</span> : 
+        <span class="parameter">name</span> : <span class="identifier">string</span> * 
+        <span class="parameter">materialType</span> : <span class="identifier">WireMaterialType</span> * 
+        <span class="parameter">temperatureRating</span> : <span class="identifier">TemperatureRatingType</span> * 
+        <span class="parameter">insulation</span> : <span class="identifier">InsulationType</span> * 
+        <span class="parameter">maxSize</span> : <span class="identifier">WireSize</span> * 
+        <span class="parameter">neutralMultiplier</span> : <span class="identifier">float</span> * 
+        <span class="parameter">neutralRequired</span> : <span class="identifier">bool</span> * 
+        <span class="parameter">neutralMode</span> : <span class="identifier">NeutralMode</span> * 
+        <span class="parameter">conduit</span> : <span class="identifier">WireConduitType</span> <span class="keyword">-&gt;</span> <span class="identifier">WireType</span> </pre></div></div></div><h4>Parameters</h4><dl><dt class="has-text-weight-normal"><span class="parameter">name</span>  <span class="noLink">String</span></dt><dd>Name of the new wire type.</dd><dt class="has-text-weight-normal"><span class="parameter">materialType</span>  <a href="3d05ec79-0289-c6d1-2a13-7e6b07241afd.htm">WireMaterialType</a></dt><dd>Wire material of new wire type.</dd><dt class="has-text-weight-normal"><span class="parameter">temperatureRating</span>  <a href="fe7e15d7-c31f-b24c-992f-332e54e9a5ba.htm">TemperatureRatingType</a></dt><dd>Temperature rating type information of new wire type.</dd><dt class="has-text-weight-normal"><span class="parameter">insulation</span>  <a href="3eacc872-bb46-73a5-9ae7-d309d1d3ad64.htm">InsulationType</a></dt><dd>Insulation of new wire type.</dd><dt class="has-text-weight-normal"><span class="parameter">maxSize</span>  <a href="e4a5cfed-7952-4622-5fca-b556703e36b6.htm">WireSize</a></dt><dd>Max wire size of new wire type.</dd><dt class="has-text-weight-normal"><span class="parameter">neutralMultiplier</span>  <span class="noLink">Double</span></dt><dd>Neutral multiplier of new wire type.</dd><dt class="has-text-weight-normal"><span class="parameter">neutralRequired</span>  <span class="noLink">Boolean</span></dt><dd>Specify whether neutral point is required.</dd><dt class="has-text-weight-normal"><span class="parameter">neutralMode</span>  <a href="e8890ec2-1c61-1ff3-e4f6-8ad3ce9a431c.htm">NeutralMode</a></dt><dd>Specify neutral mode.</dd><dt class="has-text-weight-normal"><span class="parameter">conduit</span>  <a href="3c17c9e5-7018-1cf6-4a20-d8059cec370c.htm">WireConduitType</a></dt><dd>Conduit type of new wire type.</dd></dl><h4>Return Value</h4><a href="f4d1a1cc-6968-251b-9692-247dc3ff6cff.htm">WireType</a><br/>New added wire type object.</div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDLC')" onkeypress="SectionExpandCollapse_CheckKey('IDLC', event)" tabindex="0"><img class="collapseToggle" id="IDLCToggle" src="../icons/SectionExpanded.png"/>Remarks</span></div><div class="collapsibleSection" id="IDLCSection">Parameter of temperatureRating should be retrieved from parameter of materialType, 
+and parameters such as insulation and maxSize should be retrieved from temperatureRating.
+otherwise, this add operation is most likely to fail.</div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('seeAlso')" onkeypress="SectionExpandCollapse_CheckKey('seeAlso', event)" tabindex="0"><img class="collapseToggle" id="seeAlsoToggle" src="../icons/SectionExpanded.png"/>See Also</span></div><div class="collapsibleSection" id="seeAlsoSection"><h4>Reference</h4><div><a href="d0c5bb12-7cf7-35e0-fc72-51e491c56bc2.htm">ElectricalSetting Class</a></div><div><a href="212a1314-7843-2c6c-3322-363127e4059f.htm">Autodesk.Revit.DB.Electrical Namespace</a></div></div></div></div><div class="pageFooter" id="PageFooter"><div class="feedbackLink">Send comments on this topic to
+        <a href="mailto:revitapifeedback%40autodesk.com?Subject=Revit%202026%20API" id="HT_MailLink">Autodesk</a></div>
+<script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        HT_mailLink.href += ": " + document.title + "\u0026body=" + encodeURIComponent("Your feedback is used to improve the documentation and the product. Your e-mail address will not be used for any other purpose and is disposed of after the issue you report is resolved. While working to resolve the issue that you report, you may be contacted via e-mail to get further details or clarification on the feedback you sent. After the issue you report has been addressed, you may receive an e-mail to let you know that your feedback has been addressed.");
+        </script></div></body></html>

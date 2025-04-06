@@ -1,0 +1,49 @@
+﻿<html><head><meta content="IE=edge" http-equiv="X-UA-Compatible"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><meta content="true" name="Microsoft.Help.SelfBranded"/><meta content="en-us" name="Language"/><meta content="en-us" name="Microsoft.Help.Locale"/><meta content="en-us" name="Microsoft.Help.TopicLocale"/><link href="../icons/favicon.ico" rel="shortcut icon"/><link href="../styles/branding.css" rel="stylesheet" type="text/css"/><link href="../styles/branding-en-US.css" rel="stylesheet" type="text/css"/><script src="../scripts/branding.js" type="text/javascript"></script><title>FormattedText.SetIndentLevel Method</title><meta content="SetIndentLevel Method" name="Title"/><meta content="M:Autodesk.Revit.DB.FormattedText.SetIndentLevel(Autodesk.Revit.DB.TextRange,System.Int32)" name="Microsoft.Help.Id"/><meta content="Reference" name="Microsoft.Help.ContentType"/><meta content="FormattedText.SetIndentLevel method" name="System.Keywords"/><meta content="SetIndentLevel method" name="System.Keywords"/><meta content="Autodesk.Revit.DB.FormattedText.SetIndentLevel" name="Microsoft.Help.F1"/><meta content="FormattedText.SetIndentLevel" name="Microsoft.Help.F1"/><meta content="SetIndentLevel" name="Microsoft.Help.F1"/><meta content="Autodesk.Revit.DB" name="container"/><meta content="a2e6561d-da40-b701-967f-aadbe6b153f5" name="file"/><meta content="a2e6561d-da40-b701-967f-aadbe6b153f5" name="guid"/><meta content="Sets the number of tab stops that the paragraph should be indented." name="Description"/><link href="../styles/branding-Help1.css" rel="stylesheet" type="text/css"/></head><body onload="SetDefaultLanguage('cs');"><input class="userDataStyle" id="userDataCache" type="hidden"/><div class="pageHeader" id="PageHeader">Revit 2026 API</div><div class="pageBody"><div class="topicContent" id="TopicContent"><table class="titleTable"><tr><td class="titleColumn"><h1>Formatted<wbr/>Text<span data-languagespecifictext="cpp=::|nu=." id="LSTF3F24756_0"></span>Set<wbr/>Indent<wbr/>Level Method</h1></td></tr></table><div class="summary">
+   Sets the number of tab stops that the paragraph should be indented.
+</div><br/><strong>Namespace:</strong> <a href="87546ba7-461b-c646-cbb1-2cb8f5bff8b2.htm">Autodesk.Revit.DB</a><br/><strong>Assembly:</strong> RevitAPI (in RevitAPI.dll) Version: 26.0.4.0 (26.0.4.0)<div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDB')" onkeypress="SectionExpandCollapse_CheckKey('IDB', event)" tabindex="0"><img class="collapseToggle" id="IDBToggle" src="../icons/SectionExpanded.png"/>Syntax</span></div><div class="collapsibleSection" id="IDBSection"><div class="codeSnippetContainer" id="IDAB"><div class="codeSnippetContainerTabs"><div class="codeSnippetContainerTab" id="IDAB_tab1"><a href="#" onclick="ChangeTab('IDAB','cs','1','4');return false;">C#</a></div><div class="codeSnippetContainerTab" id="IDAB_tab2"><a href="#" onclick="ChangeTab('IDAB','vb','2','4');return false;">VB</a></div><div class="codeSnippetContainerTab" id="IDAB_tab3"><a href="#" onclick="ChangeTab('IDAB','cpp','3','4');return false;">C++</a></div><div class="codeSnippetContainerTab" id="IDAB_tab4"><a href="#" onclick="ChangeTab('IDAB','fs','4','4');return false;">F#</a></div></div><div class="codeSnippetContainerCodeContainer"><div class="codeSnippetToolBar"><div class="codeSnippetToolBarText"><a class="copyCodeSnippet" href="#" id="IDAB_copyCode" onclick="CopyToClipboard('IDAB');return false;" title="Copy">Copy</a></div></div><div class="codeSnippetContainerCode" id="IDAB_code_Div1" style="display: block"><pre xml:space="preserve"><span class="keyword">public</span> <span class="keyword">void</span> <span class="identifier">SetIndentLevel</span>(
+	<span class="identifier">TextRange</span> <span class="parameter">textRange</span>,
+	<span class="identifier">int</span> <span class="parameter">level</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div2" style="display: none"><pre xml:space="preserve"><span class="keyword">Public</span> <span class="keyword">Sub</span> <span class="identifier">SetIndentLevel</span> ( 
+	<span class="parameter">textRange</span> <span class="keyword">As</span> <span class="identifier">TextRange</span>,
+	<span class="parameter">level</span> <span class="keyword">As</span> <span class="identifier">Integer</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div3" style="display: none"><pre xml:space="preserve"><span class="keyword">public</span>:
+<span class="keyword">void</span> <span class="identifier">SetIndentLevel</span>(
+	<span class="identifier">TextRange</span>^ <span class="parameter">textRange</span>, 
+	<span class="identifier">int</span> <span class="parameter">level</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div4" style="display: none"><pre xml:space="preserve"><span class="keyword">member</span> <span class="identifier">SetIndentLevel</span> : 
+        <span class="parameter">textRange</span> : <span class="identifier">TextRange</span> * 
+        <span class="parameter">level</span> : <span class="identifier">int</span> <span class="keyword">-&gt;</span> <span class="keyword">unit</span> </pre></div></div></div><h4>Parameters</h4><dl><dt class="has-text-weight-normal"><span class="parameter">textRange</span>  <a href="8a00baaf-8cb8-d9f0-e0a0-eaa5aa16e55e.htm">TextRange</a></dt><dd>
+   The given text range.
+</dd><dt class="has-text-weight-normal"><span class="parameter">level</span>  <span class="noLink">Int32</span></dt><dd>
+   The level set on the paragraph.
+</dd></dl></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDEC')" onkeypress="SectionExpandCollapse_CheckKey('IDEC', event)" tabindex="0"><img class="collapseToggle" id="IDECToggle" src="../icons/SectionExpanded.png"/>Exceptions</span></div><div class="collapsibleSection" id="IDECSection"><table><tr><th>Exception</th><th>Condition</th></tr><tr><td><a href="2e6e4206-97a8-dd4b-df5d-4269f4bb6088.htm">ArgumentException</a></td><td>
+   This start index of this text range is not within the text range identifying the entire text.
+   -or-
+   The end of this text range is not within the text range identifying the entire text.
+   -or-
+   This level is too large to set on a paragraph.
+</td></tr><tr><td><a href="631e1424-60f4-929b-4e52-dda9dcd26316.htm">ArgumentNullException</a></td><td>
+   A non-optional argument was null
+</td></tr><tr><td><a href="60f148c9-ece0-a6bb-4e12-bb4a9c8c8a24.htm">ArgumentOutOfRangeException</a></td><td>
+   The given value for level is negative.
+</td></tr></table></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDBC')" onkeypress="SectionExpandCollapse_CheckKey('IDBC', event)" tabindex="0"><img class="collapseToggle" id="IDBCToggle" src="../icons/SectionExpanded.png"/>Remarks</span></div><div class="collapsibleSection" id="IDBCSection"><p>
+   The indent level is the number of tab stops by which each paragraph will be indented.
+   </p><p>
+   Note that adjoining paragraphs that have the same indent level
+   and have a list type other than <a href="7163554f-3446-22eb-afa4-5490d5df29c8.htm">None</a>
+   are considered part of a numbered list.
+   Changing the indent level of paragraphs that are bulleted or numbered
+   (i.e. paragraphs that have a  list type other than <a href="7163554f-3446-22eb-afa4-5490d5df29c8.htm">None</a>)
+   may cause other changes to the document as the changed paragraphs
+   may join or leave a list.  Which will cause the other paragraphs in those lists
+   to be renumbered.
+   </p><p>
+   This function applies the nesting level to all paragraphs contained in the given range.
+   The level set on the paragraph cannot be negative and cannot be larger than the value returned by
+   <a href="3f77a7ca-54e8-28b5-e1e6-cee57afd13e6.htm">GetMaximumIndentLevel<span data-languagespecifictext="cs=()|vb=|cpp=()|nu=()|fs=()" id="LSTF3F24756_1"></span></a> .
+   </p></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('seeAlso')" onkeypress="SectionExpandCollapse_CheckKey('seeAlso', event)" tabindex="0"><img class="collapseToggle" id="seeAlsoToggle" src="../icons/SectionExpanded.png"/>See Also</span></div><div class="collapsibleSection" id="seeAlsoSection"><h4>Reference</h4><div><a href="79a92343-2342-8325-1b51-f12c4fb05481.htm">FormattedText Class</a></div><div><a href="87546ba7-461b-c646-cbb1-2cb8f5bff8b2.htm">Autodesk.Revit.DB Namespace</a></div></div></div></div><div class="pageFooter" id="PageFooter"><div class="feedbackLink">Send comments on this topic to
+        <a href="mailto:revitapifeedback%40autodesk.com?Subject=Revit%202026%20API" id="HT_MailLink">Autodesk</a></div>
+<script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        HT_mailLink.href += ": " + document.title + "\u0026body=" + encodeURIComponent("Your feedback is used to improve the documentation and the product. Your e-mail address will not be used for any other purpose and is disposed of after the issue you report is resolved. While working to resolve the issue that you report, you may be contacted via e-mail to get further details or clarification on the feedback you sent. After the issue you report has been addressed, you may receive an e-mail to let you know that your feedback has been addressed.");
+        </script></div></body></html>

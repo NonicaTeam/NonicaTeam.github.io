@@ -1,0 +1,50 @@
+﻿<html><head><meta content="IE=edge" http-equiv="X-UA-Compatible"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><meta content="true" name="Microsoft.Help.SelfBranded"/><meta content="en-us" name="Language"/><meta content="en-us" name="Microsoft.Help.Locale"/><meta content="en-us" name="Microsoft.Help.TopicLocale"/><link href="../icons/favicon.ico" rel="shortcut icon"/><link href="../styles/branding.css" rel="stylesheet" type="text/css"/><link href="../styles/branding-en-US.css" rel="stylesheet" type="text/css"/><script src="../scripts/branding.js" type="text/javascript"></script><title>Document.SaveCloudModel Method</title><meta content="SaveCloudModel Method" name="Title"/><meta content="M:Autodesk.Revit.DB.Document.SaveCloudModel" name="Microsoft.Help.Id"/><meta content="Reference" name="Microsoft.Help.ContentType"/><meta content="Document.SaveCloudModel method" name="System.Keywords"/><meta content="SaveCloudModel method" name="System.Keywords"/><meta content="Autodesk.Revit.DB.Document.SaveCloudModel" name="Microsoft.Help.F1"/><meta content="Document.SaveCloudModel" name="Microsoft.Help.F1"/><meta content="SaveCloudModel" name="Microsoft.Help.F1"/><meta content="Autodesk.Revit.DB" name="container"/><meta content="394bbf2c-5161-49de-773e-c019d558eb9f" name="file"/><meta content="394bbf2c-5161-49de-773e-c019d558eb9f" name="guid"/><meta content="Saves cloud model." name="Description"/><link href="../styles/branding-Help1.css" rel="stylesheet" type="text/css"/></head><body onload="SetDefaultLanguage('cs');"><input class="userDataStyle" id="userDataCache" type="hidden"/><div class="pageHeader" id="PageHeader">Revit 2026 API</div><div class="pageBody"><div class="topicContent" id="TopicContent"><table class="titleTable"><tr><td class="titleColumn"><h1>Document<span data-languagespecifictext="cpp=::|nu=." id="LSTCAF3017F_0"></span>Save<wbr/>Cloud<wbr/>Model Method</h1></td></tr></table><div class="summary">
+   Saves cloud model.
+</div><br/><strong>Namespace:</strong> <a href="87546ba7-461b-c646-cbb1-2cb8f5bff8b2.htm">Autodesk.Revit.DB</a><br/><strong>Assembly:</strong> RevitAPI (in RevitAPI.dll) Version: 26.0.4.0 (26.0.4.0)<div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDB')" onkeypress="SectionExpandCollapse_CheckKey('IDB', event)" tabindex="0"><img class="collapseToggle" id="IDBToggle" src="../icons/SectionExpanded.png"/>Syntax</span></div><div class="collapsibleSection" id="IDBSection"><div class="codeSnippetContainer" id="IDAB"><div class="codeSnippetContainerTabs"><div class="codeSnippetContainerTab" id="IDAB_tab1"><a href="#" onclick="ChangeTab('IDAB','cs','1','4');return false;">C#</a></div><div class="codeSnippetContainerTab" id="IDAB_tab2"><a href="#" onclick="ChangeTab('IDAB','vb','2','4');return false;">VB</a></div><div class="codeSnippetContainerTab" id="IDAB_tab3"><a href="#" onclick="ChangeTab('IDAB','cpp','3','4');return false;">C++</a></div><div class="codeSnippetContainerTab" id="IDAB_tab4"><a href="#" onclick="ChangeTab('IDAB','fs','4','4');return false;">F#</a></div></div><div class="codeSnippetContainerCodeContainer"><div class="codeSnippetToolBar"><div class="codeSnippetToolBarText"><a class="copyCodeSnippet" href="#" id="IDAB_copyCode" onclick="CopyToClipboard('IDAB');return false;" title="Copy">Copy</a></div></div><div class="codeSnippetContainerCode" id="IDAB_code_Div1" style="display: block"><pre xml:space="preserve"><span class="keyword">public</span> <span class="keyword">void</span> <span class="identifier">SaveCloudModel</span>()</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div2" style="display: none"><pre xml:space="preserve"><span class="keyword">Public</span> <span class="keyword">Sub</span> <span class="identifier">SaveCloudModel</span></pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div3" style="display: none"><pre xml:space="preserve"><span class="keyword">public</span>:
+<span class="keyword">void</span> <span class="identifier">SaveCloudModel</span>()</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div4" style="display: none"><pre xml:space="preserve"><span class="keyword">member</span> <span class="identifier">SaveCloudModel</span> : <span class="keyword">unit</span> <span class="keyword">-&gt;</span> <span class="keyword">unit</span> </pre></div></div></div></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDBC')" onkeypress="SectionExpandCollapse_CheckKey('IDBC', event)" tabindex="0"><img class="collapseToggle" id="IDBCToggle" src="../icons/SectionExpanded.png"/>Exceptions</span></div><div class="collapsibleSection" id="IDBCSection"><table><tr><th>Exception</th><th>Condition</th></tr><tr><td><a href="3e38b7b1-1ee8-c7f0-6cdd-bacf67bf61f4.htm">CentralModelAccessDeniedException</a></td><td>
+   Could be for any of the reasons that related to access to the cloud model.
+</td></tr><tr><td><a href="ad511076-c435-23c1-5720-1205c4ed28b9.htm">CentralModelContentionException</a></td><td>
+   The central model is locked by another client.
+</td></tr><tr><td><a href="0e2ac15f-ca64-42c3-b3ef-e6f7ca1cb59a.htm">CentralModelException</a></td><td>
+   Could be for any of the reasons that fails with CentralModelException, for example, a central model with that name
+   is already associated to the specified cloud project.
+</td></tr><tr><td><a href="73250198-dbc6-e760-4297-ec062f00f574.htm">FileNotFoundException</a></td><td>
+   Cannot access the local file.
+</td></tr><tr><td><a href="9e715f03-3884-e539-4dd6-8d7545733adc.htm">InvalidOperationException</a></td><td>
+   This Document is not a primary document, it is a linked document.
+   -or-
+   This Document is read-only: It cannot be modified.
+   -or-
+   This Document has an open editing transaction and is accepting changes.
+   -or-
+   This Document is not a project document.
+   -or-
+   This Document is in an edit mode.
+   -or-
+   Saving is not allowed in the current application mode.
+   -or-
+   This Document does not have a central location: Worksharing needs to be enabled and central model saved.
+   -or-
+   The file is read-only, can not be saved.
+   -or-
+   This Document is a not cloud model, cannot execute this operation.
+   -or-
+   This Document is a workshared document.
+   -or-
+   Operation is not permitted when there is any open sub-transaction, transaction, or transaction group.
+</td></tr><tr><td><a href="aea34480-ceb5-b49f-129d-0799e7bb1c21.htm">OperationCanceledException</a></td><td>
+   Synchronize With Central was canceled by the user or by an API event callback.
+</td></tr><tr><td><a href="a0003d89-0113-6623-65da-0db5c568bfb6.htm">RevitServerCommunicationException</a></td><td>
+   Could be for any of the reasons related to network.
+</td></tr><tr><td><a href="6dcd093c-d643-07cd-535f-36ffa9d2db52.htm">RevitServerInternalException</a></td><td>
+   Could be for any of the reasons that save fails with RevitServerInternalException.
+</td></tr><tr><td><a href="b9b68e56-c767-4680-a65b-73d268ee8860.htm">RevitServerUnauthenticatedUserException</a></td><td>
+   User is not signed in with Autodesk id.
+</td></tr><tr><td><a href="9e8c1efc-8719-fe01-f311-cfade7b177ed.htm">RevitServerUnauthorizedException</a></td><td>
+   User is not authorized to access the specified cloud project.
+</td></tr></table></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('seeAlso')" onkeypress="SectionExpandCollapse_CheckKey('seeAlso', event)" tabindex="0"><img class="collapseToggle" id="seeAlsoToggle" src="../icons/SectionExpanded.png"/>See Also</span></div><div class="collapsibleSection" id="seeAlsoSection"><h4>Reference</h4><div><a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document Class</a></div><div><a href="87546ba7-461b-c646-cbb1-2cb8f5bff8b2.htm">Autodesk.Revit.DB Namespace</a></div></div></div></div><div class="pageFooter" id="PageFooter"><div class="feedbackLink">Send comments on this topic to
+        <a href="mailto:revitapifeedback%40autodesk.com?Subject=Revit%202026%20API" id="HT_MailLink">Autodesk</a></div>
+<script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        HT_mailLink.href += ": " + document.title + "\u0026body=" + encodeURIComponent("Your feedback is used to improve the documentation and the product. Your e-mail address will not be used for any other purpose and is disposed of after the issue you report is resolved. While working to resolve the issue that you report, you may be contacted via e-mail to get further details or clarification on the feedback you sent. After the issue you report has been addressed, you may receive an e-mail to let you know that your feedback has been addressed.");
+        </script></div></body></html>

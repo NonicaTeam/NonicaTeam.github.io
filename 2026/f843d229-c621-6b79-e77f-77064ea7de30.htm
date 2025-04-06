@@ -1,0 +1,62 @@
+﻿<html><head><meta content="IE=edge" http-equiv="X-UA-Compatible"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><meta content="true" name="Microsoft.Help.SelfBranded"/><meta content="en-us" name="Language"/><meta content="en-us" name="Microsoft.Help.Locale"/><meta content="en-us" name="Microsoft.Help.TopicLocale"/><link href="../icons/favicon.ico" rel="shortcut icon"/><link href="../styles/branding.css" rel="stylesheet" type="text/css"/><link href="../styles/branding-en-US.css" rel="stylesheet" type="text/css"/><script src="../scripts/branding.js" type="text/javascript"></script><title>PointLoad.Create(Document, ElementId, AnalyticalElementSelector, XYZ, XYZ, PointLoadType) Method</title><meta content="Create(Document, ElementId, AnalyticalElementSelector, XYZ, XYZ, PointLoadType) Method" name="Title"/><meta content="M:Autodesk.Revit.DB.Structure.PointLoad.Create(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.Structure.AnalyticalElementSelector,Autodesk.Revit.DB.XYZ,Autodesk.Revit.DB.XYZ,Autodesk.Revit.DB.Structure.PointLoadType)" name="Microsoft.Help.Id"/><meta content="Reference" name="Microsoft.Help.ContentType"/><meta content="Autodesk.Revit.DB.Structure" name="container"/><meta content="f843d229-c621-6b79-e77f-77064ea7de30" name="file"/><meta content="f843d229-c621-6b79-e77f-77064ea7de30" name="guid"/><meta content="Creates a new hosted point load within the project." name="Description"/><link href="../styles/branding-Help1.css" rel="stylesheet" type="text/css"/></head><body onload="SetDefaultLanguage('cs');"><input class="userDataStyle" id="userDataCache" type="hidden"/><div class="pageHeader" id="PageHeader">Revit 2026 API</div><div class="pageBody"><div class="topicContent" id="TopicContent"><table class="titleTable"><tr><td class="titleColumn"><h1>Point<wbr/>Load<span data-languagespecifictext="cpp=::|nu=." id="LSTD946881F_0"></span>Create(Document, Element<wbr/>Id, Analytical<wbr/>Element<wbr/>Selector, XYZ, XYZ, Point<wbr/>Load<wbr/>Type) Method</h1></td></tr></table><div class="summary">
+   Creates a new hosted point load within the project.
+</div><br/><strong>Namespace:</strong> <a href="d586b341-f687-9d90-e96d-255806b7d4fc.htm">Autodesk.Revit.DB.Structure</a><br/><strong>Assembly:</strong> RevitAPI (in RevitAPI.dll) Version: 26.0.4.0 (26.0.4.0)<div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDB')" onkeypress="SectionExpandCollapse_CheckKey('IDB', event)" tabindex="0"><img class="collapseToggle" id="IDBToggle" src="../icons/SectionExpanded.png"/>Syntax</span></div><div class="collapsibleSection" id="IDBSection"><div class="codeSnippetContainer" id="IDAB"><div class="codeSnippetContainerTabs"><div class="codeSnippetContainerTab" id="IDAB_tab1"><a href="#" onclick="ChangeTab('IDAB','cs','1','4');return false;">C#</a></div><div class="codeSnippetContainerTab" id="IDAB_tab2"><a href="#" onclick="ChangeTab('IDAB','vb','2','4');return false;">VB</a></div><div class="codeSnippetContainerTab" id="IDAB_tab3"><a href="#" onclick="ChangeTab('IDAB','cpp','3','4');return false;">C++</a></div><div class="codeSnippetContainerTab" id="IDAB_tab4"><a href="#" onclick="ChangeTab('IDAB','fs','4','4');return false;">F#</a></div></div><div class="codeSnippetContainerCodeContainer"><div class="codeSnippetToolBar"><div class="codeSnippetToolBarText"><a class="copyCodeSnippet" href="#" id="IDAB_copyCode" onclick="CopyToClipboard('IDAB');return false;" title="Copy">Copy</a></div></div><div class="codeSnippetContainerCode" id="IDAB_code_Div1" style="display: block"><pre xml:space="preserve"><span class="keyword">public</span> <span class="keyword">static</span> <span class="identifier">PointLoad</span> <span class="identifier">Create</span>(
+	<span class="identifier">Document</span> <span class="parameter">document</span>,
+	<span class="identifier">ElementId</span> <span class="parameter">hostElemId</span>,
+	<span class="identifier">AnalyticalElementSelector</span> <span class="parameter">selector</span>,
+	<span class="identifier">XYZ</span> <span class="parameter">forceVector</span>,
+	<span class="identifier">XYZ</span> <span class="parameter">momentVector</span>,
+	<span class="identifier">PointLoadType</span> <span class="parameter">symbol</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div2" style="display: none"><pre xml:space="preserve"><span class="keyword">Public</span> <span class="keyword">Shared</span> <span class="keyword">Function</span> <span class="identifier">Create</span> ( 
+	<span class="parameter">document</span> <span class="keyword">As</span> <span class="identifier">Document</span>,
+	<span class="parameter">hostElemId</span> <span class="keyword">As</span> <span class="identifier">ElementId</span>,
+	<span class="parameter">selector</span> <span class="keyword">As</span> <span class="identifier">AnalyticalElementSelector</span>,
+	<span class="parameter">forceVector</span> <span class="keyword">As</span> <span class="identifier">XYZ</span>,
+	<span class="parameter">momentVector</span> <span class="keyword">As</span> <span class="identifier">XYZ</span>,
+	<span class="parameter">symbol</span> <span class="keyword">As</span> <span class="identifier">PointLoadType</span>
+) <span class="keyword">As</span> <span class="identifier">PointLoad</span></pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div3" style="display: none"><pre xml:space="preserve"><span class="keyword">public</span>:
+<span class="keyword">static</span> <span class="identifier">PointLoad</span>^ <span class="identifier">Create</span>(
+	<span class="identifier">Document</span>^ <span class="parameter">document</span>, 
+	<span class="identifier">ElementId</span>^ <span class="parameter">hostElemId</span>, 
+	<span class="identifier">AnalyticalElementSelector</span> <span class="parameter">selector</span>, 
+	<span class="identifier">XYZ</span>^ <span class="parameter">forceVector</span>, 
+	<span class="identifier">XYZ</span>^ <span class="parameter">momentVector</span>, 
+	<span class="identifier">PointLoadType</span>^ <span class="parameter">symbol</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div4" style="display: none"><pre xml:space="preserve"><span class="keyword">static</span> <span class="keyword">member</span> <span class="identifier">Create</span> : 
+        <span class="parameter">document</span> : <span class="identifier">Document</span> * 
+        <span class="parameter">hostElemId</span> : <span class="identifier">ElementId</span> * 
+        <span class="parameter">selector</span> : <span class="identifier">AnalyticalElementSelector</span> * 
+        <span class="parameter">forceVector</span> : <span class="identifier">XYZ</span> * 
+        <span class="parameter">momentVector</span> : <span class="identifier">XYZ</span> * 
+        <span class="parameter">symbol</span> : <span class="identifier">PointLoadType</span> <span class="keyword">-&gt;</span> <span class="identifier">PointLoad</span> </pre></div></div></div><h4>Parameters</h4><dl><dt class="has-text-weight-normal"><span class="parameter">document</span>  <a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a></dt><dd>
+   Document to which new point load will be added.
+</dd><dt class="has-text-weight-normal"><span class="parameter">hostElemId</span>  <a href="44f3f7b1-3229-3404-93c9-dc5e70337dd6.htm">ElementId</a></dt><dd>
+   The AnalyticalMember host element for the point Load.
+</dd><dt class="has-text-weight-normal"><span class="parameter">selector</span>  <a href="b8d93e4d-3543-637d-5a9d-affa1bced099.htm">AnalyticalElementSelector</a></dt><dd>
+   The start or end point of the Analytical Member element.
+</dd><dt class="has-text-weight-normal"><span class="parameter">forceVector</span>  <a href="c2fd995c-95c0-58fb-f5de-f3246cbc5600.htm">XYZ</a></dt><dd>
+   The applied 3d force vector.
+</dd><dt class="has-text-weight-normal"><span class="parameter">momentVector</span>  <a href="c2fd995c-95c0-58fb-f5de-f3246cbc5600.htm">XYZ</a></dt><dd>
+   The applied 3d moment vector.
+</dd><dt class="has-text-weight-normal"><span class="parameter">symbol</span>  <a href="c7b52498-80ca-1da6-bba4-d13744847e5d.htm">PointLoadType</a></dt><dd>
+   The symbol of the PointLoad. Set <span class="keyword"><span data-languagespecifictext="cpp=nullptr|vb=Nothing|nu=null" id="LSTD946881F_1"></span></span> to use default type.
+</dd></dl><h4>Return Value</h4><a href="3f703eb6-7eac-c80e-e693-ebcdd6b35bbe.htm">PointLoad</a><br/>
+   If successful, returns the newly created PointLoad, <span class="keyword"><span data-languagespecifictext="cpp=nullptr|vb=Nothing|nu=null" id="LSTD946881F_2"></span></span> otherwise.
+</div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDIC')" onkeypress="SectionExpandCollapse_CheckKey('IDIC', event)" tabindex="0"><img class="collapseToggle" id="IDICToggle" src="../icons/SectionExpanded.png"/>Exceptions</span></div><div class="collapsibleSection" id="IDICSection"><table><tr><th>Exception</th><th>Condition</th></tr><tr><td><a href="2e6e4206-97a8-dd4b-df5d-4269f4bb6088.htm">ArgumentException</a></td><td>
+   The element hostElemId does not exist in the document
+   -or-
+   hostElemId is not permitted for this type of load.
+</td></tr><tr><td><a href="631e1424-60f4-929b-4e52-dda9dcd26316.htm">ArgumentNullException</a></td><td>
+   A non-optional argument was null
+</td></tr><tr><td><a href="60f148c9-ece0-a6bb-4e12-bb4a9c8c8a24.htm">ArgumentOutOfRangeException</a></td><td>
+   A value passed for an enumeration argument is not a member of that enumeration
+</td></tr><tr><td><a href="05972c68-fa6d-3a83-d720-ad84fbc4780f.htm">ArgumentsInconsistentException</a></td><td>
+   Thrown when force and moment vectors are equal zero.
+</td></tr><tr><td><a href="9e715f03-3884-e539-4dd6-8d7545733adc.htm">InvalidOperationException</a></td><td>
+   Thrown if type could not be set for newly created point load.
+</td></tr></table></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('seeAlso')" onkeypress="SectionExpandCollapse_CheckKey('seeAlso', event)" tabindex="0"><img class="collapseToggle" id="seeAlsoToggle" src="../icons/SectionExpanded.png"/>See Also</span></div><div class="collapsibleSection" id="seeAlsoSection"><h4>Reference</h4><div><a href="3f703eb6-7eac-c80e-e693-ebcdd6b35bbe.htm">PointLoad Class</a></div><div><a href="a123a797-fde4-9e75-fdab-fbe99c2c3146.htm">Create Overload</a></div><div><a href="d586b341-f687-9d90-e96d-255806b7d4fc.htm">Autodesk.Revit.DB.Structure Namespace</a></div></div></div></div><div class="pageFooter" id="PageFooter"><div class="feedbackLink">Send comments on this topic to
+        <a href="mailto:revitapifeedback%40autodesk.com?Subject=Revit%202026%20API" id="HT_MailLink">Autodesk</a></div>
+<script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        HT_mailLink.href += ": " + document.title + "\u0026body=" + encodeURIComponent("Your feedback is used to improve the documentation and the product. Your e-mail address will not be used for any other purpose and is disposed of after the issue you report is resolved. While working to resolve the issue that you report, you may be contacted via e-mail to get further details or clarification on the feedback you sent. After the issue you report has been addressed, you may receive an e-mail to let you know that your feedback has been addressed.");
+        </script></div></body></html>

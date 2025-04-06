@@ -1,0 +1,71 @@
+﻿<html><head><meta content="IE=edge" http-equiv="X-UA-Compatible"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><meta content="true" name="Microsoft.Help.SelfBranded"/><meta content="en-us" name="Language"/><meta content="en-us" name="Microsoft.Help.Locale"/><meta content="en-us" name="Microsoft.Help.TopicLocale"/><link href="../icons/favicon.ico" rel="shortcut icon"/><link href="../styles/branding.css" rel="stylesheet" type="text/css"/><link href="../styles/branding-en-US.css" rel="stylesheet" type="text/css"/><script src="../scripts/branding.js" type="text/javascript"></script><title>Rebar.CreateFromRebarShape Method</title><meta content="CreateFromRebarShape Method" name="Title"/><meta content="M:Autodesk.Revit.DB.Structure.Rebar.CreateFromRebarShape(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.Structure.RebarShape,Autodesk.Revit.DB.Structure.RebarBarType,Autodesk.Revit.DB.Element,Autodesk.Revit.DB.XYZ,Autodesk.Revit.DB.XYZ,Autodesk.Revit.DB.XYZ)" name="Microsoft.Help.Id"/><meta content="Reference" name="Microsoft.Help.ContentType"/><meta content="Rebar.CreateFromRebarShape method" name="System.Keywords"/><meta content="CreateFromRebarShape method" name="System.Keywords"/><meta content="Autodesk.Revit.DB.Structure.Rebar.CreateFromRebarShape" name="Microsoft.Help.F1"/><meta content="Rebar.CreateFromRebarShape" name="Microsoft.Help.F1"/><meta content="CreateFromRebarShape" name="Microsoft.Help.F1"/><meta content="Autodesk.Revit.DB.Structure" name="container"/><meta content="5e58e3f3-dea6-79cb-9de4-475e6fe5c28b" name="file"/><meta content="5e58e3f3-dea6-79cb-9de4-475e6fe5c28b" name="guid"/><meta content="Creates a new shape driven Rebar, as an instance of a RebarShape. The instance will have the default shape parameters from the RebarShape, and its location is based on the bounding box of the shape in the shape definition." name="Description"/><link href="../styles/branding-Help1.css" rel="stylesheet" type="text/css"/></head><body onload="SetDefaultLanguage('cs');"><input class="userDataStyle" id="userDataCache" type="hidden"/><div class="pageHeader" id="PageHeader">Revit 2026 API</div><div class="pageBody"><div class="topicContent" id="TopicContent"><table class="titleTable"><tr><td class="titleColumn"><h1>Rebar<span data-languagespecifictext="cpp=::|nu=." id="LSTF4865420_0"></span>Create<wbr/>From<wbr/>Rebar<wbr/>Shape Method</h1></td></tr></table><div class="summary">
+   Creates a new shape driven Rebar, as an instance of a RebarShape.
+   The instance will have the default shape parameters from the RebarShape,
+   and its location is based on the bounding box of the shape in the shape definition.
+   Hooks and cranks are removed from the shape before computing its bounding box.
+   If appropriate hooks and cranks can be found in the document, they will be assigned arbitrarily.
+</div><br/><strong>Namespace:</strong> <a href="d586b341-f687-9d90-e96d-255806b7d4fc.htm">Autodesk.Revit.DB.Structure</a><br/><strong>Assembly:</strong> RevitAPI (in RevitAPI.dll) Version: 26.0.4.0 (26.0.4.0)<div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDB')" onkeypress="SectionExpandCollapse_CheckKey('IDB', event)" tabindex="0"><img class="collapseToggle" id="IDBToggle" src="../icons/SectionExpanded.png"/>Syntax</span></div><div class="collapsibleSection" id="IDBSection"><div class="codeSnippetContainer" id="IDAB"><div class="codeSnippetContainerTabs"><div class="codeSnippetContainerTab" id="IDAB_tab1"><a href="#" onclick="ChangeTab('IDAB','cs','1','4');return false;">C#</a></div><div class="codeSnippetContainerTab" id="IDAB_tab2"><a href="#" onclick="ChangeTab('IDAB','vb','2','4');return false;">VB</a></div><div class="codeSnippetContainerTab" id="IDAB_tab3"><a href="#" onclick="ChangeTab('IDAB','cpp','3','4');return false;">C++</a></div><div class="codeSnippetContainerTab" id="IDAB_tab4"><a href="#" onclick="ChangeTab('IDAB','fs','4','4');return false;">F#</a></div></div><div class="codeSnippetContainerCodeContainer"><div class="codeSnippetToolBar"><div class="codeSnippetToolBarText"><a class="copyCodeSnippet" href="#" id="IDAB_copyCode" onclick="CopyToClipboard('IDAB');return false;" title="Copy">Copy</a></div></div><div class="codeSnippetContainerCode" id="IDAB_code_Div1" style="display: block"><pre xml:space="preserve"><span class="keyword">public</span> <span class="keyword">static</span> <span class="identifier">Rebar</span> <span class="identifier">CreateFromRebarShape</span>(
+	<span class="identifier">Document</span> <span class="parameter">doc</span>,
+	<span class="identifier">RebarShape</span> <span class="parameter">rebarShape</span>,
+	<span class="identifier">RebarBarType</span> <span class="parameter">barType</span>,
+	<span class="identifier">Element</span> <span class="parameter">host</span>,
+	<span class="identifier">XYZ</span> <span class="parameter">origin</span>,
+	<span class="identifier">XYZ</span> <span class="parameter">xVec</span>,
+	<span class="identifier">XYZ</span> <span class="parameter">yVec</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div2" style="display: none"><pre xml:space="preserve"><span class="keyword">Public</span> <span class="keyword">Shared</span> <span class="keyword">Function</span> <span class="identifier">CreateFromRebarShape</span> ( 
+	<span class="parameter">doc</span> <span class="keyword">As</span> <span class="identifier">Document</span>,
+	<span class="parameter">rebarShape</span> <span class="keyword">As</span> <span class="identifier">RebarShape</span>,
+	<span class="parameter">barType</span> <span class="keyword">As</span> <span class="identifier">RebarBarType</span>,
+	<span class="parameter">host</span> <span class="keyword">As</span> <span class="identifier">Element</span>,
+	<span class="parameter">origin</span> <span class="keyword">As</span> <span class="identifier">XYZ</span>,
+	<span class="parameter">xVec</span> <span class="keyword">As</span> <span class="identifier">XYZ</span>,
+	<span class="parameter">yVec</span> <span class="keyword">As</span> <span class="identifier">XYZ</span>
+) <span class="keyword">As</span> <span class="identifier">Rebar</span></pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div3" style="display: none"><pre xml:space="preserve"><span class="keyword">public</span>:
+<span class="keyword">static</span> <span class="identifier">Rebar</span>^ <span class="identifier">CreateFromRebarShape</span>(
+	<span class="identifier">Document</span>^ <span class="parameter">doc</span>, 
+	<span class="identifier">RebarShape</span>^ <span class="parameter">rebarShape</span>, 
+	<span class="identifier">RebarBarType</span>^ <span class="parameter">barType</span>, 
+	<span class="identifier">Element</span>^ <span class="parameter">host</span>, 
+	<span class="identifier">XYZ</span>^ <span class="parameter">origin</span>, 
+	<span class="identifier">XYZ</span>^ <span class="parameter">xVec</span>, 
+	<span class="identifier">XYZ</span>^ <span class="parameter">yVec</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div4" style="display: none"><pre xml:space="preserve"><span class="keyword">static</span> <span class="keyword">member</span> <span class="identifier">CreateFromRebarShape</span> : 
+        <span class="parameter">doc</span> : <span class="identifier">Document</span> * 
+        <span class="parameter">rebarShape</span> : <span class="identifier">RebarShape</span> * 
+        <span class="parameter">barType</span> : <span class="identifier">RebarBarType</span> * 
+        <span class="parameter">host</span> : <span class="identifier">Element</span> * 
+        <span class="parameter">origin</span> : <span class="identifier">XYZ</span> * 
+        <span class="parameter">xVec</span> : <span class="identifier">XYZ</span> * 
+        <span class="parameter">yVec</span> : <span class="identifier">XYZ</span> <span class="keyword">-&gt;</span> <span class="identifier">Rebar</span> </pre></div></div></div><h4>Parameters</h4><dl><dt class="has-text-weight-normal"><span class="parameter">doc</span>  <a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document</a></dt><dd>
+   A document.
+</dd><dt class="has-text-weight-normal"><span class="parameter">rebarShape</span>  <a href="0a370e32-eaba-785e-7e1f-9330929525fc.htm">RebarShape</a></dt><dd>
+   A RebarShape element that defines the shape of the rebar.
+</dd><dt class="has-text-weight-normal"><span class="parameter">barType</span>  <a href="467b44cc-54e7-3ecf-07e1-ad15d05fe800.htm">RebarBarType</a></dt><dd>
+   A RebarBarType element that defines bar diameter, bend radius and material of the rebar.
+</dd><dt class="has-text-weight-normal"><span class="parameter">host</span>  <a href="eb16114f-69ea-f4de-0d0d-f7388b105a16.htm">Element</a></dt><dd>
+   The element to which the rebar belongs. The element must support rebar hosting;
+   <span class="noLink">[!:Autodesk::Revit::DB::Structure::RebarHostData]</span>.
+</dd><dt class="has-text-weight-normal"><span class="parameter">origin</span>  <a href="c2fd995c-95c0-58fb-f5de-f3246cbc5600.htm">XYZ</a></dt><dd>
+   The lower-left corner of the shape's bounding box will be placed at this point in the project.
+</dd><dt class="has-text-weight-normal"><span class="parameter">xVec</span>  <a href="c2fd995c-95c0-58fb-f5de-f3246cbc5600.htm">XYZ</a></dt><dd>
+   The x-axis in the shape definition will be mapped to this direction in the project.
+</dd><dt class="has-text-weight-normal"><span class="parameter">yVec</span>  <a href="c2fd995c-95c0-58fb-f5de-f3246cbc5600.htm">XYZ</a></dt><dd>
+   The y-axis in the shape definition will be mapped to this direction in the project.
+</dd></dl><h4>Return Value</h4><a href="70fd7426-f4a4-591c-8c06-3c18dda45e7d.htm">Rebar</a><br/>
+   The newly created Rebar instance, or <span class="keyword"><span data-languagespecifictext="cpp=nullptr|vb=Nothing|nu=null" id="LSTF4865420_1"></span></span> if the operation fails.
+</div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDJC')" onkeypress="SectionExpandCollapse_CheckKey('IDJC', event)" tabindex="0"><img class="collapseToggle" id="IDJCToggle" src="../icons/SectionExpanded.png"/>Exceptions</span></div><div class="collapsibleSection" id="IDJCSection"><table><tr><th>Exception</th><th>Condition</th></tr><tr><td><a href="2e6e4206-97a8-dd4b-df5d-4269f4bb6088.htm">ArgumentException</a></td><td>
+   The element host was not found in the given document.
+   -or-
+   host is not a valid rebar host.
+</td></tr><tr><td><a href="631e1424-60f4-929b-4e52-dda9dcd26316.htm">ArgumentNullException</a></td><td>
+   A non-optional argument was null
+</td></tr><tr><td><a href="60f148c9-ece0-a6bb-4e12-bb4a9c8c8a24.htm">ArgumentOutOfRangeException</a></td><td>
+   xVec has zero length.
+   -or-
+   yVec has zero length.
+</td></tr></table></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('seeAlso')" onkeypress="SectionExpandCollapse_CheckKey('seeAlso', event)" tabindex="0"><img class="collapseToggle" id="seeAlsoToggle" src="../icons/SectionExpanded.png"/>See Also</span></div><div class="collapsibleSection" id="seeAlsoSection"><h4>Reference</h4><div><a href="70fd7426-f4a4-591c-8c06-3c18dda45e7d.htm">Rebar Class</a></div><div><a href="d586b341-f687-9d90-e96d-255806b7d4fc.htm">Autodesk.Revit.DB.Structure Namespace</a></div></div></div></div><div class="pageFooter" id="PageFooter"><div class="feedbackLink">Send comments on this topic to
+        <a href="mailto:revitapifeedback%40autodesk.com?Subject=Revit%202026%20API" id="HT_MailLink">Autodesk</a></div>
+<script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        HT_mailLink.href += ": " + document.title + "\u0026body=" + encodeURIComponent("Your feedback is used to improve the documentation and the product. Your e-mail address will not be used for any other purpose and is disposed of after the issue you report is resolved. While working to resolve the issue that you report, you may be contacted via e-mail to get further details or clarification on the feedback you sent. After the issue you report has been addressed, you may receive an e-mail to let you know that your feedback has been addressed.");
+        </script></div></body></html>

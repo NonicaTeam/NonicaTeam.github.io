@@ -1,0 +1,52 @@
+﻿<html><head><meta content="IE=edge" http-equiv="X-UA-Compatible"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><meta content="true" name="Microsoft.Help.SelfBranded"/><meta content="en-us" name="Language"/><meta content="en-us" name="Microsoft.Help.Locale"/><meta content="en-us" name="Microsoft.Help.TopicLocale"/><link href="../icons/favicon.ico" rel="shortcut icon"/><link href="../styles/branding.css" rel="stylesheet" type="text/css"/><link href="../styles/branding-en-US.css" rel="stylesheet" type="text/css"/><script src="../scripts/branding.js" type="text/javascript"></script><title>FormatOptions.Accuracy Property</title><meta content="Accuracy Property" name="Title"/><meta content="P:Autodesk.Revit.DB.FormatOptions.Accuracy" name="Microsoft.Help.Id"/><meta content="Reference" name="Microsoft.Help.ContentType"/><meta content="FormatOptions.Accuracy property" name="System.Keywords"/><meta content="Accuracy property" name="System.Keywords"/><meta content="Autodesk.Revit.DB.FormatOptions.Accuracy" name="Microsoft.Help.F1"/><meta content="FormatOptions.Accuracy" name="Microsoft.Help.F1"/><meta content="Accuracy" name="Microsoft.Help.F1"/><meta content="Autodesk.Revit.DB" name="container"/><meta content="bbba6604-8961-3a26-4e1f-73c2a2169464" name="file"/><meta content="bbba6604-8961-3a26-4e1f-73c2a2169464" name="guid"/><meta content="The accuracy to which values will be rounded." name="Description"/><link href="../styles/branding-Help1.css" rel="stylesheet" type="text/css"/></head><body onload="SetDefaultLanguage('cs');"><input class="userDataStyle" id="userDataCache" type="hidden"/><div class="pageHeader" id="PageHeader">Revit 2026 API</div><div class="pageBody"><div class="topicContent" id="TopicContent"><table class="titleTable"><tr><td class="titleColumn"><h1>Format<wbr/>Options<span data-languagespecifictext="cpp=::|nu=." id="LSTF7C484E0_0"></span>Accuracy Property</h1></td></tr></table><div class="summary">
+   The accuracy to which values will be rounded.
+</div><br/><strong>Namespace:</strong> <a href="87546ba7-461b-c646-cbb1-2cb8f5bff8b2.htm">Autodesk.Revit.DB</a><br/><strong>Assembly:</strong> RevitAPI (in RevitAPI.dll) Version: 26.0.4.0 (26.0.4.0)<div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDB')" onkeypress="SectionExpandCollapse_CheckKey('IDB', event)" tabindex="0"><img class="collapseToggle" id="IDBToggle" src="../icons/SectionExpanded.png"/>Syntax</span></div><div class="collapsibleSection" id="IDBSection"><div class="codeSnippetContainer" id="IDAB"><div class="codeSnippetContainerTabs"><div class="codeSnippetContainerTab" id="IDAB_tab1"><a href="#" onclick="ChangeTab('IDAB','cs','1','4');return false;">C#</a></div><div class="codeSnippetContainerTab" id="IDAB_tab2"><a href="#" onclick="ChangeTab('IDAB','vb','2','4');return false;">VB</a></div><div class="codeSnippetContainerTab" id="IDAB_tab3"><a href="#" onclick="ChangeTab('IDAB','cpp','3','4');return false;">C++</a></div><div class="codeSnippetContainerTab" id="IDAB_tab4"><a href="#" onclick="ChangeTab('IDAB','fs','4','4');return false;">F#</a></div></div><div class="codeSnippetContainerCodeContainer"><div class="codeSnippetToolBar"><div class="codeSnippetToolBarText"><a class="copyCodeSnippet" href="#" id="IDAB_copyCode" onclick="CopyToClipboard('IDAB');return false;" title="Copy">Copy</a></div></div><div class="codeSnippetContainerCode" id="IDAB_code_Div1" style="display: block"><pre xml:space="preserve"><span class="keyword">public</span> <span class="identifier">double</span> <span class="identifier">Accuracy</span> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div2" style="display: none"><pre xml:space="preserve"><span class="keyword">Public</span> <span class="keyword">Property</span> <span class="identifier">Accuracy</span> <span class="keyword">As</span> <span class="identifier">Double</span>
+	<span class="keyword">Get</span>
+	<span class="keyword">Set</span></pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div3" style="display: none"><pre xml:space="preserve"><span class="keyword">public</span>:
+<span class="keyword">property</span> <span class="identifier">double</span> <span class="identifier">Accuracy</span> {
+	<span class="identifier">double</span> <span class="keyword">get</span> ();
+	<span class="keyword">void</span> <span class="keyword">set</span> (<span class="identifier">double</span> <span class="parameter">value</span>);
+}</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div4" style="display: none"><pre xml:space="preserve"><span class="keyword">member</span> <span class="identifier">Accuracy</span> : <span class="identifier">float</span> <span class="keyword">with</span> <span class="keyword">get</span>, <span class="keyword">set</span></pre></div></div></div><h4>Property Value</h4><span class="noLink">Double</span><br/>
+   The accuracy.  The default depends on the display unit.
+</div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDDC')" onkeypress="SectionExpandCollapse_CheckKey('IDDC', event)" tabindex="0"><img class="collapseToggle" id="IDDCToggle" src="../icons/SectionExpanded.png"/>Exceptions</span></div><div class="collapsibleSection" id="IDDCSection"><table><tr><th>Exception</th><th>Condition</th></tr><tr><td><a href="2e6e4206-97a8-dd4b-df5d-4269f4bb6088.htm">ArgumentException</a></td><td>
+   When setting this property: accuracy is not a valid accuracy for the display unit in this FormatOptions.
+</td></tr><tr><td><a href="9e715f03-3884-e539-4dd6-8d7545733adc.htm">InvalidOperationException</a></td><td>
+   UseDefault is true in this FormatOptions.
+</td></tr></table></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDBC')" onkeypress="SectionExpandCollapse_CheckKey('IDBC', event)" tabindex="0"><img class="collapseToggle" id="IDBCToggle" src="../icons/SectionExpanded.png"/>Remarks</span></div><div class="collapsibleSection" id="IDBCSection"><p>Formatted values will be rounded to the nearest multiple of
+   the accuracy value.</p><p>Accuracy is specified in display units, not in Revit's
+   internal units.</p><p>For DUT_GENERAL, the accuracy value is always 0.000001 and
+   cannot be set to another value.  DUT_GENERAL is a special display
+   unit that always rounds to six decimal places and suppresses
+   trailing zeros, roughly equivalent to DUT_FIXED with the accuracy
+   set to 0.000001 and SuppressTrailingZeros set to true.</p><p>For other display units, a wide range of accuracy values may
+   be specified.  All values from 1.0e-12 to 1.0e12 will be accepted,
+   but the specified value will be automatically adjusted to the
+   nearest supported value if necessary.  For best results, the
+   accuracy value should be chosen to be compatible with the display
+   unit:</p><ul><li>For most display units, the value is displayed as a decimal
+   number, and the accuracy should typically be a power of 10, for
+   example 1.0 to round to 0 decimal places or 0.001 to round to 3
+   decimal places.  Other values can be used, for example 0.25 to
+   round to the nearest 0.25 (displayed with 2 decimal places) or
+   2.0 to round to the nearest even integer (displayed with 0 decimal
+   places).  The specified accuracy will automatically be rounded to
+   the nearest positive multiple of 1.0e-12.</li><li>For DUT_FRACTIONAL_INCHES, DUT_RISE_OVER_INCHES, and
+   DUT_RISE_OVER_120_INCHES, the accuracy should typically be a power
+   of 2, for example 0.25 to round to the nearest 1/4".  Other values
+   can be used, for example 6.0 to round to the nearest 6" or 1.5 to
+   round to the nearest 1 1/2".  For DUT_FEET_FRACTIONAL_INCHES,
+   DUT_RISE_OVER_FOOT, and DUT_RISE_OVER_10_FEET, similar accuracy
+   values can be used but they must be divided by 12 because the
+   accuracy is specified in feet.  The specified accuracy will
+   automatically be rounded to the nearest positive multiple of
+   1/2^20 inches.</li><li>For DUT_DEGREES_AND_MINUTES, the accuracy should typically
+   be a power of 10 divided by 3600 to round seconds to a specific
+   number of decimal places, for example 1.0 / 3600.0 to round seconds
+   to 0 decimal places or 0.01 / 3600.0 to round seconds to 2 decimal
+   places.  The specified accuracy will automatically be rounded to
+   the nearest positive multiple of 1.0e-8 seconds.</li></ul></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('seeAlso')" onkeypress="SectionExpandCollapse_CheckKey('seeAlso', event)" tabindex="0"><img class="collapseToggle" id="seeAlsoToggle" src="../icons/SectionExpanded.png"/>See Also</span></div><div class="collapsibleSection" id="seeAlsoSection"><h4>Reference</h4><div><a href="70f78207-1109-3906-8e67-cd27df1f0ae8.htm">FormatOptions Class</a></div><div><a href="87546ba7-461b-c646-cbb1-2cb8f5bff8b2.htm">Autodesk.Revit.DB Namespace</a></div></div></div></div><div class="pageFooter" id="PageFooter"><div class="feedbackLink">Send comments on this topic to
+        <a href="mailto:revitapifeedback%40autodesk.com?Subject=Revit%202026%20API" id="HT_MailLink">Autodesk</a></div>
+<script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        HT_mailLink.href += ": " + document.title + "\u0026body=" + encodeURIComponent("Your feedback is used to improve the documentation and the product. Your e-mail address will not be used for any other purpose and is disposed of after the issue you report is resolved. While working to resolve the issue that you report, you may be contacted via e-mail to get further details or clarification on the feedback you sent. After the issue you report has been addressed, you may receive an e-mail to let you know that your feedback has been addressed.");
+        </script></div></body></html>

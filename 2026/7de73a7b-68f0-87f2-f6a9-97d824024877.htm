@@ -1,0 +1,104 @@
+﻿<html><head><meta content="IE=edge" http-equiv="X-UA-Compatible"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><meta content="true" name="Microsoft.Help.SelfBranded"/><meta content="en-us" name="Language"/><meta content="en-us" name="Microsoft.Help.Locale"/><meta content="en-us" name="Microsoft.Help.TopicLocale"/><link href="../icons/favicon.ico" rel="shortcut icon"/><link href="../styles/branding.css" rel="stylesheet" type="text/css"/><link href="../styles/branding-en-US.css" rel="stylesheet" type="text/css"/><script src="../scripts/branding.js" type="text/javascript"></script><title>Document.SynchronizeWithCentral Method</title><meta content="SynchronizeWithCentral Method" name="Title"/><meta content="M:Autodesk.Revit.DB.Document.SynchronizeWithCentral(Autodesk.Revit.DB.TransactWithCentralOptions,Autodesk.Revit.DB.SynchronizeWithCentralOptions)" name="Microsoft.Help.Id"/><meta content="Reference" name="Microsoft.Help.ContentType"/><meta content="Document.SynchronizeWithCentral method" name="System.Keywords"/><meta content="SynchronizeWithCentral method" name="System.Keywords"/><meta content="Autodesk.Revit.DB.Document.SynchronizeWithCentral" name="Microsoft.Help.F1"/><meta content="Document.SynchronizeWithCentral" name="Microsoft.Help.F1"/><meta content="SynchronizeWithCentral" name="Microsoft.Help.F1"/><meta content="Autodesk.Revit.DB" name="container"/><meta content="7de73a7b-68f0-87f2-f6a9-97d824024877" name="file"/><meta content="7de73a7b-68f0-87f2-f6a9-97d824024877" name="guid"/><meta content="Performs reload latest until the model in the current session is up to date and then saves changes back to central. A save to central is performed even if no changes were made." name="Description"/><link href="../styles/branding-Help1.css" rel="stylesheet" type="text/css"/></head><body onload="SetDefaultLanguage('cs');"><input class="userDataStyle" id="userDataCache" type="hidden"/><div class="pageHeader" id="PageHeader">Revit 2026 API</div><div class="pageBody"><div class="topicContent" id="TopicContent"><table class="titleTable"><tr><td class="titleColumn"><h1>Document<span data-languagespecifictext="cpp=::|nu=." id="LSTAEB21083_0"></span>Synchronize<wbr/>With<wbr/>Central Method</h1></td></tr></table><div class="summary">
+   Performs reload latest until the model in the current session is up to date and then saves changes back to central.
+   A save to central is performed even if no changes were made.
+</div><br/><strong>Namespace:</strong> <a href="87546ba7-461b-c646-cbb1-2cb8f5bff8b2.htm">Autodesk.Revit.DB</a><br/><strong>Assembly:</strong> RevitAPI (in RevitAPI.dll) Version: 26.0.4.0 (26.0.4.0)<div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDB')" onkeypress="SectionExpandCollapse_CheckKey('IDB', event)" tabindex="0"><img class="collapseToggle" id="IDBToggle" src="../icons/SectionExpanded.png"/>Syntax</span></div><div class="collapsibleSection" id="IDBSection"><div class="codeSnippetContainer" id="IDAB"><div class="codeSnippetContainerTabs"><div class="codeSnippetContainerTab" id="IDAB_tab1"><a href="#" onclick="ChangeTab('IDAB','cs','1','4');return false;">C#</a></div><div class="codeSnippetContainerTab" id="IDAB_tab2"><a href="#" onclick="ChangeTab('IDAB','vb','2','4');return false;">VB</a></div><div class="codeSnippetContainerTab" id="IDAB_tab3"><a href="#" onclick="ChangeTab('IDAB','cpp','3','4');return false;">C++</a></div><div class="codeSnippetContainerTab" id="IDAB_tab4"><a href="#" onclick="ChangeTab('IDAB','fs','4','4');return false;">F#</a></div></div><div class="codeSnippetContainerCodeContainer"><div class="codeSnippetToolBar"><div class="codeSnippetToolBarText"><a class="copyCodeSnippet" href="#" id="IDAB_copyCode" onclick="CopyToClipboard('IDAB');return false;" title="Copy">Copy</a></div></div><div class="codeSnippetContainerCode" id="IDAB_code_Div1" style="display: block"><pre xml:space="preserve"><span class="keyword">public</span> <span class="keyword">void</span> <span class="identifier">SynchronizeWithCentral</span>(
+	<span class="identifier">TransactWithCentralOptions</span> <span class="parameter">transactOptions</span>,
+	<span class="identifier">SynchronizeWithCentralOptions</span> <span class="parameter">syncOptions</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div2" style="display: none"><pre xml:space="preserve"><span class="keyword">Public</span> <span class="keyword">Sub</span> <span class="identifier">SynchronizeWithCentral</span> ( 
+	<span class="parameter">transactOptions</span> <span class="keyword">As</span> <span class="identifier">TransactWithCentralOptions</span>,
+	<span class="parameter">syncOptions</span> <span class="keyword">As</span> <span class="identifier">SynchronizeWithCentralOptions</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div3" style="display: none"><pre xml:space="preserve"><span class="keyword">public</span>:
+<span class="keyword">void</span> <span class="identifier">SynchronizeWithCentral</span>(
+	<span class="identifier">TransactWithCentralOptions</span>^ <span class="parameter">transactOptions</span>, 
+	<span class="identifier">SynchronizeWithCentralOptions</span>^ <span class="parameter">syncOptions</span>
+)</pre></div><div class="codeSnippetContainerCode" id="IDAB_code_Div4" style="display: none"><pre xml:space="preserve"><span class="keyword">member</span> <span class="identifier">SynchronizeWithCentral</span> : 
+        <span class="parameter">transactOptions</span> : <span class="identifier">TransactWithCentralOptions</span> * 
+        <span class="parameter">syncOptions</span> : <span class="identifier">SynchronizeWithCentralOptions</span> <span class="keyword">-&gt;</span> <span class="keyword">unit</span> </pre></div></div></div><h4>Parameters</h4><dl><dt class="has-text-weight-normal"><span class="parameter">transactOptions</span>  <a href="f5da22fa-55ee-9196-cafd-5323d8e9ca0a.htm">TransactWithCentralOptions</a></dt><dd>
+   Options to customize behavior accessing the central model.
+</dd><dt class="has-text-weight-normal"><span class="parameter">syncOptions</span>  <a href="96eaf3af-971d-da6d-a857-88d6e602ffd4.htm">SynchronizeWithCentralOptions</a></dt><dd>
+   Options to customize behavior of SynchronizeWithCentral.
+</dd></dl></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('IDDC')" onkeypress="SectionExpandCollapse_CheckKey('IDDC', event)" tabindex="0"><img class="collapseToggle" id="IDDCToggle" src="../icons/SectionExpanded.png"/>Exceptions</span></div><div class="collapsibleSection" id="IDDCSection"><table><tr><th>Exception</th><th>Condition</th></tr><tr><td><a href="631e1424-60f4-929b-4e52-dda9dcd26316.htm">ArgumentNullException</a></td><td>
+   A non-optional argument was null
+</td></tr><tr><td><a href="20094e4f-8326-8378-e5bc-452341d131c2.htm">CentralFileCommunicationException</a></td><td>
+   The file-based central model could not be reached, because e.g. the network is down or the file server is down.
+</td></tr><tr><td><a href="3e38b7b1-1ee8-c7f0-6cdd-bacf67bf61f4.htm">CentralModelAccessDeniedException</a></td><td>
+   Access to the central model was denied due to lack of access privileges.
+   -or-
+   Access to the central model was denied. A possible reason is because the model was under maintenance.
+</td></tr><tr><td><a href="ad511076-c435-23c1-5720-1205c4ed28b9.htm">CentralModelContentionException</a></td><td>
+   The central model is locked by another client.
+</td></tr><tr><td><a href="0e2ac15f-ca64-42c3-b3ef-e6f7ca1cb59a.htm">CentralModelException</a></td><td>
+   Username does not match the one used to create the local file.
+   -or-
+   Revit could not save all of the worksets that have been changed.  Try again.
+   -or-
+   Some of the elements you changed in this model are now editable by someone else, or you checked out worksets that were at risk
+   or relinquished in the central model but not this file.  You cannot synchronize with the central model until the other user
+   relinquishes these elements without making changes.
+   -or-
+   The central model has been replaced by a local model.
+   -or-
+   Local incompatible because it was closed without saving after synchronizing with central.
+   -or-
+   The central model is missing.
+   -or-
+   The central model is incompatible.
+   -or-
+   The central model is corrupt or not an RVT file.
+   -or-
+   The central model was rolled back.
+   -or-
+   The central model's elements have been relinquished
+   -or-
+   Your data or permissions saving is aborted by another user.
+   -or-
+   The central model is overritten by other user.
+   -or-
+   An internal error happened on the central model, please contact the server administrator.
+</td></tr><tr><td><a href="73250198-dbc6-e760-4297-ec062f00f574.htm">FileNotFoundException</a></td><td>
+   Cannot access the local file.
+</td></tr><tr><td><a href="9e715f03-3884-e539-4dd6-8d7545733adc.htm">InvalidOperationException</a></td><td>
+   This Document is not a primary document, it is a linked document.
+   -or-
+   This Document is read-only: It cannot be modified.
+   -or-
+   This Document has an open editing transaction and is accepting changes.
+   -or-
+   This Document is not a project document.
+   -or-
+   This Document is in an edit mode.
+   -or-
+   Saving is not allowed in the current application mode.
+   -or-
+   This Document does not have a central location: Worksharing needs to be enabled and central model saved.
+   -or-
+   This Document is a local file that is not owned by the current user, who therefore is not allowed to modify it.
+   -or-
+   The local file is read-only.
+   It can not be saved before or after synchronizing with central.
+   -or-
+   This Document is not a workshared document.
+   -or-
+   Saving local before first reload latest and after saving changes to central
+   in Synchronize with Central is mandatory for server-based local models.
+   -or-
+   Operation is not permitted when there is any open sub-transaction, transaction, or transaction group.
+</td></tr><tr><td><a href="aea34480-ceb5-b49f-129d-0799e7bb1c21.htm">OperationCanceledException</a></td><td>
+   Synchronize With Central was canceled by the user or by an API event callback.
+</td></tr><tr><td><a href="a0003d89-0113-6623-65da-0db5c568bfb6.htm">RevitServerCommunicationException</a></td><td>
+   The server-based central model could not be reached
+   because of a network communication error.
+</td></tr><tr><td><a href="6dcd093c-d643-07cd-535f-36ffa9d2db52.htm">RevitServerInternalException</a></td><td>
+   The disk space is running low on server, please contact the server administrator.
+   -or-
+   An internal error happened on the server, please contact the server administrator.
+</td></tr><tr><td><a href="b9b68e56-c767-4680-a65b-73d268ee8860.htm">RevitServerUnauthenticatedUserException</a></td><td>
+   User is not signed in with Autodesk id.
+</td></tr><tr><td><a href="9e8c1efc-8719-fe01-f311-cfade7b177ed.htm">RevitServerUnauthorizedException</a></td><td>
+   User is not authorized to access the specified A360 project.
+</td></tr></table></div><div class="collapsibleAreaRegion"><span class="collapsibleRegionTitle" onclick="SectionExpandCollapse('seeAlso')" onkeypress="SectionExpandCollapse_CheckKey('seeAlso', event)" tabindex="0"><img class="collapseToggle" id="seeAlsoToggle" src="../icons/SectionExpanded.png"/>See Also</span></div><div class="collapsibleSection" id="seeAlsoSection"><h4>Reference</h4><div><a href="db03274b-a107-aa32-9034-f3e0df4bb1ec.htm">Document Class</a></div><div><a href="87546ba7-461b-c646-cbb1-2cb8f5bff8b2.htm">Autodesk.Revit.DB Namespace</a></div></div></div></div><div class="pageFooter" id="PageFooter"><div class="feedbackLink">Send comments on this topic to
+        <a href="mailto:revitapifeedback%40autodesk.com?Subject=Revit%202026%20API" id="HT_MailLink">Autodesk</a></div>
+<script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        HT_mailLink.href += ": " + document.title + "\u0026body=" + encodeURIComponent("Your feedback is used to improve the documentation and the product. Your e-mail address will not be used for any other purpose and is disposed of after the issue you report is resolved. While working to resolve the issue that you report, you may be contacted via e-mail to get further details or clarification on the feedback you sent. After the issue you report has been addressed, you may receive an e-mail to let you know that your feedback has been addressed.");
+        </script></div></body></html>
