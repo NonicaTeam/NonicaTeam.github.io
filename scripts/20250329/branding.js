@@ -1,5 +1,4 @@
-﻿
-(function() {
+﻿(function() {
     // Only redirect if this page is not already loaded in an iframe.
     if (window.self === window.top) {
       // Get the current URL path. Example: "/2025/1d2da0b1-26ee-91bc-cf36-d70eb73ea821.htm"
@@ -8,14 +7,6 @@
       if (pathParts.length >= 3) {
         // The directory (e.g., "2025") is the second element.
         var directory = pathParts[1];
-
-        //Remove after indexing
-        if(directory === "2026")
-        {
-          return;
-        }
-        ///
-
         // The file name (e.g., "1d2da0b1-26ee-91bc-cf36-d70eb73ea821.htm") is the third element.
         var fileName = pathParts[2];
         // Build the new URL using the extracted directory.
