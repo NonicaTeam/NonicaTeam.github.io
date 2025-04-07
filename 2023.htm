@@ -2,6 +2,7 @@
 <!-- !DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN" -->
 <html>
 <head>
+<meta name="referrer" content="no-referrer-when-downgrade">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KGFKHX958"></script>
 <script>
@@ -27,6 +28,7 @@
 <script type="text/javascript">
 
 window.year = "2023";
+window.index = "nonicateamio";
   
 function GetThisFName() {
 return location.pathname.split("/").pop();
@@ -170,6 +172,7 @@ function findNodeByUrl(url) {
         <a style="color: white;text-decoration: none;"><button class="selected-button">2023</button></a>
         <a style="color: white;text-decoration: none;"><button class="standard-button">2024</button></a>
         <a style="color: white;text-decoration: none;"><button class="standard-button">2025</button></a>
+        <a style="color: white;text-decoration: none;"><button class="standard-button">2026</button></a>
     </div>
     <div id="containerBar">
         <div id="algoliaBar"></div>
@@ -261,6 +264,7 @@ async function fetchData(finalurl, button) {
         button.className = "invalid-button";
     }
 }
+
 const checkFileExists = async (url) => {
     try {
         const response = await fetch(url, { method: 'HEAD' });
@@ -278,6 +282,668 @@ function loadHtmlIntoRightFrame(filePath) {
     iframe.src = filePath; // Set iframe source to load the page
   }
 }
+
+
+//Start editing searcher here.
+
+//IFRAME to PREVIEW PANEL AND RECENT SEARCHES
+// Select the node that will be observed for mutations (e.g., the body)
+const targetNode = document.body;
+
+// Options for the observer (we're interested in child list changes and subtree modifications)
+const config = { 
+    childList: true,  // Detect addition/removal of <li> elements
+    subtree: true,    // Observe all descendants of the parent element
+    };
+
+let lastTimeout;
+const key_fav  = "RevApiDocsFavorites" + window.index;
+const key_rece = "__DOCSEARCH_RECENT_SEARCHES__" + window.index;
+
+function loadCookieToLocalStorage(key) {
+    let cookies = document.cookie.split('; ');
+    for (let cookie of cookies) {
+        let [cookieKey, cookieValue] = cookie.split('=');
+        if (cookieKey === key) {
+            localStorage.setItem(key, decodeURIComponent(cookieValue));
+            break;
+        }
+    }
+}
+
+function saveLocalStorageToCookie(key, days = 9999) {
+    const value = localStorage.getItem(key);
+    if (value) {
+        const expires = new Date();
+        expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+        document.cookie = `${key}=${encodeURIComponent(value)}; expires=${expires.toUTCString()}; path=/`;
+    }
+}
+
+// Function to render again the favs list
+function renderSearchList(data) 
+{
+    const outer_container = document.getElementById('container_favs'); // Ensure this element exists in your HTML
+    const noFavsSubtitle = outer_container.querySelector("#SubtitleNoFavs");
+    if(noFavsSubtitle)
+    {
+        noFavsSubtitle.remove()
+    }
+    const numberOfChildren = outer_container.childElementCount;
+    const docSearchHit = createDocSearchHit(data, numberOfChildren, 0);
+    outer_container.insertAdjacentElement('beforeend', docSearchHit);
+}
+
+// Retrieve recent searches from localStorage using the detected key
+function getRecentSearches(key, limit = 99) {
+    if (!key) return [];
+    const stored = localStorage.getItem(key);
+    if (!stored) return [];
+    try {
+        const parsed = JSON.parse(stored);
+        // Depending on how DocSearch saves the data, it might be an array of objects.
+        // If the value is an object (with extra metadata), try to extract an array.
+        const items = Array.isArray(parsed) ? parsed : parsed.items || [];
+        return items.slice(0, limit);
+    } catch (e) {
+        console.error("Error parsing recent searches from localStorage", e);
+        return [];
+    }
+}
+
+function removeSearchFromHistory(searchurl) 
+{
+    try
+    {
+        const key = key_rece; // The key used to store searches in localStorage
+        const searches = JSON.parse(localStorage.getItem(key)) || [];
+        const updatedSearches = searches.filter(search => search.url !== searchurl);
+        localStorage.setItem(key, JSON.stringify(updatedSearches));
+    }
+    catch{ }
+}
+
+function removeFavoriteFromHistory(searchurl) {
+    try
+    {
+        const key = key_fav; // The key used to store searches in localStorage
+        const searches = JSON.parse(localStorage.getItem(key)) || [];
+        const updatedSearches = searches.filter(search => search.url !== searchurl);
+        localStorage.setItem(key, JSON.stringify(updatedSearches));
+        saveLocalStorageToCookie(key_fav)
+    }
+    catch{ }
+}
+
+function addFavoriteToHistory(newSearch) {
+    const key = key_fav; // Ensure this matches the key used in your remove function
+    // Retrieve the existing searches array from local storage, or initialize it as an empty array if it doesn't exist
+    const storedValue = localStorage.getItem(key);
+    let searches = []
+    if(storedValue && storedValue != "")
+    {
+        searches = JSON.parse(storedValue) || [];
+    }
+    // Add the new search to the array
+    searches.push(newSearch);
+    // Save the updated array back to local storage
+    localStorage.setItem(key, JSON.stringify(searches));
+    saveLocalStorageToCookie(key_fav)
+}
+
+function createDocSearchHit(data, index, favOrRec) {
+    // Create list item
+    const listItem = document.createElement('li');
+    listItem.id = `docsearch-hits${index}-item-${index}`;
+    listItem.role = 'option';
+    listItem.setAttribute('aria-selected', 'true');
+    listItem.classList.add('DocSearch-Hit');
+
+    // Create anchor element
+    const anchor = document.createElement('a');
+    anchor.href = data.url;
+
+    // Create container div
+    const container = document.createElement('div');
+    container.classList.add('DocSearch-Hit-Container');
+
+    // Create icon div
+    const iconDiv = document.createElement('div');
+    iconDiv.classList.add('DocSearch-Hit-icon');
+    if (favOrRec == 0)
+    {
+        const filledStar = `<svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 14.2L5 17l1-5.6-4-4 5.5-.7 2.5-5 2.5 5 5.6.8-4 4 .9 5.5z" stroke="currentColor" fill="white" fill-rule="evenodd" stroke-linejoin="round"></path></svg>`;
+        iconDiv.innerHTML = filledStar;
+    }
+    else
+    {
+        const svgIcon = `<svg width="20" height="20" viewBox="0 0 20 20"><g stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><path d="M3.18 6.6a8.23 8.23 0 1112.93 9.94h0a8.23 8.23 0 01-11.63 0"></path><path d="M6.44 7.25H2.55V3.36M10.45 6v5.6M10.45 11.6L13 13"></path></g></svg>`;
+        iconDiv.innerHTML = svgIcon;
+    }
+
+    // Create content wrapper div
+    const contentWrapper = document.createElement('div');
+    contentWrapper.classList.add('DocSearch-Hit-content-wrapper');
+    const titleSpan = document.createElement('span');
+    titleSpan.classList.add('DocSearch-Hit-title');
+    titleSpan.textContent = data.hierarchy.lvl1;
+    const pathSpan = document.createElement('span');
+    pathSpan.classList.add('DocSearch-Hit-path');
+    pathSpan.innerHTML = data.content.replace(/<mark[^>]*>|<\/mark>/g, '');; // Using innerHTML to preserve <mark> tags
+
+    // Create the action div
+    const actionDiv = document.createElement('div');
+    actionDiv.classList.add('DocSearch-Hit-action');
+
+    // Create the action div to add to favs
+    const actionDiv2 = document.createElement('div');
+
+    // Create the action button
+    const button = document.createElement('button');
+    button.type = 'submit';
+    button.classList.add('DocSearch-Hit-action-button');
+    const svgAction = `<svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
+    button.innerHTML = svgAction;
+    if(favOrRec == 0)
+    {
+        button.innerHTML = svgAction;
+        button.title = 'Remove this favorite from history.';
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            removeFavoriteFromHistory(data.url);
+            listItem.remove(); // Optionally remove the list item from the DOM
+            const favcontainer = document.getElementById("container_favs"); 
+            if (favcontainer.childElementCount === 0) 
+            {
+                const panelFavSubTitle = document.createElement('h5');
+                panelFavSubTitle.id = "SubtitleNoFavs";
+                panelFavSubTitle.style.whiteSpace = "pre-line";
+                panelFavSubTitle.textContent = "⭐ No Favorites Marked.";
+                panelFavSubTitle.style.padding = '10px';
+                panelFavSubTitle.style.margin = '0px';
+                panelFavSubTitle.style.color = '#baaef9';
+                favcontainer.appendChild(panelFavSubTitle);
+            }
+        });
+    }
+    else
+    {
+        button.title = 'Remove this search from history.';
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            removeSearchFromHistory(data.url);
+            listItem.remove(); // Optionally remove the list item from the DOM
+        });
+        actionDiv2.classList.add('DocSearch-Hit-action');
+        const buttonAddFavs = document.createElement('button');
+        buttonAddFavs.id = "star_button";
+        buttonAddFavs.title = 'Add this to favorites.';
+        buttonAddFavs.type = 'submit';
+        buttonAddFavs.classList.add('DocSearch-Hit-action-button');
+        const svgAction = `<svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 14.2L5 17l1-5.6-4-4 5.5-.7 2.5-5 2.5 5 5.6.8-4 4 .9 5.5z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linejoin="round"></path></svg>`;
+        buttonAddFavs.innerHTML = svgAction;
+
+        buttonAddFavs.addEventListener('click', (event) => {
+            event.preventDefault();
+            //Delete from Recent
+            removeSearchFromHistory(data.url);
+            listItem.remove(); // Optionally remove the list item from the DOM
+            //Add to favs
+            const extractedData = {
+                url: data.url,
+                content: data.content,
+                hierarchy: {
+                    lvl0: data.hierarchy.lvl0,
+                    lvl1: data.hierarchy.lvl1
+                },
+            };
+            addFavoriteToHistory(extractedData)
+            renderSearchList(data)
+        });
+
+        actionDiv2.appendChild(buttonAddFavs);
+    }
+    actionDiv.appendChild(button);
+
+    contentWrapper.appendChild(titleSpan);
+    contentWrapper.appendChild(pathSpan);
+
+    // Assemble the elements
+    container.appendChild(iconDiv);
+    container.appendChild(contentWrapper);
+    if(favOrRec == 1)
+    {
+        container.appendChild(actionDiv2);
+    }
+    container.appendChild(actionDiv);
+    anchor.appendChild(container);
+    listItem.appendChild(anchor);
+
+    return listItem;
+}
+
+function AddButtonToHtml(child)
+{
+    //Extract data from html
+    const anchor = child.querySelector("a");
+    const titleElement = child.querySelector(".DocSearch-Hit-title");
+    const pathElement = child.querySelector(".DocSearch-Hit-path");
+    const url = anchor ? anchor.href : "";
+    const title = titleElement ? titleElement.textContent.trim() : "";
+    let year = "";
+    let treeBreakdown = "";
+    let mycontent = "";
+    if (pathElement) {
+        const pathText = pathElement.textContent.trim();
+        mycontent = pathText
+        const pathParts = pathText.split("|");
+        if (pathParts.length > 1) {
+            year = pathParts[0].trim();
+            treeBreakdown = pathParts[1].trim();
+        }
+    }
+    const extractedData = {
+        url: url,
+        content: mycontent,
+        hierarchy: {
+            lvl0: year,
+            lvl1: title
+        },
+    };
+    //Create button and its structre
+    // Create the outer div
+    const div = document.createElement("div");
+    div.id = "star_button"
+    div.className = "DocSearch-Hit-action";
+    // Create the button
+    const button = document.createElement("button");
+    button.title = "Save this search";
+    button.type = "submit";
+    button.className = "DocSearch-Hit-action-button";
+    // Create the SVG element
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("width", "20");
+    svg.setAttribute("height", "20");
+    svg.setAttribute("viewBox", "0 0 20 20");
+    // Create the path inside the SVG
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", "M10 14.2L5 17l1-5.6-4-4 5.5-.7 2.5-5 2.5 5 5.6.8-4 4 .9 5.5z");
+    path.setAttribute("stroke", "currentColor");
+    path.setAttribute("fill", "none");
+    path.setAttribute("fill-rule", "evenodd");
+    path.setAttribute("stroke-linejoin", "round");
+
+    // Append path to SVG
+    svg.appendChild(path);
+
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        //Add to favs
+        addFavoriteToHistory(extractedData)
+        renderSearchList(extractedData)
+    });
+
+    // Append SVG to button
+    button.appendChild(svg);
+
+    // Append button to div
+    div.appendChild(button);
+
+    const containerElement = child.querySelector(".DocSearch-Hit-Container");
+    containerElement.insertBefore(div, containerElement.lastElementChild);
+}
+
+// Callback function to execute when mutations are observed
+const callback = (mutationsList, observer) => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    if (width > 1025)
+    {
+        // Check for the DocSearch modal container, to add iframe.
+        const docSearchContainer = document.querySelector('.DocSearch-Modal');
+        if (docSearchContainer && !docSearchContainer.querySelector('.DocSearch-Iframe')) 
+        {
+            //Create left panel for recent searchs and favorites
+            const leftpanel = document.createElement('div');
+            leftpanel.id = "newiframePreview";
+            leftpanel.classList.add('DocSearch-Iframe');
+            leftpanel.style.width = '50%';
+            leftpanel.style.height = '100%';
+            leftpanel.style.position = 'absolute'; // Fixed so it stays visible when scrolling
+            leftpanel.style.top = '0px';
+            leftpanel.style.left = '-51%';
+            leftpanel.style.zIndex = '9999';
+            leftpanel.style.backgroundColor = '#f5f6f8';
+            leftpanel.style.borderRadius = "5px";       
+            leftpanel.style.boxShadow = "2px 2px 10px rgba(0, 0, 0, 0.3)";
+            leftpanel.style.padding = '5px';
+            leftpanel.style.overflowY = 'auto';
+
+            // Append the iframe to the document body
+            docSearchContainer.appendChild(leftpanel);
+            loadCookieToLocalStorage(key_fav)
+            const favoriteSearches = getRecentSearches(key_fav);
+            const panelFavTitle = document.createElement('h4');
+            panelFavTitle.textContent = 'Favorites. (Max 12)';
+            panelFavTitle.style.padding = '10px';
+            panelFavTitle.style.margin = '0px';
+            panelFavTitle.style.color = '#5235ef';
+            leftpanel.appendChild(panelFavTitle);
+
+            if (favoriteSearches.length === 0)
+            {
+                const outer_container = document.createElement('div');
+                outer_container.id = "container_favs";
+                const panelFavSubTitle = document.createElement('h5');
+                panelFavSubTitle.id = "SubtitleNoFavs";
+                panelFavSubTitle.style.whiteSpace = "pre-line";
+                panelFavSubTitle.textContent = "⭐ No Favorites Marked.";
+                panelFavSubTitle.style.margin = '0px';
+                panelFavSubTitle.style.padding = '10px';
+                panelFavSubTitle.style.color = '#baaef9';
+                outer_container.appendChild(panelFavSubTitle);
+                leftpanel.appendChild(outer_container);
+            }
+            else
+            {
+                const outer_container = document.createElement('div');
+                outer_container.id = "container_favs";
+                favoriteSearches.forEach((search, index) => {
+                    // Create the DocSearchHit element
+                    const docSearchHit = createDocSearchHit(search, index, 0);
+                    // Append it to the iframe
+                    outer_container.appendChild(docSearchHit);
+                });
+                leftpanel.appendChild(outer_container);
+            }
+
+            const recentSearches = getRecentSearches(key_rece);
+
+            const panelTitle = document.createElement('h4');
+
+            panelTitle.textContent = 'Recent Searches.';
+            panelTitle.style.padding = '10px';
+            panelTitle.style.padding.right = '0px';
+            panelTitle.style.margin = '0px';
+            panelTitle.style.color = '#5235ef';
+            leftpanel.appendChild(panelTitle);
+            // Step 3: Iterate over the array
+            if (recentSearches.length === 0)
+            {
+                const outer_container2 = document.createElement('div');
+                outer_container2.id = "container_searches";
+                const panelFavSubTitle2 = document.createElement('h5');
+                panelFavSubTitle2.textContent = "👀 No Recent Searches Found.";
+                panelFavSubTitle2.style.padding = '10px';
+                panelFavSubTitle2.style.margin = '0px';
+                panelFavSubTitle2.style.color = '#baaef9';
+                outer_container2.appendChild(panelFavSubTitle2);
+                leftpanel.appendChild(outer_container2);
+            }
+            else
+            {
+                const outer_container2 = document.createElement('div');
+                outer_container2.id = "container_searches";
+                recentSearches.forEach((search, index) => {
+                    // Create the DocSearchHit element
+                    const docSearchHit = createDocSearchHit(search, index, 1);
+                    // Append it to the iframe
+                    outer_container2.appendChild(docSearchHit);
+                });
+                leftpanel.appendChild(outer_container2);
+            }
+            
+            //Add right iframe for preview panel
+            const containerIframe = document.createElement('div');
+            containerIframe.id = "containerIframe"
+            containerIframe.classList.add('DocSearch-Iframe');
+            containerIframe.style.width = '50%';
+            containerIframe.style.height = '100%';
+            containerIframe.style.position = 'absolute'; // or 'fixed' if you want it to stay on the screen when scrolling
+            containerIframe.style.top = '0px';
+            containerIframe.style.right = '-51%';
+            containerIframe.style.backgroundColor = '#f5f6f8';
+            containerIframe.style.borderRadius = "5px";       
+            containerIframe.style.boxShadow = "2px 2px 10px rgba(0, 0, 0, 0.3)";  
+
+            const iframe = document.createElement('iframe');
+            iframe.id = "iframePreview"
+            iframe.classList.add('DocSearch-Iframe');
+            iframe.style.overflow = "auto"; 
+            iframe.style.overflowX = "scroll"; 
+            iframe.style.zIndex = '9999';
+            iframe.style.borderRadius = "5px"; 
+            iframe.style.height = '100%';
+            iframe.style.boxShadow = "none"; 
+            iframe.style.border = "none"; 
+            iframe.style.width = '100%';
+            iframe.style.backgroundColor = 'white';
+            containerIframe.appendChild(iframe);
+
+            // Create the container div
+            const containerText = document.createElement('a');
+            containerText.id = "containerPreviewText";
+            containerText.style.display = 'flex';
+            containerText.style.alignItems = 'center';
+            containerText.style.justifyContent = 'center';
+            containerText.style.width = '50%';
+            containerText.style.height = '100%';
+            containerText.style.position = 'absolute'; // or 'fixed' if you want it to stay on the screen when scrolling
+            containerText.style.top = '0px';
+            containerText.style.right = '-51%';
+            containerText.style.zIndex = '999999';
+            containerText.style.borderRadius = "5px";  
+            containerText.style.backgroundColor = '#f5f6f8';
+            containerText.style.display = 'flex';
+            containerText.style.flexDirection = 'column';
+
+            // Create the message element
+            const message = document.createElement('div');
+            message.textContent = '⚡ Preview Panel.';
+            message.style.fontSize = '16px';
+            message.style.fontWeight = 'bold';
+            message.style.color = '#333';
+            message.style.textAlign = 'center';
+            message.style.color = '#5235ef';
+            // Append the message to the container
+            containerText.appendChild(message);
+            // Create the message element
+            const message2 = document.createElement('div');
+            message2.style.whiteSpace = "pre-line";
+            message2.textContent = '(Mouse over the searched\nitems to show content here)';
+            message2.style.fontSize = '12px';
+            message2.style.fontWeight = 'bold';
+            message2.style.color = '#333';
+            message2.style.textAlign = 'center';
+            message2.style.color = '#baaef9';
+            // Append the message to the container
+            containerText.appendChild(message2);
+            docSearchContainer.appendChild(containerText);
+
+            // Zoom the iframe content
+            iframe.onload = function() {
+                const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                const elementPreview = document.getElementById("containerPreviewText"); 
+                try
+                {
+                    if(elementPreview && iframe.contentWindow.location.href != "about:blank")
+                    {
+                        // Create top button to navigate to page
+                        elementPreview.style.justifyContent = 'flex-start';
+                        elementPreview.style.height = "25px";
+                        elementPreview.textContent = '↪ Go To Page (🕵️ No Recents)';
+                        elementPreview.style.fontSize = '13px';
+                        elementPreview.style.fontWeight = 'bold';
+                        elementPreview.style.verticalAlign = 'top';                        
+                        elementPreview.style.cursor = 'pointer';
+                        elementPreview.style.paddingTop = '5px';
+                        elementPreview.style.borderRadius = "5px 5px 0px 0px";
+                        elementPreview.style.setProperty('color', '#5235ef', 'important');
+                        elementPreview.href = iframe.contentWindow.location.href;
+                    }
+                } catch{}
+                
+                iframeDocument.body.style.zoom = "0.7";  // 60% zoom
+                const style = document.createElement("style");
+                style.innerHTML = `
+                    body {
+                        overflow-x: auto !important;
+                        width: 95% !important;
+                    }
+                `;
+
+                // Append the style element to the iframe document
+                iframeDocument.head.appendChild(style);
+                // Remove top bar element inside the iframe
+                const elementToRemove = iframeDocument.getElementById("topBan"); 
+                if (elementToRemove) {
+                    elementToRemove.remove();
+                }
+                try
+                {
+                    if(iframe.contentWindow.location.href)
+                    {
+                        if(iframe.contentWindow.location.href.includes("2020") || 
+                            iframe.contentWindow.location.href.includes("2021") ||
+                            iframe.contentWindow.location.href.includes("2022") ||
+                            iframe.contentWindow.location.href.includes("2023"))
+                        {
+                            iframeDocument.body.style.setProperty('margin-left', '-15px', 'important');
+                        }
+                    }
+                }
+                catch{}
+                iframe.style.visibility = 'visible';
+            };
+            // Append the iframe to the modal
+            docSearchContainer.appendChild(containerIframe);
+        }
+
+        //Check changes in shown items.
+        const parentElements = document.querySelectorAll('#docsearch-list');
+        if (parentElements)
+        {
+            parentElements.forEach(parentElement => {
+
+            const childElements = parentElement.children;
+            for (let child of childElements) {
+                //Add star to main searched item
+                if(!child.querySelector("#star_button"))
+                {
+                    let starSvg = child.querySelector('path[d="M10 14.2L5 17l1-5.6-4-4 5.5-.7 2.5-5 2.5 5 5.6.8-4 4 .9 5.5z"]')
+                    if(starSvg)
+                    {
+                        starSvg.parentElement.remove()
+                    }
+                    AddButtonToHtml(child)
+                }
+            }
+            // Step 2: Define the callback function for the observer
+            const observerCallback = function(newmutationsList, newobserver) {
+                const parentElements = document.querySelectorAll('#docsearch-list');
+                parentElements.forEach(parentElement => {
+                    if(parentElement)
+                    {
+                        const childElements = parentElement.children;
+                        for (let child of childElements) {
+                            //Add star to main searched item
+                            if(!child.querySelector("#star_button"))
+                            {
+                                let starSvg = child.querySelector('path[d="M10 14.2L5 17l1-5.6-4-4 5.5-.7 2.5-5 2.5 5 5.6.8-4 4 .9 5.5z"]')
+                                if(starSvg)
+                                {
+                                    starSvg.parentElement.remove()
+                                }
+                                AddButtonToHtml(child)
+                            }
+                            // Check if the 'data-active' attribute is set to "true" to update iframe
+                            const currentValue = child.getAttribute('aria-selected');
+                            if (currentValue === 'true')
+                            {
+                                const anchorTag = child.querySelector('a');
+                                if (anchorTag) {
+                                    // Step 3: Retrieve the href attribute value
+                                    const linkHref = anchorTag.href;
+                                    const iframe = document.getElementById("iframePreview");
+                                    //const newString = linkHref.replace('https://revapidocs.com/', 'http://localhost:8000/');
+                                    if(iframe.contentWindow.location.href  != linkHref)
+                                    {
+                                        // Clear any previous timeouts to ensure only the last one runs
+                                        clearTimeout(lastTimeout);
+                                        // Set a new timeout to perform the navigation
+                                        lastTimeout = setTimeout(function() {
+                                            try
+                                            {
+                                                iframe.style.visibility = 'hidden';
+                                                iframe.contentWindow.location.replace(linkHref);
+                                            }
+                                            catch{ }
+                                        }, 200);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+          };
+
+            // Step 4: Create an instance of MutationObserver with the callback
+            const newobserver = new MutationObserver(observerCallback);
+
+            // Step 5: Configure the observer to watch for attribute changes in the subtree
+            const observerOptions = {
+            attributes: true, // Observe attribute changes
+            childList: true,  // Detect addition/removal of <li> elements
+            subtree: true // Observe all descendants of the parent element
+            };
+
+            // Step 6: Start observing the parent element
+            newobserver.observe(parentElement, observerOptions);
+            }); 
+        }
+    
+        //Check if no favorites or searched elements
+        const containerFavs = document.getElementById('container_favs');
+        if(containerFavs)
+        {
+            const numberOfChildElements = containerFavs.childElementCount;
+            if(numberOfChildElements == 0)
+            {
+                const panelFavSubTitle = document.createElement('h5');
+                panelFavSubTitle.id = "SubtitleNoFavs"
+                panelFavSubTitle.style.whiteSpace = "pre-line";
+                panelFavSubTitle.textContent = "⭐ No Favorites Marked.";
+                panelFavSubTitle.style.padding = '10px';
+                panelFavSubTitle.style.margin = '0px';
+                panelFavSubTitle.style.color = '#baaef9';
+                containerFavs.appendChild(panelFavSubTitle);
+            }
+        }
+        
+        //Check if searched elements
+        const containerSearch = document.getElementById('container_searches');
+        if(containerSearch)
+        {
+            const numberOfChildElementsSearch = containerSearch.childElementCount;
+            if(numberOfChildElementsSearch == 0)
+            {
+                const panelFavSubTitle2 = document.createElement('h5');
+                panelFavSubTitle2.textContent = "👀 No Recent Searches Found.";
+                panelFavSubTitle2.style.padding = '10px';
+                panelFavSubTitle2.style.margin = '0px';
+                panelFavSubTitle2.style.color = '#baaef9';
+                containerSearch.appendChild(panelFavSubTitle2);
+            }
+        }
+    }
+};
+// Create an observer instance linked to the callback function
+const observer = new MutationObserver(callback);
+// Start observing the body
+observer.observe(targetNode, config);
+
+//Stop Editing Searcher here
 
 
     $(function() {
@@ -158948,7 +159614,7 @@ docsearch({
         });
     },
     maxResultsPerGroup: 20,
-    initialQuery: "2023 ",
+    initialQuery: window.year + " ",
 });
 
 </script>
