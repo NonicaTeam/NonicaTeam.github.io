@@ -36,7 +36,7 @@ var sectionStatesInitialized = false;
 
         // Add actual links
         footerDiv.innerHTML = `
-            Made with ❤️ by Nonica.io
+            Made with ❤️ by <a href="https://nonica.io/" target="_blank">Nonica.io</a>
             <br>
           <span class="inline-links">
             <a href="https://RevAPIDocs.com" target="_blank">Revit API Docs</a>  |  
@@ -68,6 +68,101 @@ var sectionStatesInitialized = false;
 		}
       }
     }
+
+	//Add Search Textbox
+	const sections = document.getElementsByName('collapseableSection');
+	if(sections)
+	{
+		sections.forEach(section => {
+			if(section.id != 'syntaxSection')
+			{
+				const tableEles = section.querySelectorAll('table');
+          		if (tableEles && tableEles.length > 0)
+				{	
+					//Only if section has a table add input textbox
+					region = section.previousSibling;
+					const searchTextbox = document.createElement('input');
+					searchTextbox.name = "filterTable"
+					searchTextbox.type = 'text';
+					searchTextbox.placeholder = '🔎 Search in table...';
+				
+					// Add styles for the textbox
+					searchTextbox.setAttribute("style", "font-size: 12px !important;");
+					searchTextbox.style.padding = '5px'; // Add space for the icon inside
+					searchTextbox.style.borderRadius = '5px'; // Rounded corners
+					searchTextbox.style.border = '1px solid #d3d3d3'; // Light gray border
+					searchTextbox.style.outline = 'none'; // Removes outline on focus (optional)
+					searchTextbox.style.marginLeft = '10px'; // Adds margin above to create space between elements
+					searchTextbox.style.color = '#5235ef';
+					//searchTextbox.style.fontWeight = 'bold';
+					searchTextbox.addEventListener('click', function() {
+						//Clear the placeholder text when the textbox is clicked
+						searchTextbox.placeholder = '';
+					});
+					searchTextbox.addEventListener('input', function(event) {
+						// Get the current value of the textbox
+						const parentElement = event.target.parentElement;
+						const nextSibling = parentElement.nextElementSibling;
+						const table = nextSibling.querySelector('table');
+						if (table) {
+							// Get the search text entered by the user
+							const searchText = event.target.value.toLowerCase();
+							// Step 4: Get all table rows
+							const rows = table.querySelectorAll('tr');
+							// Loop through all the rows
+							rows.forEach((row, index) => {
+								// Skip the header row (index 0)
+								if (index === 0) {
+									row.style.display = ''; // Ensure header row is visible
+									return;
+								}
+								// Step 5: Get the text content of each row (you can modify this if you want specific columns)
+								const rowText = row.textContent.toLowerCase();
+								// Step 6: If the row contains the search text, show it; otherwise, hide it
+								if (rowText.includes(searchText)) {
+									row.style.display = ''; // Show the row
+								} else {
+									row.style.display = 'none'; // Hide the row
+								}
+							});
+						}
+					});
+					// Event listener for blur (when the textbox loses focus)
+					searchTextbox.addEventListener('blur', function() {
+						// If the textbox is empty, restore the placeholder
+						if (searchTextbox.value === '') {
+							searchTextbox.placeholder = '🔎 Search in table...'; // Restore the placeholder text
+						}
+					});
+					// Step 6: Append the magnifying glass icon to the div
+					//const firstChild = region.firstElementChild;
+					region.appendChild(searchTextbox);
+				}
+			}
+		});
+
+		//To avoid errors regarding for attributes not linked to inputs
+		// Step 1: Select all <label> elements in the document
+		const labels = document.querySelectorAll('label');
+
+		// Step 2: Loop through each label and check the 'for' attribute
+		labels.forEach(label => {
+			const forAttribute = label.getAttribute('for');
+			
+			// If the 'for' attribute exists
+			if (forAttribute) {
+				// Step 3: Check if an element with the corresponding ID exists and is a form element
+				const associatedElement = document.getElementById(forAttribute);
+
+				// Step 4: If the associated element is not a form field, remove the 'for' attribute
+				if (!associatedElement || !['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(associatedElement.tagName)) {
+					label.removeAttribute('for');
+				}
+			}
+		});
+
+	}
+	//
 	//Collapse RegionTitle with Inheritance. It is done in LoadPage
 });
 
