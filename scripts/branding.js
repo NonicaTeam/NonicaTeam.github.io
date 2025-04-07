@@ -9,11 +9,11 @@
         // The directory (e.g., "2025") is the second element.
         var directory = pathParts[1];
 
-        //Remove after indexing
-        if(directory === "2026")
-        {
-          return;
-        }
+        //Remove for indexing
+        // if(directory === "2027")
+        // {
+        //   return;
+        // }
         ///
 
         // The file name (e.g., "1d2da0b1-26ee-91bc-cf36-d70eb73ea821.htm") is the third element.
