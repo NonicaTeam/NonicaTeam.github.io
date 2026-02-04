@@ -12,20 +12,17 @@ Revit API documentation for years 2020-2026, powered by Algolia search.
 
 ## Embeddable Search Snippet
 
-Add a Revit API search bar to any website with the following code:
+Add a Revit API search bar to any website. Copy-paste the full snippet directly into WordPress (Custom HTML block), Webflow, Squarespace, or any HTML page.
 
-**1. Add CSS to `<head>`:**
+**Full snippet (copy-paste ready):**
 ```html
+<!-- CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
-```
 
-**2. Add HTML container where you want the search bar:**
-```html
+<!-- Search Bar Container -->
 <div id="algoliaBar"></div>
-```
 
-**3. Add JavaScript before `</body>`:**
-```html
+<!-- JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
 <script type="text/javascript">
 docsearch({
