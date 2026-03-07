@@ -40,7 +40,8 @@ var sectionStatesInitialized = false;
             <br>
           <span class="inline-links">
             <a href="https://RevAPIDocs.com" target="_blank">Revit API Docs</a>  |  
-            <a href="https://CivAPIDocs.com" target="_blank">Civil3D API Docs</a>
+            <a href="https://CivAPIDocs.com" target="_blank">Civil3D API Docs</a>  |  
+            <a href="https://BIMEventsWorld.com" target="_blank">BIM Events World</a>
           </span>
             Revit® is a registered trademark of Autodesk, Inc. This website is not affiliated with or endorsed by Autodesk, Inc.
         `;
