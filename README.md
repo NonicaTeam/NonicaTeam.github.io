@@ -1,12 +1,12 @@
 # Rev API Docs
 
-Revit API documentation for years 2020-2026, powered by Algolia search.
+Revit API documentation for years 2020-2027, powered by Algolia search.
 
 **Live Site:** [RevApiDocs](https://revapidocs.com)
 
 ## Features
 
-- Multi-year Revit API documentation (2020-2026)
+- Multi-year Revit API documentation (2020-2027)
 - Instant search across all documentation
 - Embeddable search snippet for external websites
 
@@ -46,7 +46,7 @@ docsearch({
         });
     },
     maxResultsPerGroup: 20,
-    initialQuery: "2026 ",
+    initialQuery: "2027 ",
 });
 </script>
 ```

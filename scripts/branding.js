@@ -10,6 +10,13 @@
         var directory = pathParts[1];
 
         //Remove for indexing
+        if(directory === "2027")
+        {
+          return;
+        }
+        ///
+
+        //Remove for indexing
         // if(directory === "2027")
         // {
         //   return;
