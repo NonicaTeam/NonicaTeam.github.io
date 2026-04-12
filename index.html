@@ -13,6 +13,8 @@
     </script>
   <meta charset="UTF-8">
   <link rel="icon" href="icons/favicon.ico" type="image/x-icon" />
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#5235ef">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Revit API Documentation</title>
   <link rel="stylesheet" href="styles/index.css">
@@ -46,6 +48,10 @@
       </div>
 
 <script type="text/javascript">
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
 
 window.index = "nonicateamio";
 //Start editing searcher here.
