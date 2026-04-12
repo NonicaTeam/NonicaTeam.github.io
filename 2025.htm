@@ -13,6 +13,8 @@
 </script>
 <!-- add extra header code to main frame here -->  
 <link rel="icon" href="icons/favicon.ico" type="image/x-icon" />
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#5235ef">
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11"/> 
 
 <script src="scripts/jquery-3.6.0.min.js"></script>
@@ -164,6 +166,7 @@ function findNodeByUrl(url) {
 </head>
 
 <body style="margin:0px;overflow:hidden;">
+<script>if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }</script>
     <div id="topBan">
        <a style="color: white;text-decoration: none;" href="https://revapidocs.com/"><h2>&lt; Rev API Docs</h2></a> 
     <div class="button-container" >
