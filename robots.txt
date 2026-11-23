@@ -1,6 +1,4 @@
 User-agent: *
-# Allow access to JavaScript and CSS files for proper rendering
-Allow: /*.js$
-Allow: /*.css$
-Allow: /scripts/
-Allow: /styles/
+Allow: /
+
+Sitemap: https://revapidocs.com/sitemap.xml
